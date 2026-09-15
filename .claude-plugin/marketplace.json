@@ -19,7 +19,7 @@
     {
       "name": "outsource-intake",
       "source": "./Outsource-Intake",
-      "description": "Runs a structured intake when someone requests an art/production asset (or batch): vendor, scope, starting materials, delivery phases, what \"good\" looks like per phase, reviewers, deadlines, and file paths. Produces a vendor-ready Asset Request Sheet."
+      "description": "Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team \u2014 vendor, scope, starting materials, delivery phases, what \"good\" looks like per..."
     }
   ]
 }
