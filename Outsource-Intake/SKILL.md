@@ -23,6 +23,8 @@ description: >
 
 # Outsource / Asset Request Intake
 
+![Example output: a vague "12 props" ask turned into a vendor-ready Asset Request Sheet with phased delivery gates, per-phase acceptance, and flagged risks](references/example-output.webp)
+
 ## Why this exists
 
 Most asset asks arrive underspecified: "hey can you get me a chair for the

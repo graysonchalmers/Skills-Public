@@ -23,6 +23,8 @@ description: >
 
 # Art Brief Composition Skill v2.2
 
+![Example output: a real environment brief — palette, priority-weighted requirements, and borrow/avoid references, compressed into a vendor-ready spec](references/example-output.webp)
+
 ## Philosophy
 
 Creative vision lives in latent space — a rich, multidimensional mental model

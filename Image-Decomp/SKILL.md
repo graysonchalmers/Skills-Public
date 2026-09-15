@@ -8,6 +8,8 @@ metadata:
 
 # Image Decomposition + Intent Engine (VDE) — v3
 
+![Example output: a source image decoded into Craft tags, artistic context, and a reverse-engineered regen prompt](references/example-output.webp)
+
 ## What this skill is for
 
 Every image is engineered to do something to whoever looks at it — even a
