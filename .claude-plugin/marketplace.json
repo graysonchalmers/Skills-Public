@@ -15,6 +15,11 @@
       "name": "image-decomp",
       "source": "./Image-Decomp",
       "description": "Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap)."
+    },
+    {
+      "name": "outsource-intake",
+      "source": "./Outsource-Intake",
+      "description": "Runs a structured intake when someone requests an art/production asset (or batch): vendor, scope, starting materials, delivery phases, what \"good\" looks like per phase, reviewers, deadlines, and file paths. Produces a vendor-ready Asset Request Sheet."
     }
   ]
 }

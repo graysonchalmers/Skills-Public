@@ -1,0 +1,9 @@
+{
+  "name": "outsource-intake",
+  "version": "1.0.0",
+  "author": {
+    "name": "Grayson Chalmers",
+    "url": "https://github.com/graysonchalmers"
+  },
+  "description": "Runs a structured intake when someone requests an art/production asset (or batch): vendor, scope, starting materials, delivery phases, what \"good\" looks like per phase, reviewers, deadlines, and file paths. Produces a vendor-ready Asset Request Sheet."
+}
