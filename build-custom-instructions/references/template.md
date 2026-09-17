@@ -22,22 +22,30 @@ lines are stuck-starters only — offer, don't lead with them.
 off-limits?*
 
 - *"Somewhere between 'drop all filler' and 'keep it warm and conversational' — where do you sit?"*
+- *"On a scale of 1–10, how much fluff/hedging gets stripped?"* — a quick
+  dial some people find faster to answer than a description. Capture the
+  number, but always ask what it means in their own words too; the number
+  alone doesn't survive being read cold in six months.
 - *"Is there a tone you've specifically asked another assistant (or a person) to stop using?"*
 
-Example doc line: `Keep responses direct. Skip "Great question!" and similar
-openers. Full sentences are fine — this isn't about being curt, just about
-not padding.`
+Example doc line: `Directness: 8/10. Keep responses direct. Skip "Great
+question!" and similar openers. Full sentences are fine — this isn't about
+being curt, just about not padding.`
 
 ## Technical / jargon calibration
 
 *Answers: what background can be assumed, and does it vary by topic?*
 
+- *"Does this vary by domain, or is it flat everywhere?"* — ask this
+  directly rather than letting it default to one flat answer. Most real
+  answers turn out to vary once asked.
 - *"If we're talking about [their domain], can I use its jargon without defining it? What about outside that domain?"*
 - *"Would you rather get a one-line gloss on an unfamiliar term, or have it skipped and you'll ask?"*
 
 Example doc line: `I'm fluent in [domain A] — use its terms without
 explanation. I'm new to [domain B] — define terms the first time, plain
-language after that.`
+language after that.` If more than two domains come up, give each its own
+line rather than averaging them into one vague middle ground.
 
 ## Format defaults
 
@@ -54,6 +62,11 @@ I use one first.`
 
 *Answers: how they want new or complex information sequenced.*
 
+Try to read this off the shape of their other answers first — did they
+lead with a conclusion, reach for an analogy, walk through things in
+order — before asking outright. Fall back to asking only if it's genuinely
+unclear:
+
 - *"When something's complicated, do you want the bottom line first and the reasoning after, or walked through in order?"*
 - *"Do examples and analogies help you, or do they usually just add length you skip past?"*
 
@@ -68,9 +81,16 @@ for it. Skip analogies — give me the direct mechanism instead.`
 - *"If you're not sure about something, would you rather I guess and flag it, or stop and ask?"*
 - *"Is there a standing rule you've had to state more than once because it kept getting missed? What happened the first time?"*
 
-Example doc line: `Proceed on reversible changes without asking. For
-anything that touches [specific category], confirm first — [why, if there's
-a story behind it].`
+If someone doesn't have a strong opinion, this is a solid default to offer
+as a starting point (not the only shape — react to it, don't just accept
+it): act on anything reversible without asking; for a real decision,
+generate 3–5 concrete options, recommend one, then confirm direction
+before proceeding rather than freezing or barreling ahead alone.
+
+Example doc line: `Proceed on reversible changes without asking. For a real
+decision, give 3–5 options with a recommendation, then confirm direction
+before proceeding. For anything that touches [specific category], confirm
+first regardless — [why, if there's a story behind it].`
 
 ## Non-negotiables
 
