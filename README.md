@@ -20,7 +20,7 @@ claude plugin install art-brief@skills-public
 
 ## Skills at a Glance
 
-<a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="140" alt="Art-Brief"></a> <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="140" alt="Image-Decomp"></a> <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="140" alt="Outsource-Intake"></a>
+<a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="140" alt="Art-Brief"></a> <a href="#build-custom-instructions"><img src="build-custom-instructions/references/example-output.webp" height="140" alt="build-custom-instructions"></a> <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="140" alt="Image-Decomp"></a> <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="140" alt="Outsource-Intake"></a>
 
 ## Skills
 
@@ -641,7 +641,80 @@ digital scale for resin mixing ratios.
 
 ### build-custom-instructions
 
+<img src="build-custom-instructions/references/example-output.webp" height="360" alt="build-custom-instructions example output">
+
 Interviews a person about how they want an AI assistant to communicate with them — tone and directness, technical/jargon level, output format, learning style, collaboration rules — and drafts a personal custom-instructions document (CLAUDE.md / AGENTS.md / system-prompt style) from their answers, plus an optional layer of hard-enforced rules via hooks for anything that needs to be guaranteed rather than just requested. Use this whenever someone wants to write, improve, or start from scratch on their custom instructions, system prompt, CLAUDE.md, AGENTS.md, or "how should the AI talk to me" preferences — even if they don't know the term for it and just say things like "I want Claude to stop explaining stuff I already know," "can I make it match how I actually talk," or "I want a doc like the pros have for tuning their assistant." Also trigger when someone wants to onboard a new teammate, client, or themselves onto a fresh Claude Code / agent setup and needs a communication-preferences doc to start from.
+
+**Examples:**
+
+<img src="build-custom-instructions/examples/01-sample-interview-and-draft.webp" height="160" alt="build-custom-instructions example 01-sample-interview-and-draft">
+
+<details>
+<summary>Read the full write-up — 01-sample-interview-and-draft</summary>
+
+# Example 1 — sample interview → drafted custom-instructions doc
+
+**Synthetic interview subject:**
+
+> "I keep telling every new AI chat the same three things about how I like answers — can we fix that once?"
+
+---
+
+## Interview — six axes (full)
+
+**Voice & Directness**
+> Somewhere in the middle — full sentences are fine, just cut the "Great
+> question!" openers and the hedging before a recommendation.
+
+**Technical / Jargon Calibration**
+> Fluent in backend/infra terms, use them freely. New to frontend — define
+> a term the first time, plain language after.
+
+**Format Defaults**
+> No strong opinion on headers vs. prose — whatever fits the answer. Skip
+> heavy bolding.
+
+**Learning Style**
+> Conclusion first, then the reasoning if I ask for it.
+
+**Collaboration Rules**
+> Proceed on anything reversible without asking. Anything that touches a
+> shared config or another person's in-progress work — check first.
+
+**Non-Negotiables**
+> Twice now an assistant has silently changed a config default while doing
+> unrelated cleanup. Never touch something I didn't ask about, even to
+> "fix" it.
+
+---
+
+## Drafted document
+
+```
+Keep responses direct. Skip "Great question!" and similar openers.
+
+Backend/infra: use jargon freely, no definitions needed.
+Frontend: define an unfamiliar term once, plain language after.
+
+Lead with the conclusion, then the reasoning if asked.
+
+Proceed on reversible changes without asking. Confirm first on anything
+touching shared config or someone else's in-progress work.
+
+Never modify anything outside the scope of what was asked, even as
+"cleanup" — flag it instead. (Twice-corrected rule — see below.)
+```
+
+## Enforcement triage
+
+- **Scope-creep edits (silent unrelated changes)** → hook candidate. Passes
+  both tests: real damage if missed, and already corrected twice.
+- **Tone / openers** → stays plain text. Low cost if occasionally missed,
+  self-correcting.
+- **Jargon calibration** → stays plain text. Requires judgment per-question,
+  not a mechanical check.
+
+</details>
 
 ### Image-Decomp
 
