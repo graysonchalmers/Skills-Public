@@ -20,6 +20,9 @@ desert-baroque aesthetic, not the more common gothic-horror or high-fantasy
 default for this genre
 ⚠️ **Target Audience:** New vendor, first brief — precise, no assumptions,
 full style bible references included
+⚠️ **Style Authority:** Weapons Art Lead — final word on whether the
+transform reads and the filigree language lands; same person as the named
+reviewer in Process below
 ⚠️ **Art Style Direction:** Ornate, sun-bleached ceremonial weaponry that
 still reads as lethal — baroque gold filigree over sand-worn steel, not
 polished/pristine
@@ -105,6 +108,22 @@ IP: Elden Ring — Golden Order weapons (e.g. Marika's / Radagon's weapons)
   gear/mechanism at the fold point) — ours should look more like a ceremonial
   unfolding, not industrial machinery
 
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope: a third transform state, additional weapon variants, or a
+  companion scabbard/sheath asset — any of these is a change, not an
+  extension of this brief.
+- Change cost: this is a new-vendor paid engagement — any post-kickoff
+  scope change is a change order, quoted separately, not an absorbed
+  favor by default.
+
+### 📋 Process
+- Named reviewer: Weapons Art Lead (same as Style Authority above), full
+  approval authority.
+- Turnaround: 2 business days, matching the feedback turnaround below.
+- Feedback channel: annotated review doc per milestone.
+- Escalation: a note that survives two rounds unresolved goes to the Art
+  Director.
+
 ### 📅 Delivery & Milestones
 ```
 MILESTONE STRUCTURE
@@ -146,6 +165,11 @@ IP: Elden Ring — Golden Order weapons
 
 **Explicit avoids:** gothic-horror materials, pristine holy gold, glowing
 rune VFX, visible mechanical transform hardware.
+
+**Scope & process:** Out of scope — a third transform state, extra weapon
+variants, a companion scabbard (any of these is a change order, quoted
+separately). Reviewer: Weapons Art Lead, 2-day turnaround, annotated doc
+per milestone.
 
 **Deliverables:** FBX (game-res ≤18K tris + high-poly bake source), 4K
 Substance Painter texture set (Base Color/Normal/ORM), LOD0 + LOD1.

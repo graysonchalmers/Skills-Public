@@ -56,7 +56,7 @@ Flow: Intake → Assumptions → Build → Output
 
 ### Mode B — Brief Iteration
 Update an existing brief based on new information.
-Triggers: "here's my old brief," "the vendor asked...," "stakeholder wants...,"
+Triggers: "here's my old brief," "the vendor asked...", "stakeholder wants...",
 "we changed direction on..."
 
 Flow: Ingest existing brief → Identify deltas → Update → Output revised brief

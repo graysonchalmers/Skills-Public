@@ -22,6 +22,8 @@ contour lines filled with tinted resin to read as depth bands, walnut as
 the "land"
 ⚠️ **Delivery Format:** n/a (this is a personal build spec, not a vendor
 deliverable) — brief instead functions as the maker's own build reference
+⚠️ **Style Authority:** Grayson (self) — solo personal build, no second
+opinion in the loop
 
 🔴 **Priority Flags:** Structural load-bearing integrity is non-negotiable
 — this is a real table, not a display piece, so the resin inlay pour depth
@@ -98,6 +100,16 @@ Environment: indoor, living-room use
   of the design language, not an oversight to fix later
 - Do not skip the routing depth map — freehanding contour depth risks a
   structural failure that isn't visible until the table is under load
+
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope in the vendor sense doesn't apply — no partner, no change
+  orders. The real boundary is sequencing: the routing depth map is locked
+  before any cut. Redesigning the contour layout after routing starts
+  isn't a change, it's a redo — see the structural note above.
+
+### 📋 Process
+- n/a — solo build. Self-review at each stage of the sequence below stands
+  in for a named reviewer and turnaround.
 
 ### 📅 Delivery & Milestones
 *(Omitted — personal build, no vendor handoff. Use the Materials & Process

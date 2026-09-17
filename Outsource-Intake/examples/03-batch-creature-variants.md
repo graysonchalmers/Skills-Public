@@ -14,6 +14,8 @@
 ## Step 1 — Classify the Ask
 
 - **Asset type:** Creature
+- **Criticality:** standard production — a mid-milestone content batch,
+  not a hero asset and not background filler either
 - **Batch or distinct:** Batch, but **distinct variants of one base
   creature** rather than unrelated assets — this changes the phase
   structure: the basic version needs to lock the style FIRST, and the
@@ -45,8 +47,16 @@
    reference" flag.
 7. **Timeline** — elite + alpha both due 3 weeks after basic locks; basic's
    own due date not yet set (assumed ASAP since it gates the other two).
-8. **Reviewers** — Sam, all phases.
-9. **File paths** — not settled yet, placeholder.
+8. **Style authority and approval owner** — Sam, both roles, all phases.
+   Naming them separately even though they're the same person here, so
+   it's on record if that ever changes mid-project.
+9. **Cost/timeline reality check** — no formal process yet; this would be
+   a new vendor relationship, so there's no standing arrangement to check
+   against. Flagging as "no baseline yet" rather than inventing one.
+10. **Commercial readiness** — not yet, and it can't really be until a
+    vendor exists — payment trigger and change-order terms wait for that.
+    Same flag, not chased further at this stage.
+11. **File paths** — not settled yet, placeholder.
 
 ---
 
@@ -55,16 +65,21 @@
 ```
 Asset: 3 creature variants (bog-lurker: basic, elite, alpha), batch —
   shared base creature, not distinct designs
+Criticality: standard production
 Vendor: needs recommendation — no database connected
 Starting material: approved concept for basic variant only
 Phases: Basic (style-lock) -> Elite (scales from locked basic) ->
   Alpha (scales from locked basic)
 Due: Elite + Alpha - 3 weeks after basic locks | Basic - date TBD
-Reviewers: Sam (all phases)
+Style authority / Approval owner: Sam (both roles, all phases)
+Cost/timeline process: not established
+Commercial terms: not established (waiting on a vendor to exist)
 
 🔶 Flags: basic variant's own due date isn't set yet, and it gates the
   other two — worth pinning down before vendor kickoff so "3 weeks after
-  lock" has a real anchor date. Vendor unassigned.
+  lock" has a real anchor date. Vendor unassigned. No cost/timeline
+  process or commercial terms yet, standard-criticality vetting bar
+  applies once a vendor is identified.
 ```
 
 ---
@@ -77,12 +92,17 @@ Reviewers: Sam (all phases)
 
 ## Scope
 - Asset type(s): Creature
-- Quantity: 3 (Basic, Elite, Alpha)
+- Quantity, and what counts as one: 3 — Basic, Elite, Alpha, each a
+  complete sculpted+textured creature variant
 - Batch (shared style) or distinct assets: Batch — shared base creature,
   variants scale from a locked style rather than each starting fresh
+- Criticality: standard production
 
 ## Vendor
 - 🔶 Needs assignment — no vendor database configured in this environment.
+- New partner? Likely yes (unassigned) — standard criticality: confirm a
+  named lead + availability once identified; in-engine proof before
+  committing beyond the Basic style-lock phase.
 
 ## Starting Material
 - What exists: approved concept art for the Basic variant only
@@ -105,6 +125,23 @@ Reviewers: Sam (all phases)
 | 2 — Elite | Locked Basic sculpt/texture + bone armor plating | Locked Phase 1 final asset | 3 weeks after Phase 1 locks | Sam |
 | 3 — Alpha | Locked Basic sculpt/texture + size increase + bioluminescent underbelly | Locked Phase 1 final asset | 3 weeks after Phase 1 locks | Sam |
 
+## Roles
+- Style authority (final word on the look): Sam
+- Approval owner (can say yes procedurally): Sam — same as above, all phases
+
+## Cost & Timeline Process
+- Estimate exists: not yet established
+- "A day/week" defined: n/a — no estimate yet
+- Revision allowance stated with the price: n/a
+- Cost of a change named before there is one: n/a
+- Flag: "no process established yet" — new vendor relationship, nothing
+  to check against so far
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: n/a — waiting on a vendor to exist
+- Change-order rule agreed: n/a
+- IP / credit / portfolio rights understood: n/a
+
 ## File Delivery
 - Destination: 📎 placeholder — not yet settled
 
@@ -114,3 +151,8 @@ Reviewers: Sam (all phases)
   Basic due date before vendor kickoff so downstream dates have a real
   anchor.
 - 🔶 Vendor unassigned — needs outsource manager or art director input.
+  Standard-criticality vetting bar (named lead + in-engine proof) applies
+  once one's identified.
+- 🔶 No cost/timeline process or commercial terms established — both wait
+  on a vendor, but worth tracking as open items rather than assuming
+  they'll sort themselves out at kickoff.

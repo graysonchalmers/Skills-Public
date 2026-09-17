@@ -20,6 +20,8 @@
 tonal blend of warmth and quiet grief rather than horror
 ⚠️ **Target Audience:** New vendor, first brief — full turnaround +
 expression sheet required since this is a new relationship
+⚠️ **Style Authority:** Narrative/Character Art Director — final word on
+whether she reads as gentle rather than unsettling
 ⚠️ **Art Style Direction:** Soft painterly 2D, warm lantern-lit glow
 against cool desaturated surroundings — inviting silhouette, melancholy
 detailing
@@ -122,6 +124,21 @@ IP: Little Nightmares (proportions only, target-quality reference)
 - No combat-damaged costume detailing — her wear comes from decades of
   weather and duty, not battle
 
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope: additional costume variants, a second expression-sheet
+  style, or an alternate "living" (non-ghost) design pass — any of these
+  is a change.
+- Change cost: a small in-flight note (a color nudge, a pose tweak) is the
+  kind of thing a good partner absorbs; anything touching either 🔴
+  Critical requirement above is a change order.
+
+### 📋 Process
+- Named reviewer: Character Art Director (same as Style Authority above).
+- Turnaround: 2 business days.
+- Feedback channel: annotated review doc, same cadence as milestone
+  deliverables.
+- Escalation: unresolved after 2 rounds goes to the Creative Director.
+
 ### 📅 Delivery & Milestones
 ```
 MILESTONE STRUCTURE
@@ -165,6 +182,10 @@ IP: Little Nightmares (mood-only reference)
 
 **Explicit avoids:** horror-ghost visual grammar, doll-like proportions,
 oversaturated magic-glow bloom, combat-damaged costuming.
+
+**Scope & process:** Out of scope — extra costume variants, a second
+expression-sheet style, a non-ghost design pass (change order). Reviewer:
+Character Art Director, 2-day turnaround, annotated doc.
 
 **Deliverables:** PSD (layered) + PNG, front/back/3-quarter turnaround,
 full expression sheet (warmth, quiet sorrow, gentle warning, resolve).

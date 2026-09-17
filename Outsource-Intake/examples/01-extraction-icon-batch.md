@@ -14,6 +14,8 @@
 ## 🔍 Parsed automatically from the message
 
 - **Asset type:** UI (icon batch)
+- **Criticality:** background/low-stakes — extending an already-shipped
+  icon set, not a hero asset
 - **Quantity:** 12, batch (shared style, not distinct assets)
 - **Vendor:** IconForge — named, trusted (used twice before)
 - **Starting material:** existing 40-icon set + Figma style guide — this
@@ -33,10 +35,15 @@ I can finalize the sheet:
    there also a reference for what "good" looks like at a rougher pass
    (e.g. line-art only), or should the first-4 batch just be judged against
    final quality directly since these are simple icons?
+3. **Cost/timeline process** — with IconForge on their third engagement, is
+   there already a standing rate/turnaround understanding, or does this
+   need a fresh check?
 
-*(For this demo, assuming: Sarah reviews both phases; no separate rough-pass
-reference needed — icons are simple enough that final-quality review on the
-4-icon batch is sufficient.)*
+*(For this demo, assuming: Sarah reviews both phases as both style
+authority and approval owner — same person, low-stakes batch; no separate
+rough-pass reference needed; and yes, a standing arrangement from the prior
+two engagements already covers day definition and revision allowance, so
+no new cost/timeline process needed here.)*
 
 ---
 
@@ -44,15 +51,19 @@ reference needed — icons are simple enough that final-quality review on the
 
 ```
 Asset: 12 UI icons (crafting update), batch — shared style
+Criticality: background/low-stakes
 Vendor: IconForge (assigned, prior relationship)
 Starting material: existing 40-icon set + Figma style guide (approved,
   satisfies final-quality reference — no need to re-request)
 Phases: Phase 1 (4 icons, review) -> Phase 2 (remaining 8, final)
 Due: Phase 1 - next Friday | Full set - end of month
-Reviewers: Sarah (both phases)
+Style authority / Approval owner: Sarah (both roles, same person)
+Cost/timeline process: in place — standing arrangement from prior engagements
+Commercial terms: covered by existing vendor relationship, not re-litigated
 
 🔶 Flags: none — style reference already exists and is approved, vendor
-  is known, timeline and destination are both clear.
+  is known and vetted from two prior engagements, timeline and destination
+  are both clear.
 ```
 
 ---
@@ -65,12 +76,14 @@ Reviewers: Sarah (both phases)
 
 ## Scope
 - Asset type(s): UI / Icon
-- Quantity: 12
+- Quantity, and what counts as one: 12 individual icons
 - Batch (shared style) or distinct assets: Batch — shared style with
   existing 40-icon set
+- Criticality: background/low-stakes
 
 ## Vendor
 - IconForge — assigned, prior relationship (2nd/3rd engagement)
+- New partner? No — third engagement, no vetting bar to apply
 
 ## Starting Material
 - What exists: existing 40-icon set + Figma style guide
@@ -90,6 +103,22 @@ Reviewers: Sarah (both phases)
 |---|---|---|---|---|
 | Phase 1 — First 4 icons | Final quality, matching existing set | Figma style guide + existing 40 icons | Next Friday | Sarah |
 | Phase 2 — Remaining 8 icons | Final quality, matching approved Phase 1 icons | Approved Phase 1 icons + style guide | End of month | Sarah |
+
+## Roles
+- Style authority (final word on the look): Sarah
+- Approval owner (can say yes procedurally): Sarah — same as above
+
+## Cost & Timeline Process
+- Estimate exists: yes — standing arrangement from prior engagements
+- "A day/week" defined: yes (established in prior engagements)
+- Revision allowance stated with the price: yes
+- Cost of a change named before there is one: yes
+- Flag: none
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: yes — covered by existing vendor relationship
+- Change-order rule agreed: yes
+- IP / credit / portfolio rights understood: yes
 
 ## File Delivery
 - Destination: `/assets/ui/icons/crafting/`

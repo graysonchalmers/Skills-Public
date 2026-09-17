@@ -17,6 +17,11 @@ key art, scene comp, or physical?
 **Q:** Single asset, or part of a batch?
 **A:** Single asset.
 
+**Q:** Criticality — hero/critical-path, standard, or background?
+**A:** Hero — a boss on the critical path for the swamp biome milestone.
+This calibrates how much rigor the rest of the intake and vendor vetting
+gets: full weight, not the light-touch version.
+
 ## Step 2 — Core Intake Questions
 
 **Q1 — Vendor:** Named vendor, or need a recommendation?
@@ -60,12 +65,29 @@ example of what good looks like at that stage specifically?
 **A:** Overall due in 6 weeks. No fixed per-phase dates yet — asking the
 vendor to propose a schedule once assigned.
 
-**Q7 — Reviewers:** Who signs off, and does it change by phase?
-**A:** Art director reviews concept and blockout; art director + lead
-designer both review final and the animation test (design needs to confirm
-readability, not just visual quality).
+**Q7 — Cost/timeline reality check:** Is there a process for sanity-checking
+whatever estimate comes back — a defined "day," a stated revision
+allowance, a named change cost?
+**A:** No — first boss for the project, no existing rate arrangement or
+process to check against yet. Flagging as a gap. This is independent of
+the vendor being unassigned — it would still be a gap even with a vendor
+picked.
 
-**Q8 — File paths:** Where should this land?
+**Q8 — Commercial readiness:** Payment trigger, change-order rule, IP/credit
+terms — agreed anywhere, even a standard studio SOW?
+**A:** Unknown — likely covered by a standard studio SOW but not confirmed
+for this specific engagement. Flagging lightly, not blocking on it.
+
+**Q9 — Style authority and approval owner:** Who's the final word on the
+look, and who can procedurally say yes — same person or different?
+**A:** Style authority is the Art Director throughout. Approval owner is
+the Art Director alone for concept and blockout, and the Art Director
+*plus* Lead Designer jointly for final and the animation test — design
+needs to confirm readability there, not just visual quality. Naming both
+roles even though they overlap for most of the timeline, so it's on record
+if a review ever splits.
+
+**Q10 — File paths:** Where should this land?
 **A:** Not settled yet — leaving a placeholder.
 
 ---
@@ -74,17 +96,25 @@ readability, not just visual quality).
 
 ```
 Asset: 1 creature (boss, corrupted temple guardian)
+Criticality: hero/critical-path
 Vendor: needs recommendation — no database connected, route to outsource
-  manager or art director
+  manager or art director; hero criticality means the full new-partner
+  vetting bar applies once one's identified (named lead + availability,
+  in-engine proof, a paid test asset before full commitment)
 Starting material: one-line design pitch only, no sketch/concept
 Phases: Concept -> Blockout -> Final texture -> Animation test (added by
   requester)
 Due: 6 weeks overall, per-phase dates TBD by vendor
-Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
+Style authority / Approval owner: AD (style, throughout) | AD alone
+  (concept, blockout) -> AD + Lead Designer (final, anim test)
+Cost/timeline process: not established
+Commercial terms: unknown — likely standard SOW, not confirmed
 
 🔶 Flags: no final-quality reference exists yet (first boss/first creature
   for this project — real rework risk); no per-phase references either;
-  vendor unassigned; file destination unsettled.
+  vendor unassigned and, once picked, unvetted for hero criticality; no
+  cost/timeline process established; commercial terms unconfirmed; file
+  destination unsettled.
 ```
 
 ---
@@ -97,12 +127,18 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 
 ## Scope
 - Asset type(s): Creature (boss enemy)
-- Quantity: 1
+- Quantity, and what counts as one: 1 — a fully textured, rigged,
+  animation-tested boss creature
 - Batch (shared style) or distinct assets: n/a — single asset
+- Criticality: hero/critical-path
 
 ## Vendor
 - 🔶 Needs assignment — route to outsource manager or art director. No
   vendor database configured in this environment to search automatically.
+- New partner? Yes, by default (unassigned) — hero criticality means the
+  full vetting bar applies once a candidate exists: named lead + confirmed
+  availability, in-engine/in-motion proof (not just beauty renders), and a
+  paid test asset before committing to full scope.
 
 ## Starting Material
 - What exists: one-line design pitch — "a corrupted temple guardian,
@@ -124,6 +160,24 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 | 3 — Final textured asset | 🔶 undefined | 📎 placeholder | TBD by vendor | AD + Lead Designer |
 | 4 — Idle/attack animation test | Readability of boss "tells" at gameplay speed | 📎 placeholder | TBD by vendor | AD + Lead Designer |
 
+## Roles
+- Style authority (final word on the look): Art Director
+- Approval owner (can say yes procedurally): Art Director (concept,
+  blockout); Art Director + Lead Designer jointly (final, animation test)
+
+## Cost & Timeline Process
+- Estimate exists: not yet established
+- "A day/week" defined: n/a — no estimate yet
+- Revision allowance stated with the price: n/a
+- Cost of a change named before there is one: n/a
+- Flag: "no process established yet" — first engagement of this kind for
+  the project, independent of the vendor gap above
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: unknown — likely standard SOW, not confirmed
+- Change-order rule agreed: unknown
+- IP / credit / portfolio rights understood: unknown
+
 ## File Delivery
 - Destination: 📎 placeholder — not yet settled
 
@@ -133,5 +187,12 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
   mood-board or 2-3 reference IPs before this goes to a vendor.
 - 🔶 No per-phase references either, for the same reason.
 - 🔶 Vendor unassigned — needs outsource manager or art director input.
+  Once assigned, this is hero criticality: apply the full new-partner
+  vetting bar, including a paid test asset, before committing to full scope.
+- 🔶 No cost/timeline process established yet — flagged as a process gap,
+  not tied to whether a vendor is picked.
+- 🔶 Commercial terms (payment trigger, change-order rule, IP/portfolio
+  rights) unconfirmed for this specific engagement — likely covered by a
+  standard SOW, worth a quick check before kickoff.
 - 🔶 File delivery destination not yet settled — placeholder left in place
   rather than blocking the intake.

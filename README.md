@@ -59,6 +59,9 @@ desert-baroque aesthetic, not the more common gothic-horror or high-fantasy
 default for this genre
 ⚠️ **Target Audience:** New vendor, first brief — precise, no assumptions,
 full style bible references included
+⚠️ **Style Authority:** Weapons Art Lead — final word on whether the
+transform reads and the filigree language lands; same person as the named
+reviewer in Process below
 ⚠️ **Art Style Direction:** Ornate, sun-bleached ceremonial weaponry that
 still reads as lethal — baroque gold filigree over sand-worn steel, not
 polished/pristine
@@ -144,6 +147,22 @@ IP: Elden Ring — Golden Order weapons (e.g. Marika's / Radagon's weapons)
   gear/mechanism at the fold point) — ours should look more like a ceremonial
   unfolding, not industrial machinery
 
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope: a third transform state, additional weapon variants, or a
+  companion scabbard/sheath asset — any of these is a change, not an
+  extension of this brief.
+- Change cost: this is a new-vendor paid engagement — any post-kickoff
+  scope change is a change order, quoted separately, not an absorbed
+  favor by default.
+
+### 📋 Process
+- Named reviewer: Weapons Art Lead (same as Style Authority above), full
+  approval authority.
+- Turnaround: 2 business days, matching the feedback turnaround below.
+- Feedback channel: annotated review doc per milestone.
+- Escalation: a note that survives two rounds unresolved goes to the Art
+  Director.
+
 ### 📅 Delivery & Milestones
 ```
 MILESTONE STRUCTURE
@@ -185,6 +204,11 @@ IP: Elden Ring — Golden Order weapons
 
 **Explicit avoids:** gothic-horror materials, pristine holy gold, glowing
 rune VFX, visible mechanical transform hardware.
+
+**Scope & process:** Out of scope — a third transform state, extra weapon
+variants, a companion scabbard (any of these is a change order, quoted
+separately). Reviewer: Weapons Art Lead, 2-day turnaround, annotated doc
+per milestone.
 
 **Deliverables:** FBX (game-res ≤18K tris + high-poly bake source), 4K
 Substance Painter texture set (Base Color/Normal/ORM), LOD0 + LOD1.
@@ -250,6 +274,8 @@ Please reach out if you have questions or need clarification on any point.
 tonal blend of warmth and quiet grief rather than horror
 ⚠️ **Target Audience:** New vendor, first brief — full turnaround +
 expression sheet required since this is a new relationship
+⚠️ **Style Authority:** Narrative/Character Art Director — final word on
+whether she reads as gentle rather than unsettling
 ⚠️ **Art Style Direction:** Soft painterly 2D, warm lantern-lit glow
 against cool desaturated surroundings — inviting silhouette, melancholy
 detailing
@@ -352,6 +378,21 @@ IP: Little Nightmares (proportions only, target-quality reference)
 - No combat-damaged costume detailing — her wear comes from decades of
   weather and duty, not battle
 
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope: additional costume variants, a second expression-sheet
+  style, or an alternate "living" (non-ghost) design pass — any of these
+  is a change.
+- Change cost: a small in-flight note (a color nudge, a pose tweak) is the
+  kind of thing a good partner absorbs; anything touching either 🔴
+  Critical requirement above is a change order.
+
+### 📋 Process
+- Named reviewer: Character Art Director (same as Style Authority above).
+- Turnaround: 2 business days.
+- Feedback channel: annotated review doc, same cadence as milestone
+  deliverables.
+- Escalation: unresolved after 2 rounds goes to the Creative Director.
+
 ### 📅 Delivery & Milestones
 ```
 MILESTONE STRUCTURE
@@ -395,6 +436,10 @@ IP: Little Nightmares (mood-only reference)
 
 **Explicit avoids:** horror-ghost visual grammar, doll-like proportions,
 oversaturated magic-glow bloom, combat-damaged costuming.
+
+**Scope & process:** Out of scope — extra costume variants, a second
+expression-sheet style, a non-ghost design pass (change order). Reviewer:
+Character Art Director, 2-day turnaround, annotated doc.
 
 **Deliverables:** PSD (layered) + PNG, front/back/3-quarter turnaround,
 full expression sheet (warmth, quiet sorrow, gentle warning, resolve).
@@ -462,6 +507,8 @@ contour lines filled with tinted resin to read as depth bands, walnut as
 the "land"
 ⚠️ **Delivery Format:** n/a (this is a personal build spec, not a vendor
 deliverable) — brief instead functions as the maker's own build reference
+⚠️ **Style Authority:** Grayson (self) — solo personal build, no second
+opinion in the loop
 
 🔴 **Priority Flags:** Structural load-bearing integrity is non-negotiable
 — this is a real table, not a display piece, so the resin inlay pour depth
@@ -539,6 +586,16 @@ Environment: indoor, living-room use
 - Do not skip the routing depth map — freehanding contour depth risks a
   structural failure that isn't visible until the table is under load
 
+### 🚧 Scope Boundaries & Change Policy
+- Out of scope in the vendor sense doesn't apply — no partner, no change
+  orders. The real boundary is sequencing: the routing depth map is locked
+  before any cut. Redesigning the contour layout after routing starts
+  isn't a change, it's a redo — see the structural note above.
+
+### 📋 Process
+- n/a — solo build. Self-review at each stage of the sequence below stands
+  in for a named reviewer and turnaround.
+
 ### 📅 Delivery & Milestones
 *(Omitted — personal build, no vendor handoff. Use the Materials & Process
 Note below as the working sequence instead.)*
@@ -581,6 +638,10 @@ graduated epoxy tints, random-orbit sander through progressive grits,
 digital scale for resin mixing ratios.
 
 </details>
+
+### build-custom-instructions
+
+Interviews a person about how they want an AI assistant to communicate with them — tone and directness, technical/jargon level, output format, learning style, collaboration rules — and drafts a personal custom-instructions document (CLAUDE.md / AGENTS.md / system-prompt style) from their answers, plus an optional layer of hard-enforced rules via hooks for anything that needs to be guaranteed rather than just requested. Use this whenever someone wants to write, improve, or start from scratch on their custom instructions, system prompt, CLAUDE.md, AGENTS.md, or "how should the AI talk to me" preferences — even if they don't know the term for it and just say things like "I want Claude to stop explaining stuff I already know," "can I make it match how I actually talk," or "I want a doc like the pros have for tuning their assistant." Also trigger when someone wants to onboard a new teammate, client, or themselves onto a fresh Claude Code / agent setup and needs a communication-preferences doc to start from.
 
 ### Image-Decomp
 
@@ -1152,6 +1213,8 @@ Runs a structured intake when someone requests an art/production asset (or batch
 ## 🔍 Parsed automatically from the message
 
 - **Asset type:** UI (icon batch)
+- **Criticality:** background/low-stakes — extending an already-shipped
+  icon set, not a hero asset
 - **Quantity:** 12, batch (shared style, not distinct assets)
 - **Vendor:** IconForge — named, trusted (used twice before)
 - **Starting material:** existing 40-icon set + Figma style guide — this
@@ -1171,10 +1234,15 @@ I can finalize the sheet:
    there also a reference for what "good" looks like at a rougher pass
    (e.g. line-art only), or should the first-4 batch just be judged against
    final quality directly since these are simple icons?
+3. **Cost/timeline process** — with IconForge on their third engagement, is
+   there already a standing rate/turnaround understanding, or does this
+   need a fresh check?
 
-*(For this demo, assuming: Sarah reviews both phases; no separate rough-pass
-reference needed — icons are simple enough that final-quality review on the
-4-icon batch is sufficient.)*
+*(For this demo, assuming: Sarah reviews both phases as both style
+authority and approval owner — same person, low-stakes batch; no separate
+rough-pass reference needed; and yes, a standing arrangement from the prior
+two engagements already covers day definition and revision allowance, so
+no new cost/timeline process needed here.)*
 
 ---
 
@@ -1182,15 +1250,19 @@ reference needed — icons are simple enough that final-quality review on the
 
 ```
 Asset: 12 UI icons (crafting update), batch — shared style
+Criticality: background/low-stakes
 Vendor: IconForge (assigned, prior relationship)
 Starting material: existing 40-icon set + Figma style guide (approved,
   satisfies final-quality reference — no need to re-request)
 Phases: Phase 1 (4 icons, review) -> Phase 2 (remaining 8, final)
 Due: Phase 1 - next Friday | Full set - end of month
-Reviewers: Sarah (both phases)
+Style authority / Approval owner: Sarah (both roles, same person)
+Cost/timeline process: in place — standing arrangement from prior engagements
+Commercial terms: covered by existing vendor relationship, not re-litigated
 
 🔶 Flags: none — style reference already exists and is approved, vendor
-  is known, timeline and destination are both clear.
+  is known and vetted from two prior engagements, timeline and destination
+  are both clear.
 ```
 
 ---
@@ -1203,12 +1275,14 @@ Reviewers: Sarah (both phases)
 
 ## Scope
 - Asset type(s): UI / Icon
-- Quantity: 12
+- Quantity, and what counts as one: 12 individual icons
 - Batch (shared style) or distinct assets: Batch — shared style with
   existing 40-icon set
+- Criticality: background/low-stakes
 
 ## Vendor
 - IconForge — assigned, prior relationship (2nd/3rd engagement)
+- New partner? No — third engagement, no vetting bar to apply
 
 ## Starting Material
 - What exists: existing 40-icon set + Figma style guide
@@ -1228,6 +1302,22 @@ Reviewers: Sarah (both phases)
 |---|---|---|---|---|
 | Phase 1 — First 4 icons | Final quality, matching existing set | Figma style guide + existing 40 icons | Next Friday | Sarah |
 | Phase 2 — Remaining 8 icons | Final quality, matching approved Phase 1 icons | Approved Phase 1 icons + style guide | End of month | Sarah |
+
+## Roles
+- Style authority (final word on the look): Sarah
+- Approval owner (can say yes procedurally): Sarah — same as above
+
+## Cost & Timeline Process
+- Estimate exists: yes — standing arrangement from prior engagements
+- "A day/week" defined: yes (established in prior engagements)
+- Revision allowance stated with the price: yes
+- Cost of a change named before there is one: yes
+- Flag: none
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: yes — covered by existing vendor relationship
+- Change-order rule agreed: yes
+- IP / credit / portfolio rights understood: yes
 
 ## File Delivery
 - Destination: `/assets/ui/icons/crafting/`
@@ -1261,6 +1351,11 @@ key art, scene comp, or physical?
 
 **Q:** Single asset, or part of a batch?
 **A:** Single asset.
+
+**Q:** Criticality — hero/critical-path, standard, or background?
+**A:** Hero — a boss on the critical path for the swamp biome milestone.
+This calibrates how much rigor the rest of the intake and vendor vetting
+gets: full weight, not the light-touch version.
 
 ## Step 2 — Core Intake Questions
 
@@ -1305,12 +1400,29 @@ example of what good looks like at that stage specifically?
 **A:** Overall due in 6 weeks. No fixed per-phase dates yet — asking the
 vendor to propose a schedule once assigned.
 
-**Q7 — Reviewers:** Who signs off, and does it change by phase?
-**A:** Art director reviews concept and blockout; art director + lead
-designer both review final and the animation test (design needs to confirm
-readability, not just visual quality).
+**Q7 — Cost/timeline reality check:** Is there a process for sanity-checking
+whatever estimate comes back — a defined "day," a stated revision
+allowance, a named change cost?
+**A:** No — first boss for the project, no existing rate arrangement or
+process to check against yet. Flagging as a gap. This is independent of
+the vendor being unassigned — it would still be a gap even with a vendor
+picked.
 
-**Q8 — File paths:** Where should this land?
+**Q8 — Commercial readiness:** Payment trigger, change-order rule, IP/credit
+terms — agreed anywhere, even a standard studio SOW?
+**A:** Unknown — likely covered by a standard studio SOW but not confirmed
+for this specific engagement. Flagging lightly, not blocking on it.
+
+**Q9 — Style authority and approval owner:** Who's the final word on the
+look, and who can procedurally say yes — same person or different?
+**A:** Style authority is the Art Director throughout. Approval owner is
+the Art Director alone for concept and blockout, and the Art Director
+*plus* Lead Designer jointly for final and the animation test — design
+needs to confirm readability there, not just visual quality. Naming both
+roles even though they overlap for most of the timeline, so it's on record
+if a review ever splits.
+
+**Q10 — File paths:** Where should this land?
 **A:** Not settled yet — leaving a placeholder.
 
 ---
@@ -1319,17 +1431,25 @@ readability, not just visual quality).
 
 ```
 Asset: 1 creature (boss, corrupted temple guardian)
+Criticality: hero/critical-path
 Vendor: needs recommendation — no database connected, route to outsource
-  manager or art director
+  manager or art director; hero criticality means the full new-partner
+  vetting bar applies once one's identified (named lead + availability,
+  in-engine proof, a paid test asset before full commitment)
 Starting material: one-line design pitch only, no sketch/concept
 Phases: Concept -> Blockout -> Final texture -> Animation test (added by
   requester)
 Due: 6 weeks overall, per-phase dates TBD by vendor
-Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
+Style authority / Approval owner: AD (style, throughout) | AD alone
+  (concept, blockout) -> AD + Lead Designer (final, anim test)
+Cost/timeline process: not established
+Commercial terms: unknown — likely standard SOW, not confirmed
 
 🔶 Flags: no final-quality reference exists yet (first boss/first creature
   for this project — real rework risk); no per-phase references either;
-  vendor unassigned; file destination unsettled.
+  vendor unassigned and, once picked, unvetted for hero criticality; no
+  cost/timeline process established; commercial terms unconfirmed; file
+  destination unsettled.
 ```
 
 ---
@@ -1342,12 +1462,18 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 
 ## Scope
 - Asset type(s): Creature (boss enemy)
-- Quantity: 1
+- Quantity, and what counts as one: 1 — a fully textured, rigged,
+  animation-tested boss creature
 - Batch (shared style) or distinct assets: n/a — single asset
+- Criticality: hero/critical-path
 
 ## Vendor
 - 🔶 Needs assignment — route to outsource manager or art director. No
   vendor database configured in this environment to search automatically.
+- New partner? Yes, by default (unassigned) — hero criticality means the
+  full vetting bar applies once a candidate exists: named lead + confirmed
+  availability, in-engine/in-motion proof (not just beauty renders), and a
+  paid test asset before committing to full scope.
 
 ## Starting Material
 - What exists: one-line design pitch — "a corrupted temple guardian,
@@ -1369,6 +1495,24 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 | 3 — Final textured asset | 🔶 undefined | 📎 placeholder | TBD by vendor | AD + Lead Designer |
 | 4 — Idle/attack animation test | Readability of boss "tells" at gameplay speed | 📎 placeholder | TBD by vendor | AD + Lead Designer |
 
+## Roles
+- Style authority (final word on the look): Art Director
+- Approval owner (can say yes procedurally): Art Director (concept,
+  blockout); Art Director + Lead Designer jointly (final, animation test)
+
+## Cost & Timeline Process
+- Estimate exists: not yet established
+- "A day/week" defined: n/a — no estimate yet
+- Revision allowance stated with the price: n/a
+- Cost of a change named before there is one: n/a
+- Flag: "no process established yet" — first engagement of this kind for
+  the project, independent of the vendor gap above
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: unknown — likely standard SOW, not confirmed
+- Change-order rule agreed: unknown
+- IP / credit / portfolio rights understood: unknown
+
 ## File Delivery
 - Destination: 📎 placeholder — not yet settled
 
@@ -1378,6 +1522,13 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
   mood-board or 2-3 reference IPs before this goes to a vendor.
 - 🔶 No per-phase references either, for the same reason.
 - 🔶 Vendor unassigned — needs outsource manager or art director input.
+  Once assigned, this is hero criticality: apply the full new-partner
+  vetting bar, including a paid test asset, before committing to full scope.
+- 🔶 No cost/timeline process established yet — flagged as a process gap,
+  not tied to whether a vendor is picked.
+- 🔶 Commercial terms (payment trigger, change-order rule, IP/portfolio
+  rights) unconfirmed for this specific engagement — likely covered by a
+  standard SOW, worth a quick check before kickoff.
 - 🔶 File delivery destination not yet settled — placeholder left in place
   rather than blocking the intake.
 
@@ -1402,6 +1553,8 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 ## Step 1 — Classify the Ask
 
 - **Asset type:** Creature
+- **Criticality:** standard production — a mid-milestone content batch,
+  not a hero asset and not background filler either
 - **Batch or distinct:** Batch, but **distinct variants of one base
   creature** rather than unrelated assets — this changes the phase
   structure: the basic version needs to lock the style FIRST, and the
@@ -1433,8 +1586,16 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
    reference" flag.
 7. **Timeline** — elite + alpha both due 3 weeks after basic locks; basic's
    own due date not yet set (assumed ASAP since it gates the other two).
-8. **Reviewers** — Sam, all phases.
-9. **File paths** — not settled yet, placeholder.
+8. **Style authority and approval owner** — Sam, both roles, all phases.
+   Naming them separately even though they're the same person here, so
+   it's on record if that ever changes mid-project.
+9. **Cost/timeline reality check** — no formal process yet; this would be
+   a new vendor relationship, so there's no standing arrangement to check
+   against. Flagging as "no baseline yet" rather than inventing one.
+10. **Commercial readiness** — not yet, and it can't really be until a
+    vendor exists — payment trigger and change-order terms wait for that.
+    Same flag, not chased further at this stage.
+11. **File paths** — not settled yet, placeholder.
 
 ---
 
@@ -1443,16 +1604,21 @@ Reviewers: AD (concept, blockout) | AD + Lead Designer (final, anim test)
 ```
 Asset: 3 creature variants (bog-lurker: basic, elite, alpha), batch —
   shared base creature, not distinct designs
+Criticality: standard production
 Vendor: needs recommendation — no database connected
 Starting material: approved concept for basic variant only
 Phases: Basic (style-lock) -> Elite (scales from locked basic) ->
   Alpha (scales from locked basic)
 Due: Elite + Alpha - 3 weeks after basic locks | Basic - date TBD
-Reviewers: Sam (all phases)
+Style authority / Approval owner: Sam (both roles, all phases)
+Cost/timeline process: not established
+Commercial terms: not established (waiting on a vendor to exist)
 
 🔶 Flags: basic variant's own due date isn't set yet, and it gates the
   other two — worth pinning down before vendor kickoff so "3 weeks after
-  lock" has a real anchor date. Vendor unassigned.
+  lock" has a real anchor date. Vendor unassigned. No cost/timeline
+  process or commercial terms yet, standard-criticality vetting bar
+  applies once a vendor is identified.
 ```
 
 ---
@@ -1465,12 +1631,17 @@ Reviewers: Sam (all phases)
 
 ## Scope
 - Asset type(s): Creature
-- Quantity: 3 (Basic, Elite, Alpha)
+- Quantity, and what counts as one: 3 — Basic, Elite, Alpha, each a
+  complete sculpted+textured creature variant
 - Batch (shared style) or distinct assets: Batch — shared base creature,
   variants scale from a locked style rather than each starting fresh
+- Criticality: standard production
 
 ## Vendor
 - 🔶 Needs assignment — no vendor database configured in this environment.
+- New partner? Likely yes (unassigned) — standard criticality: confirm a
+  named lead + availability once identified; in-engine proof before
+  committing beyond the Basic style-lock phase.
 
 ## Starting Material
 - What exists: approved concept art for the Basic variant only
@@ -1493,6 +1664,23 @@ Reviewers: Sam (all phases)
 | 2 — Elite | Locked Basic sculpt/texture + bone armor plating | Locked Phase 1 final asset | 3 weeks after Phase 1 locks | Sam |
 | 3 — Alpha | Locked Basic sculpt/texture + size increase + bioluminescent underbelly | Locked Phase 1 final asset | 3 weeks after Phase 1 locks | Sam |
 
+## Roles
+- Style authority (final word on the look): Sam
+- Approval owner (can say yes procedurally): Sam — same as above, all phases
+
+## Cost & Timeline Process
+- Estimate exists: not yet established
+- "A day/week" defined: n/a — no estimate yet
+- Revision allowance stated with the price: n/a
+- Cost of a change named before there is one: n/a
+- Flag: "no process established yet" — new vendor relationship, nothing
+  to check against so far
+
+## Commercial Terms (lightweight check, not a contract)
+- Payment trigger agreed: n/a — waiting on a vendor to exist
+- Change-order rule agreed: n/a
+- IP / credit / portfolio rights understood: n/a
+
 ## File Delivery
 - Destination: 📎 placeholder — not yet settled
 
@@ -1502,5 +1690,10 @@ Reviewers: Sam (all phases)
   Basic due date before vendor kickoff so downstream dates have a real
   anchor.
 - 🔶 Vendor unassigned — needs outsource manager or art director input.
+  Standard-criticality vetting bar (named lead + in-engine proof) applies
+  once one's identified.
+- 🔶 No cost/timeline process or commercial terms established — both wait
+  on a vendor, but worth tracking as open items rather than assuming
+  they'll sort themselves out at kickoff.
 
 </details>
