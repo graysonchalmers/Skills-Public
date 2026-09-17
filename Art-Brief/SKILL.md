@@ -1,6 +1,6 @@
 ---
 name: art-brief
-version: 2.3
+version: 2.7
 visibility: public
 description: >
   Composes vendor-ready art briefs from any inputs: text descriptions, reference
@@ -21,7 +21,7 @@ description: >
   stakeholder feedback, or evolved creative direction.
 ---
 
-# Art Brief Composition Skill v2.3
+# Art Brief Composition Skill v2.7
 
 ![Example output: a real environment brief — palette, priority-weighted requirements, and borrow/avoid references, compressed into a vendor-ready spec](references/example-output.webp)
 
@@ -32,8 +32,9 @@ that resists compression into words. This skill is a **lossy codec for creative
 intent**. The goal is maximum fidelity: capture enough signal that another
 human (or AI) can reconstruct the vision with minimal drift.
 
-Every field in this brief exists to reduce ambiguity. If a field doesn't reduce
-ambiguity for THIS specific brief, omit it.
+Every field in this brief exists to reduce ambiguity. Omit inapplicable fields;
+keep relevant missing decisions visible as Unresolved. Completeness is not
+permission to invent a requirement.
 
 **The single idea the whole skill rests on:** an external artist cannot walk
 over and ask. Every ambiguity in a brief resolves one of two ways — a
@@ -45,6 +46,19 @@ priced as risk by whoever receives the brief — it never comes back cheaper
 for being vague.
 
 ---
+
+## Request-scoped debug preview
+
+Only an explicit request for debug mode / a headless debug preview enables this
+exception. Read `references/debug-and-contacts.md` before using it. Produce the
+requested artifact immediately with unobtrusive placeholders; do not ask for real
+information or wait at STOP/confirmation gates. Label every preview, output block,
+and excerpt **DEBUG PREVIEW—NOT FOR SENDING**. Placeholders/examples are never
+Confirmed or evidence for Ready, even when quoted from a supplied synthetic
+fixture. Keep fixture values Proposed — illustrative only; keep missing values
+Unresolved. Genuine non-synthetic inputs retain their source/status. No lookup,
+outreach, or tracker writes in debug.
+The override ends with this request; normal mode and its gates are unchanged.
 
 ## Modes of Operation
 
@@ -64,6 +78,15 @@ with a **Change Log** section appended showing what changed and why.
 
 ---
 
+## Source-linked rendering — load before any checkpoint
+
+Read `references/source-linked-output.md` **before the first intake summary or
+Step 2 checkpoint**, and read it again **before Step 5 assembly or any Mode B
+reply/change log**. Build the visible compact source/decision register first;
+render every condensed claim from its atoms with IDs, labels and a source key.
+Reuse one register appendix across the three blocks, not three repeated ledgers.
+This is a writing contract, not a software/runtime dependency.
+
 ## Step 1 — Intake & Classification
 
 ### 1A — Classify the Asset Type
@@ -82,19 +105,47 @@ Determine what is being briefed. This drives the reactive schema in Step 4.
 | `SCENE_COMP` | Keyframe, cutscene frame, storyboard, establishing shot |
 | `PHYSICAL` | Woodworking, fabrication, set build, practical prop, sculpture |
 
-If the asset type is ambiguous, make your best call and flag it in the
+If the asset type is ambiguous, suggest a classification as Proposed in the
 Assumption Block.
 
-### 1B — Assess Input Sufficiency
+### 1B — Establish the Interpretation Class
+
+Before filling gaps, establish how much interpretation the receiving partner
+is expected to carry. Extract an explicit answer from existing inputs; otherwise
+ask: **"How much interpretation should the partner carry on this work?"**
+Offer the classes below in plain language. A suggested class is Proposed until
+confirmed. Do not infer it from asset count, partner reputation, or familiarity.
+
+| Class | Partner carries | Brief behavior |
+|---|---|---|
+| **Self-governing** | Interpretation, creative and technical judgment within agreed boundaries | Capture intent, fixed constraints, and delegated decisions; offer creative options and any exploration/selection gate as Proposed |
+| **Brief-driven** | Execution to a stated bar, raising questions before starting | Capture approved targets and exceptions; ask about consequential gaps rather than inventing direction |
+| **Volume with QA overhead** | Throughput and consistency against agreed exemplars | Preserve approved style; establish exemplar access, style-lock and buyer QA capacity before scaling; no unsolicited redesign |
+
+These are engagement classes, not quality grades. Different workstreams may
+have different classes. Class adjusts questions and proposed review structure;
+criticality, dependencies, and the actual agreement still determine the gates.
+Offer gates for confirmation, never silently impose them. For internal or AI
+work, apply the same distinction to how much exploration the receiver may do.
+An unknown class does not prevent a draft; keep it Unresolved.
+
+No class authorizes this assistant to invent approved budgets, technical limits,
+dates, commercial terms, or decision-makers. Delegating a decision confirms
+who may make it, not the value they will choose. Ask for existing project specs
+or flag the missing constraint; do not derive a budget from an engine name.
+
+### 1B continued — Assess Input Sufficiency
 
 Before asking questions, evaluate what you already have:
 
 **If inputs are rich** (image-decomp output, detailed description, multiple
-references, clear context): Skip directly to the Assumption Block. Do not
-interrogate — infer and confirm.
+references, clear context): extract what is stated, preserve its source and
+status, then ask only about consequential gaps before the Assumption Block.
 
 **If inputs are sparse** (one sentence, vague idea, no references): Ask the
-**minimum critical questions** needed — 2 to 4 max. Never more.
+**minimum critical questions** needed in rounds of 2–4. This is a per-round
+limit, not permission to invent everything after the fourth question. Offer
+a draft with visible gaps if the user does not have the answers.
 
 **Critical questions (ask only if truly missing):**
 1. **What is the asset?** — 1-sentence description of the subject
@@ -102,28 +153,20 @@ interrogate — infer and confirm.
 3. **Who receives this brief?** — internal team, outsource studio, fabricator, AI gen
 4. **Any reference images, IPs, or real-world objects in mind?**
 
-Infer everything else. Flag inferred values with `⚠️ Assumed:` so the user
-can correct.
+Use the four decision labels in Step 2. Self-governing work invites proposed
+creative options; brief-driven and volume work prioritize missing requirements
+and exceptions. Ask for asset intent and any delegated decisions, not just its
+appearance. Reuse answers supplied by outsource-intake without re-interviewing.
 
 ### 1C — IP & Inspirational Reference Extraction
 
-When the user provides IP references (games, films, art styles, real-world
-objects, architectural movements), do not just name-drop them. Extract and filter:
-
-**For each IP reference, identify:**
-- ✅ **Borrow** — the specific quality to reference (e.g., "Arcane: painterly
-  texture on skin, NOT the neon color palette")
-- ❌ **Avoid** — what to explicitly NOT take from that IP (prevents derivative work)
-- 🎯 **Target quality** — the single most useful thing this IP contributes to
-  this brief
-
-**Format:**
-```
-IP: [Title]
-✅ Borrow: [specific visual quality — lighting, silhouette, texture, palette, form, etc.]
-❌ Avoid: [what NOT to copy — be specific]
-🎯 Target: [one sentence on why this IP is in the brief]
-```
+Read `references/curated-comparisons.md` for supplied IP extraction and curated
+comparisons. Where evidence supports useful enrichment, offer 3–5 artist/studio/IP
+comparisons with exact borrow/avoid/why and Proposed labels; fewer or none is valid.
+Keep suggested comparisons separate from inspected references and approved targets.
+Optionally add 1–2 dimension-specific X-meets-Y pitches with support for both halves.
+Never imply influence, invent an approved negative, or force a quota. Preserve the
+user's stated reference roles; proposed extensions remain proposals everywhere.
 
 ### 1D — Audience & Tone Calibration
 
@@ -144,69 +187,120 @@ Default to **"New vendor"** tone if unspecified.
 Two things a brief needs that are easy to leave implicit and expensive to
 leave undefined:
 
-- **Style authority** — one name: whose taste is the final word on whether
-  this reads as correct. Not the same person as the approval owner in Step 3
-  (Process) by default — a brief that quietly conflates "whose taste wins"
-  with "who can say yes" causes more rework than almost anything else on
-  this list, because a technically-approved asset can still be wrong by the
-  one standard that actually mattered.
+- **Style authority** — whose taste is the final word, for which dimensions
+  and scope. Record separately from the procedural approval owner; neither
+  role implies the other. Preserve explicitly joint authority rather than
+  inventing a single decision-maker.
 - **Process** — who reviews, how fast, through what channel, and what
   happens if a review stalls. This becomes the Process block in Step 3; ask
   for it here if it isn't already known.
 
 If either is genuinely undecided, say so in the Assumption Block rather than
 inventing a name — an undefined style authority is a real risk, not a gap to
-paper over.
+paper over. One person may legitimately hold both roles; record this without
+flagging a risk merely because the names match. A conflict exists only when
+authority or the decision itself is unclear, not because roles are combined.
+
+An authority ruling resolves the contested dimension only — the decision
+actually in dispute (proportion language, a palette, an avoid). Extending it
+into new requirements the authority never stated (rendering finishes, new
+bans, new musts) is authorship, not resolution: label the extension
+Proposed or leave it out. "The AD ruled chunky-stylized proportions" never
+becomes "realistic rendering is banned."
+
+Label integrity is per-decision, not per-section: an inference labeled
+Proposed in one section stays Proposed everywhere it reappears — priority
+lists, vendor-facing text, prompts, change logs. Condensing, reordering, or
+moving a decision across sections never upgrades its label; restating a
+Proposed inference without its label is how invented facts acquire authority.
 
 ---
 
-## Step 2 — Assumption Block
+## Step 2 — Decision Labels & Assumption Block
 
-Before building the brief, output a short Assumption Block for user review.
+Every substantive decision has a register ID, one of these labels, and its
+source span or explicit missing-source marker. Condensed clauses cite those IDs;
+shared labels are valid only where source, status, hedge and scope truly match.
+Use the compact format in `references/source-linked-output.md`.
+
+| Label | Meaning | Example |
+|---|---|---|
+| **Confirmed** | Explicitly supplied or accepted by the user or identified source; state who/source and what was actually confirmed | `Confirmed — requester: 12 icons` |
+| **Observed** | Visible in an inspected reference, not automatically a requirement | `Observed — ref R2: broad, rounded forms` |
+| **Proposed** | Assistant suggestion or interpretation not yet accepted | `Proposed — borrow R2's rounded forms, not its palette` |
+| **Unresolved** | Missing or conflicting decision; identify impact, owner and decision date if known | `Unresolved — texture budget; technical owner/date not supplied` |
+
+Confirmed records provenance, not independent verification, partner agreement,
+or authority to approve work. Distinguish requested deadlines from partner-
+agreed dates, and a supplied concept from an approved concept. Do not invent
+source names, approval dates, or access to a referenced file. An inaccessible
+image is not Observed; record the user's description as such and flag access.
+Image-analysis output remains attributed analysis, not approved direction.
+
+Promote a proposal only when the user explicitly accepts the identified value
+or a clearly bounded list of proposals. A general "go ahead" authorizes drafting,
+not blanket promotion of every assumption. Approval of one proposal does not
+resolve other gaps. Proposed priorities remain proposals, even when marked
+Critical. Group labels to keep the document readable, never to hide uncertainty.
+Never call a Proposed item the current bar, approved requirement, or instruction
+to execute. Requests to draft/explore named options do not accept their values.
+Do not assign an open decision to the requester by default; unknown owners stay
+unknown, or an assignment is Proposed. Scope exclusions, review gates, reasons
+for numbers, and priority weights need the same provenance as visual choices.
+
+Use the source-linked register for value, hedge, action state, and scope/role
+limits. Unknown means **not supplied or not established by these sources**, not
+nonexistent, excluded, unassigned, or not yet done. Keep numeric values separate
+from their reasons, requested dates from agreed dates, review from approval,
+availability from assignment, and scope inclusion from commercial treatment.
+
+Before building the full brief, render this compact Assumption Block from the
+register. Attach its source key/register once; cite IDs in each populated line:
 
 ```
-📋 BRIEF ASSUMPTIONS — please confirm or correct before I finalize:
-
-⚠️ Asset Type: [your classification]
-⚠️ Project Context: [what you inferred about the project/world]
-⚠️ Target Audience: [who receives this brief + tone calibration]
-⚠️ Style Authority: [one name — whose taste is the final word]
-⚠️ Art Style Direction: [your inferred style in 1–2 sentences]
-⚠️ Delivery Format: [file types, resolution, platform constraints]
-⚠️ [Any other significant inference]
-
-🔴 Priority Flags: [anything that MUST be right or the brief fails —
-   e.g., "The silhouette must read at 64px for inventory icons"]
-
-🚩 Concerns: [flag anything underspecified, contradictory, or risky —
-   e.g., "The IP references conflict in color temperature — Arcane is warm,
-   Dark Souls is desaturated. Which takes priority?"]
-
-⛔ IP Conflicts: If IP references create a direct visual contradiction
-   (conflicting color temperatures, incompatible stylization levels, etc.),
-   flag this as a BLOCKER. State clearly: "This conflict must be resolved
-   before the brief can be finalized." Do not proceed to Step 3 with
-   unresolved contradictions — they will produce an incoherent brief.
+BRIEF CHECKPOINT — confirm/correct decisions, or authorize a draft with gaps:
+Asset / intent / project: [value + label/source]
+Interpretation class: [class + label/source, split by workstream if needed]
+Delegated decisions / fixed constraints: [value + label/source]
+Audience / style authority / approval owner: [value + label/source]
+Visual direction / reference roles: [value + label/source]
+Technical requirements / delivery / process: [value + label/source]
+Proposals to accept: [named items, or none]
+Open decisions: [impact, owner, date; unknown where not supplied]
+Priorities: [sourced or Proposed weight + separate decision ID; otherwise Unresolved]
 ```
 
-**STOP HERE.** Output the Assumption Block and wait for user confirmation before proceeding.
-Do not generate the full brief until the user explicitly confirms or corrects these assumptions.
-If the user confirms, proceed to Step 3.
+Reference differences are conflicts only when incompatible requirements apply
+to the same dimension in the same context. A silhouette-only reference may
+legitimately disagree with a palette reference. Ask what each is intended to
+supply before declaring a conflict; never average contradictory targets away.
+Self-governing exploration may present alternatives as Proposed. Unresolved
+production-critical conflicts prevent calling the brief approved or ready for
+production, not creation of an explicitly labeled draft.
+
+**STOP HERE in normal mode.** Explicit request-scoped debug bypasses this wait.
+Otherwise wait for confirmation/corrections or explicit permission to
+produce a draft with gaps before Step 3. Carry remaining labels and open decisions
+into the output. Confirming this checkpoint is not commercial authorization.
 
 ---
 
 ## Step 3 — Core Brief Elements (All Asset Types)
 
-Populate these sections for every brief, regardless of asset type.
+Use these sections where applicable, with Step 2 labels intact. Relevant
+unknowns stay Unresolved; never fill required sections with invented decisions.
 
 ### 🎯 Project Context
 - Project name, genre, and medium (game / film / product / etc.)
+- Asset intent: where it is encountered and what it should communicate
 - Target platform or use context (if applicable)
 - Overall art style in 1–2 sentences
 - Tone and mood keywords (3–5)
 
 ### 🎨 Visual Language
-- Color palette: 4–8 hex values with roles (primary, shadow, accent, highlight)
+- Color palette: supplied values, or Proposed colors with roles. Only call hex
+  values measured when actually sampled; lighting in a reference is not a
+  material color specification. Do not invent colors to meet a quota.
 - Lighting style and key light direction
 - Line work / edge style (if applicable)
 - Texture density and surface treatment
@@ -218,13 +312,17 @@ Populate these sections for every brief, regardless of asset type.
 - Polycount target (if 3D) or dimensional tolerances (if physical)
 - Style guide or bible reference (if exists)
 - LOD requirements (if applicable)
+- Target engine/version, naming, source-file expectations and integration
+  requirements for production assets, sourced from the project spec
 
-**Every numeric constraint carries its reason.** "Max 15k triangles" gets a
-vendor 15k triangles distributed badly. "Max 15k, because this reads at 8
-metres in motion and the silhouette is the whole read" gets a vendor making
-the same tradeoff the brief-writer would have made, without a round trip.
-This is the single cheapest addition to a technical spec and the one most
-often skipped because the number alone feels sufficient.
+Missing values or reasons remain Unresolved; examples here and in schemas are
+not defaults. Numeric precision is not evidence of an agreed requirement.
+
+**Capture each numeric constraint's sourced reason when available.** If only
+"max 15k triangles" was supplied, retain that limit with its source and mark the
+reason Unresolved. Do not invent a viewing distance, performance rationale, or
+tradeoff to make the number sound justified. A proposed rationale is a question
+for confirmation, never the explanation of the existing limit.
 
 **If the asset ships across more than one hardware tier**, the scalability
 rules belong in the brief, not discovered at integration: the LOD chain,
@@ -233,21 +331,33 @@ Discovering these at integration means the vendor built the wrong thing
 correctly — and that cost lands on whoever wrote the brief, not the vendor.
 
 ### 🧭 Artistic References
-For each reference, use the extracted IP format from Step 1C.
-Include 3–6 references total — mix of IP, artists, movements, and/or
-real-world objects.
+Use Step 1C's borrow/avoid/why format and keep inspected reference IDs separate
+from Proposed comparisons. For a new production direction, assess coverage of the
+needed dimensions, not a numeric image quota. Missing consequential coverage is
+a visible gap, not permission to fabricate sources. Reuse an existing approved
+package when its scope covers the request; don't add images just for completeness.
 
-**Negative references — a separate, mandatory sub-block, not just prose.**
-At least 2 actual images (not just described avoids), each captioned with
-the one specific reason it's wrong. "What good is not" is exactly as
-informative as "what good is," and it's the block most likely to be skipped
-because it feels like it should be obvious. It usually isn't — the one
-interpretation that seems too obvious to state out loud is precisely the
-one an outside artist lands on.
+For Self-governing exploration, distinguish inspirations from acceptance
+targets; record an agreed style-selection gate or offer one as Proposed when
+useful. For Brief-driven work,
+identify the approved target and allowed exceptions. For Volume with QA
+overhead, confirm access to approved exemplars before declaring style-lock;
+an existing exemplar does not mean the new batch has passed its review.
+Caption each reference with the dimension it supplies and its decision label.
+
+**Negative references — a separate sub-block when applicable.**
+For inspected negative images, caption the exact unwanted dimension with its
+status/source; rejection in one dimension does not reject the entire style.
+If a negative target is needed but unavailable, retain an Unresolved slot.
+Proposed avoids are suggestions, never approved negatives. Do not invent bans or
+source unnecessary images to fill this section.
 
 ### 🔴🟡🟢 Priority-Weighted Requirements
 
-Every visual requirement gets a priority weight:
+Record a weight only when sourced or useful as an explicitly Proposed choice.
+An accepted requirement does not imply an accepted priority. Keep them separate
+in the register; leave an unstated weight Unresolved (one shared note is enough).
+Do not force a classification on every requirement. Available weights:
 
 - 🔴 **Critical** — Brief fails without this. Non-negotiable. (e.g., "Must
   read as a silhouette at icon size," "Color must match brand hex exactly")
@@ -260,8 +370,9 @@ This system helps vendors triage effort and prevents everything from feeling
 equally urgent.
 
 ### ⛔ Explicit Avoids
-A short list of what NOT to do, stylistically. This section is mandatory —
-it is as important as what to include.
+A short list of sourced stylistic avoids, with decision labels. Keep the section,
+but if no avoids are supplied, say Unresolved or offer explicitly Proposed avoids;
+mandatory structure is not permission to invent restrictions.
 
 Examples: "Do not use photorealistic rendering," "Avoid oversaturated neon
 colors," "No generic fantasy tropes — this world has a specific visual
@@ -278,52 +389,62 @@ The most-skipped block in any brief, and the one that most often decides
 whether a disagreement gets resolved calmly or turns into whoever's more
 willing to damage the relationship. Two things, stated plainly:
 
-- **What is explicitly out of scope.** Named, not implied — "concept
-  exploration ends at the selected direction; further exploration is a
-  change," "texture variants beyond the two specified are a change,"
-  whatever applies to this asset.
+- **What is explicitly out of scope.** Named, not implied — but named by a
+  source: the requester, the prior brief, or an accepted proposal. Every
+  exclusion carries its provenance. Boundaries you draft to make the brief
+  look complete are invented scope — label them `Proposed — confirm` or cut
+  them. "Characters/NPCs out of scope" written as agreed fact is a made-up
+  agreement; the same line labeled Proposed is honest.
 - **What a change costs, in principle, before there is one.** This brief
   doesn't need to name a dollar figure — that's a rate conversation, not a
   brief one — but it should say whether a scope change after kickoff is
-  handled as a change order, or is the kind of small thing a good partner
-  is expected to absorb. Leaving this ambiguous means it resolves in favor
+  handled under an existing allowance, quoted as a change order, or explicitly
+  accepted by the partner as a favor. Never invent that agreement. Leaving this ambiguous means it resolves in favor
   of whoever is more comfortable with conflict, which is a bad way to
   decide anything.
 
 Writing this down is not adversarial — it's what lets both sides say yes to
 a change quickly, because they already agree on what a change is.
 
-### 📋 Process
-- **Named reviewer** with actual authority to approve, not just to comment
-  — distinct from the Style Authority named in Step 1E if that's a
-  different person, and noted as such if so.
-- **Stated review turnaround** — a real commitment, not an aspiration.
-- **Feedback channel** — where notes arrive and in what form.
-- **Escalation path** — what happens if a review stalls or two reviewers
-  disagree.
+### 📇 Contact Directory
+Read `references/debug-and-contacts.md` and include its six-role directory for
+client/internal and partner contacts: producer, outsource manager, art lead on
+each side; name, email, Slack/Teams, phone, timezone, purpose, and status/source.
+Use placeholders without blocking the draft; internal-only partner rows are N/A.
+Keep the directory separate from task assignment and sign-off authority. Vendor
+lookup/recommendation is opt-in only; do not interrupt briefing to procure a vendor.
 
-Feedback that arrives after final isn't feedback — it's a change order, and
-this block exists so that never happens by accident.
+### 📋 Process
+- **Reviewer(s)** — who comments, with the scope actually supplied.
+- **Approval owner(s)** — separately evidenced procedural sign-off authority;
+  a named reviewer is not enough. Unknown authority stays Unresolved.
+- **Review turnaround** — retain stated commitments, targets or tentative
+  availability with their original status/hedge; do not upgrade an aspiration.
+- **Feedback channel / notes format** — sourced values, not inferred from a
+  file-delivery destination.
+- **Escalation path** — the agreed path if supplied; otherwise Unresolved,
+  or a Proposed option when useful. Neither conflict nor a single reviewer
+  establishes a policy, new gate, or requirement for a fresh authority ruling.
+
+Late direction can create new scope. Classify it against the agreed boundary
+between a clarification, fixing a miss, an included revision, and a scope
+change; do not invent billing consequences from its arrival time alone.
 
 ### 📅 Delivery & Milestones (if applicable)
 
 Include when the brief is going to an external vendor or fabricator.
 Omit for internal brainstorming or AI generation.
 
-```
-MILESTONE STRUCTURE
-───────────────────
-M1 — Sketch / Concept (2–3 options): [date or timeframe]
-M2 — Refined Concept (1 selected direction): [date or timeframe]
-M3 — [Medium-specific stage — e.g., Lineart / Blockout / Maquette]: [date or timeframe]
-M4 — Final Asset: [date or timeframe]
+Record the supplied milestones and dates. If planning would help, offer a
+small Proposed sequence adapted to the medium; there is no default number of
+stages, options, revision rounds, or review gates.
 
-Revision rounds per milestone: [number — typically 1–2]
-Feedback turnaround: [expected response time from your side]
-```
+| Milestone / deliverable | Date or timeframe + state | Revision allowance | Decision IDs |
+|---|---|---|---|
+| [sourced value or Proposed option] | [requested / agreed / tentative / Unresolved] | [sourced / Proposed / Unresolved] | [IDs] |
 
-Adapt milestone names to the medium — a 3D character has different stages
-than a matte painting or a woodworked prop.
+An empty plan is Unresolved, not a requirement to invent M1–M4. A Proposed gate
+remains Proposed in the vendor brief, prompt notes and production preconditions.
 
 ---
 
@@ -331,7 +452,8 @@ than a matte painting or a woodworked prop.
 
 Use the classification from Step 1A to select the matching schema.
 **Read the relevant schema from `references/schemas.md`** and populate only
-the fields that genuinely apply. Omit rather than pad with "N/A" or "TBD."
+the fields that genuinely apply. Omit inapplicable fields; keep relevant
+missing decisions as Unresolved with impact, owner/date if known.
 
 | Asset Type | Schema to Load |
 |---|---|
@@ -343,14 +465,19 @@ the fields that genuinely apply. Omit rather than pad with "N/A" or "TBD."
 | `PHYSICAL` | Schema F — PHYSICAL / FABRICATION |
 | `VFX`, `UI`, `SCENE_COMP` | No dedicated schema — use Core Brief Elements (Step 3) with extra detail in relevant sections |
 
+For UI icons and sprites, also load Schema C's grid/pixel paragraph. Source
+canvas and display/export size are separate constraints, never inferred equal.
+
 ---
 
 ## Step 5 — Assemble the Full Brief
 
-Once all sections are populated, assemble the three output blocks.
-**All three blocks are always produced at full fidelity regardless of any
-user verbosity or formatting preferences.** The resolution of this output IS
-the value — never truncate for brevity.
+Re-read `references/source-linked-output.md`, update the register with any
+explicit acceptances, then assemble **all three output blocks**. Preserve all
+load-bearing decisions and creative detail; omit repetitive explanations, not
+scope or uncertainty. Condensed blocks render from the atoms, never from a
+freehand summary of Block 1. Attach one shared source key/register appendix;
+a standalone excerpt carries its referenced rows and source key with it.
 
 Every brief header carries a **version number and date**, from v1 — not
 only once it's been iterated on. It's the cheapest line in the document and
@@ -361,29 +488,41 @@ it ends an entire category of "which copy is current" argument later.
 ### OUTPUT BLOCK 1 — 📄 Art Direction Document
 
 Full structured document using all populated sections from Steps 3 and 4.
-Write in clear, confident art direction voice — present tense, active voice.
-This is the document an art director, creative director, or project lead
-would sign off on.
+Write clear, active art direction without changing tense, hedges or authority.
+Separate supplied direction from useful Proposed creative options: materials,
+palette roles, lighting methods, composition and dimension-specific references.
+Register each option before rendering it; creative support need not wait for
+all technical or business decisions to be settled.
 
-Header always includes: **Version: v[X] — [date]**.
+Header always includes: **Version: v[X] — [date]**, interpretation class,
+workstream/phase scope, and document status (Draft / For review / Approved).
+Use Approved only with explicit approval of this version and scope by the
+named authority; unknown authority remains Unresolved. Include a short open-
+decisions block. A finished document is not authorization to start production.
 
-Include the priority weights (🔴🟡🟢) inline with requirements.
+Include sourced or Proposed priority weights inline; unknown weights stay unknown.
 
 ---
 
 ### OUTPUT BLOCK 2 — 📬 Vendor Brief
 
-A condensed, semi-formal version of the Art Direction Document.
+A condensed, semi-formal version of the Art Direction Document. It is a
+recipient-facing draft, not a sent message; do not invent a recipient or claim
+it has been delivered. Proposed values and unknowns remain visibly provisional.
 Tone: calibrated per Step 1D (default: professional, precise, no assumptions).
 
 Structure:
-- Version and date, same as the full document
+- Version, date, class, scope, status, and remaining open decisions, matching
+  the full document; keep decision labels/source notes when condensing
 - 2–3 sentence project context opener
-- Priority-weighted bullet list of key visual requirements (🔴🟡🟢)
+- Key visual requirements with inline decision IDs and labels; include
+  sourced/Proposed priority weights only. Split a sourced goal from a Proposed
+  method (e.g. night readability versus a lantern-light solution).
 - IP references with extracted borrow/avoid
 - Explicit avoids (style) and Scope Boundaries & Change Policy (scope) —
   kept as two distinct sections, not merged
-- Process: named reviewer, turnaround, feedback channel
+- Process: reviewer and separately evidenced approver, turnaround, feedback channel
+- Contact Directory appendix (six roles; attach the shared directory for this package)
 - Deliverable spec (format, resolution, dimensions)
 - Milestone structure (if applicable)
 - "Please reach out if you have questions or need clarification on any point."
@@ -393,26 +532,60 @@ need-to-know. But never cut a 🔴 Critical requirement, and never cut Scope
 Boundaries — it's short by nature and it's the section most worth keeping
 even under space pressure.
 
+**Sendable-message contract** (any recipient-ready email, DM, or reply —
+vendor answers, Mode B responses, status updates): state settled facts only when
+Confirmed with their actual scope and hedges.
+Explicitly labeled proposals and questions may be included for review, never as
+promises, accepted terms, or instructions to execute. Unresolved items appear
+as questions or open items, never as settled answers. Do not commit the user to
+dates, prices, scope inclusions/exclusions, or process promises (escalation
+rules, turnaround offers, note formats) they have not stated. A recipient's
+question plus an undecided user equals an open item relayed back to the
+user — not an invented answer. If the user must decide something before
+the message is safe to send, say so plainly at the top.
+
+**Release comparison:** apply `references/source-linked-output.md` to every
+condensed clause, including headings, table cells, replies and change logs.
+Compare source span → register atom → rendered clause, not just IDs or labels.
+Repair unsupported verbs, roles, scope, certainty, or approval before returning
+it; a correct appendix cannot excuse a contradictory opener.
+
+
 ---
 
 ### OUTPUT BLOCK 3 — 🤖 Generation Prompts
 
-Provide **model-specific** prompt blocks:
+Provide **model-specific** prompt blocks. Each block must state whether it
+is a concept exploration using named Proposed choices or a translation of
+Confirmed direction. Never silently turn Observed/Proposed content into
+approved requirements, or fill Unresolved specs in a prompt. Label suggested
+model parameters as Proposed; if syntax/version is unverified, say so.
+Apply the same rule to a Materials & Process Note for physical work.
+Translate the registered direction, retaining clause IDs and status in the
+annotated prompt. If exploration is requested or interpretation is delegated,
+include useful creative support as named Proposed rows, then render a separately
+labeled Proposed exploration prompt from them. This never replaces an approved
+production target. For Brief-driven or Volume work, do not invent stand-in
+styles, subjects, avoids or composition; identify pending inputs rather than
+supply an unauthorized substitute. Unknown class is not permission to redesign.
+No prompt fills unknown technical/business constraints or turns missing scope
+into negative-prompt exclusions.
 
 **Midjourney format:**
 - Subject + descriptors, style references, lighting, composition
-- End with MJ parameters: `--ar [ratio] --s [stylize] --v [version]`
-- Use `--sref` or `--cref` notes if the user has reference images
+- Use verified applicable MJ parameters where known; otherwise omit them
+  with a short unverified-syntax note, rather than inventing a version.
+- Reference-image controls depend on model/version; verify before specifying.
 
 **DALL-E / GPT-Image format:**
 - Natural language paragraph, more descriptive
-- Include medium, artist references, mood, and quality descriptors
-- Note any negative prompt requirements
+- Include registered medium, references, mood and descriptors where applicable
+- Include only sourced negatives or explicitly Proposed exploration negatives
 
 **Stable Diffusion format:**
 - Comma-separated tag style
 - Include positive and negative prompt blocks separately
-- Note recommended model/checkpoint if inferable from the style
+- Label a suggested model/checkpoint Proposed, with its basis and syntax limits
 
 If the target medium is physical (woodworking, fabrication), replace this
 block with a **Materials & Process Note** instead — a short paragraph on
@@ -433,17 +606,33 @@ Parse the existing brief. Identify which sections are affected by the new
 information (vendor questions, feedback, direction change).
 
 ### 6B — Targeted Update
-Only modify affected sections. Preserve everything else verbatim. Bump the
+Update affected atoms and their rendered occurrences; preserve unaffected
+substance. For a legacy brief without IDs, add the compact register once and
+retain its exact source spans. Do not preserve unsupported legacy certainty as
+newly verified fact: attribute the prior claim and keep its authority gap visible.
+Bump the
 version number on every re-issue, even a small one — a silent update is
 worse than no update, because it destroys trust in the document itself.
 
+Absent from the prior brief is Unresolved, never out of scope: when a vendor
+asks about something v1 never mentioned, the answer is "not covered by the
+current brief — decision needed." List the appropriate owner if known; routing
+needed is not routing done. Do not claim "checking" or "will confirm" without an
+evidenced action or stated commitment. Do not convert absence into "not included
+in the fee"; commercial disposition needs the relevant parties' actual agreement
+and otherwise stays Unresolved.
+
 ### 6C — Is This a Change Order?
 
-A brief edit after kickoff is either a **change order** or an explicitly
-named gift the vendor is choosing to absorb — never silent, and never
-ambiguous by default. Before writing the Change Log, decide which this is
-and say so in it. Both are legitimate; leaving it unstated is not, because
-ambiguity resolves in favor of whoever is more comfortable with conflict.
+Classify the edit against the actual agreement: clarification, correction
+of a miss, included revision, or new scope. Inclusion in the revised document
+is not itself an agreed change order. New scope may use an existing allowance,
+an agreed change order, or an explicitly accepted favor; record only evidenced
+terms, not an automatic billable classification. If terms or consent are unknown,
+mark the commercial disposition Unresolved with routing needed to the relevant
+approval owner (unknown if not supplied);
+do not choose on behalf of either party. Preserve decision labels and sources
+on changed fields. This is the same boundary used by outsource-intake.
 
 ### 6D — Change Log
 Append a Change Log to the updated brief:
@@ -454,8 +643,11 @@ Append a Change Log to the updated brief:
 Section: [which section changed]
 Change: [what changed]
 Reason: [why — vendor question, stakeholder feedback, creative pivot]
-Status: [change order — quoted separately / absorbed as a favor, named as such]
+Status: [clarification / correction / included revision / agreed allowance / agreed change order /
+  agreed favor / Unresolved — label and source of the disposition]
 Impact: [does this change cascade to other sections? If so, flag them]
+Action state: [needed / planned / underway / done + source; preserve hedges]
+Commercial treatment: [evidence or Unresolved; inclusion != change order]
 ```
 
 ### 6E — Re-output
@@ -470,7 +662,9 @@ the updated brief at full fidelity.**
 
 ## Quality Standards
 
-- **Assumption transparency**: Every inferred value is flagged `⚠️ Assumed:`
+- **Decision provenance**: Confirmed / Observed / Proposed / Unresolved, with
+  sources, survive every output and handoff. A class never grants approval.
+- **Risk-scaled questions**: ask 2–4 at a time; no total cap that forces guessing.
 - **Concern flagging**: If inputs conflict or are underspecified, say so explicitly
 - **IP extraction depth**: Never just name-drop — always extract borrow/avoid/target
 - **No generic filler**: "Epic fantasy style" is not useful. Be specific about WHAT
@@ -481,16 +675,19 @@ the updated brief at full fidelity.**
 - **Avoid list is mandatory, and Scope Boundaries is a separate mandatory
   block** — style avoids and scope boundaries answer different questions and
   must not be merged into one list.
-- **Priority weights are mandatory**: Every requirement gets 🔴🟡🟢 classification
-- **Every numeric technical constraint carries its reason**, not just the number.
+- **Priorities are decisions too**: use sourced or Proposed weights; no forced
+  🔴🟡🟢 assignment. Gate suggestions likewise never become mandatory by repetition.
+- **Numeric reasons require sources**; unstated rationales stay Unresolved.
 - **Every brief is versioned and dated, from v1** — not only once it's iterated.
 - **Output all 3 blocks**: Art Direction Doc + Vendor Brief + Generation Prompts always
   (or Materials & Process Note for physical assets)
 - **Reactive schema**: Use the correct asset-type schema — don't default to generic
-- **Full fidelity always**: Never truncate output for brevity preferences. The
-  resolution of the brief is the product.
+- **Full fidelity, compact provenance**: preserve decisions, creative specificity
+  and uncertainty in all three blocks; reuse one source register instead of
+  repeating caveats or a ledger in every section.
 - **Iteration-ready**: The brief structure must support versioning and change tracking.
-  A post-kickoff edit is a change order or a named absorbed favor — never silent.
+  A post-kickoff edit carries an evidenced disposition, or stays Unresolved;
+  new scope is never silently treated as included.
 
 ---
 
@@ -509,9 +706,10 @@ Its output maps naturally into this skill as structured input:
 | `tags` | Tone/mood keywords |
 | `metadata` | Context-reactive fields for matching schemas |
 
-When image-decomp output is provided as input, auto-populate matching fields
-and skip directly to the Assumption Block (Step 2). Do not re-ask for
-information already captured in the decomp.
+When image-decomp output is provided, map relevant analysis with its source
+and uncertainty intact. It is not approved direction or proof of technical
+budgets. Resolve consequential gaps before the Step 2 checkpoint without
+re-asking for facts already captured.
 
 ## Companion Skill: outsource-intake
 
@@ -522,8 +720,59 @@ Authority vs. Approval Owner, Scope Boundaries, cost/timeline process
 checks). outsource-intake can hand off to this skill for complex or
 high-stakes asks; this skill's output can seed an outsource-intake request
 when a full brief already exists and just needs to become a trackable ask.
+Pass interpretation class, phase scope, decision labels/sources, approved
+reference identifiers, roles, and open decisions with it. Reuse those fields
+on return; do not promote a proposal or copy a stale readiness judgment after
+the scope changes. Each skill remains usable without the other installed.
 
 ---
+
+## Verification & Version Notes
+
+Before delivery, check every technical number, date, role, reference, and
+commercial disposition against its source. Confirm no Observed or Proposed
+value became Confirmed through condensation, prompt generation, or handoff.
+Check the class is evidenced, open decisions survive, and an exemplar has not
+been mistaken for completion of new work. Exercise the debug/contact/action cases
+in `references/debug-and-contacts.md`, plus comp-versus-inspected-reference labels
+from `references/curated-comparisons.md`; retain outputs for independent review.
+
+For regression testing, run sparse, exploratory, and production-batch requests
+through both skills; retain actual outputs and check labels at the checkpoint
+and final output. Also test partial confirmation, inaccessible references,
+and mixed-class handoffs. Structural checks alone do not prove model behavior.
+Condensation-specific regressions to check: Proposed requirements appearing
+unlabeled in Output Block 2; assistant-authored exclusions stated as agreed
+in Scope Boundaries; vendor replies answering undecided scope questions;
+authority rulings expanded into new bans. Found via headless multi-case runs
+(scratch/headless-rig/ in the skills repo).
+
+**v2.7** — source-linked atoms before checkpoint and assembly; shared compact
+source register; semantic source-to-clause comparison; reviewer/approver split;
+optional evidenced priorities/gates; missing evidence distinguished from absence;
+creative proposals and annotated prompts retained without approval promotion.
+
+**v2.6** — explicit request-scoped debug artifacts with placeholders; six-role
+contact appendix; evidence-backed curated comparisons and optional pitches;
+action-state/hedge preservation; sourced numeric reasons; recipient proposals
+without promises; inclusion and commercial disposition kept separate.
+
+**v2.5** — condensation-layer fixes from headless-rig findings: per-bullet
+provenance in Output Block 2; scope exclusions require a source (no invented
+boundaries); authority rulings bounded to the contested dimension; labels
+survive section moves (no laundering); sendable-message contract for
+recipient-ready replies; Mode B: absent from the prior brief is Unresolved,
+never out of scope.
+
+**v2.4** — adds interpretation classes, four decision labels, class-aware
+questioning/reference coverage, and provenance-preserving outputs/handoffs.
+Relevant missing schema values remain visible. Commercial disposition follows
+the agreed change boundary rather than being invented by the assistant.
+Grounding: GRIP Field Journal, Rates & Tiers (engagement classes), Buyer
+Readiness (explicit decisions), and The Brief (annotated targets). These are
+procedural adaptations, not rate guidance or automatic approval. Existing
+example images predate v2.4; they illustrate layout, not the decision-label
+contract. Living-brief/rejection tracing is deferred.
 
 ## Example Triggers
 

@@ -4,7 +4,9 @@ These are **suggestions to offer during intake**, not assumptions to apply
 silently. Always show the relevant template to the requester and ask them to
 confirm, cut, add, or reorder phases — different studios, vendors, and
 projects split work differently. The value of these templates is speeding up
-the question, not skipping it.
+the question, not skipping it. Only an explicit request-scoped debug preview
+bypasses this wait under `../SKILL.md` and `debug-and-contacts.md`: show phases as
+Proposed, never accepted, and continue to the non-sendable artifact.
 
 Format per phase: **Phase name** — what "good" typically means at that stage
 (the thing a reviewer should actually be checking for, not surface polish

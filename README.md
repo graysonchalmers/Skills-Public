@@ -30,6 +30,26 @@ claude plugin install art-brief@skills-public
 
 Composes vendor-ready art briefs from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches. Use whenever a user wants to create, write, or generate an art brief, style guide, asset spec, outsource brief, or art direction document for any creative asset — game art, film, industrial design, illustration, concept art, props, characters, environments, creatures, marketing assets, or physical fabrication. Triggers on: "write me a brief for...", "I need to brief a vendor on...", "help me spec out this asset", "how do I describe this art style to an artist", "I have this idea and need to get it on paper", or "turn this concept into something I can send to a studio." Core purpose: compress a creator's mental vision into the highest-fidelity written specification possible, minimizing lossy transfer between minds. Also handles brief iteration — updating an existing brief based on vendor questions, stakeholder feedback, or evolved creative direction.
 
+#### Release notes — Art-Brief v2.7 / Outsource-Intake v1.5
+
+##### What changed
+
+**Source-linked rendering contract.** Both skills now load a compact source/decision register before any checkpoint, recap, or assembly. Every condensed claim renders from a register atom with an inline ID and source key — not from a freehand summary of another output block. This prevents the provenance drift, authority overreach, and invented promises that the v2.6/v1.4 run4 sweep found.
+
+**Separate reviewer and approver roles.** A named reviewer no longer populates procedural approval ownership. Style authority is scoped to the dimensions it actually rules; a proportions ruling does not ban rendering styles or require new sign-off gates.
+
+**Missing ≠ nonexistent.** "Not supplied" stays "not supplied" — it never becomes "none exist" or "out of scope" without an explicit source. Requested dates stay requested, not agreed. A file drop is not a feedback channel.
+
+**Optional, not mandatory.** Priority weights, milestone structures, and phase templates are offered as Proposed when useful, not forced into every output. An empty plan is Unresolved, not a requirement to invent M1–M4.
+
+**Mini-sheet is a separate route.** Internal, single-asset, low-stakes asks get a compact ≤250-word core with at most five questions and one readiness line — no Stage ceremony, no phase template. The full six-role contact appendix sits outside the cap.
+
+**Debug is request-scoped.** Debug previews use placeholder tokens or clearly synthetic Example values. The override ends with the request; the next request returns to normal gates. Synthetic fixture values stay Proposed, never Confirmed or Ready.
+
+##### Behavioral evidence
+
+11/11 synthetic cases passed independent review against the specific failures from the prior run. See `scratch/art-intake-release/run5-REVIEW.md` for the per-case evidence table. This is one synthetic run per case, not a measured reliability rate.
+
 **Examples:**
 
 <img src="Art-Brief/examples/01-prop-duskfall-greatsword.webp" height="160" alt="Art-Brief example 01-prop-duskfall-greatsword"> <img src="Art-Brief/examples/02-character-lantern-warden.webp" height="160" alt="Art-Brief example 02-character-lantern-warden"> <img src="Art-Brief/examples/03-physical-tide-chart-table.webp" height="160" alt="Art-Brief example 03-physical-tide-chart-table">
@@ -1261,7 +1281,27 @@ not disguised as anything else.
 
 <img src="Outsource-Intake/references/example-output.webp" height="360" alt="Outsource-Intake example output">
 
-Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — vendor, scope, starting materials, delivery phases, what "good" looks like per phase, reviewers, deadlines, and file paths. Produces an Asset Request Sheet ready to hand to a vendor, preventing rework from vague scope or an undefined quality bar. Use whenever someone brings the user an asset ask that needs to become a trackable request. Triggers on: "someone just asked me for an asset," "help me scope this ask," "walk me through this asset request," or a pasted Slack/email message asking for art, 3D, animation, VFX, UI, or fabrication work. Not for pure visual/style direction alone — use art-brief for that. This covers scope, phases, sign-off, timeline, and files, with lightweight style capture built in and an optional handoff to art-brief for full visual direction.
+Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" looks like per phase, reviewers, deadlines, and file paths. Produces an Asset Request Sheet ready to hand to a vendor, preventing rework from vague scope or an undefined quality bar. Use whenever someone brings the user an asset ask that needs to become a trackable request. Triggers on: "someone just asked me for an asset," "help me scope this ask," "walk me through this asset request," or a pasted Slack/email message asking for art, 3D, animation, VFX, UI, or fabrication work. Not for pure visual/style direction alone — use art-brief for that. This covers scope, phases, sign-off, timeline, and files, with lightweight style capture built in and an optional handoff to art-brief for full visual direction.
+
+#### Release notes — Outsource-Intake v1.5
+
+##### What changed
+
+**Source-linked rendering contract.** The intake now loads a compact source/decision register before the first extraction summary, recap, or sheet assembly. Every condensed claim renders from a register atom with an inline ID and source key. This prevents the provenance drift, reviewer-to-approver inference, and missing-to-nonexistent upgrades that the v1.4 run4 sweep found.
+
+**Separate reviewer and approver.** A named reviewer does not establish procedural approval authority. Style authority is recorded separately from the approval owner, even when the same person holds both. File drop destination is not a feedback channel.
+
+**Missing ≠ nonexistent.** "Not supplied" stays "not supplied" — it never becomes "none exist" or "out of scope" without an explicit source. A prior call establishes contact, not prior engagement or vetting. An existing partner claim from the user is attributed input; an assistant inference of a relationship is Proposed.
+
+**Optional, not mandatory.** Phase templates are offered as Proposed when useful, not silently applied. An empty process is Unresolved, not a requirement to invent gates. Criticality inferred from context is Proposed, not a settled priority.
+
+**Mini-sheet is a separate route.** Internal, single-asset, low-stakes asks get a compact ≤250-word core with at most five questions total and one readiness line — no Stage A/B/C ceremony, no phase template. The full six-role contact appendix and compact source register sit outside the cap.
+
+**Debug is request-scoped.** Debug previews use placeholder tokens or clearly synthetic Example values. The override ends with the request; the next request returns to normal gates. Synthetic fixture values stay Proposed, never Confirmed or Ready.
+
+##### Behavioral evidence
+
+11/11 synthetic cases passed independent review against the specific failures from the prior run. See `scratch/art-intake-release/run5-REVIEW.md` for the per-case evidence table. This is one synthetic run per case, not a measured reliability rate.
 
 **Examples:**
 
@@ -1770,3 +1810,4 @@ Commercial terms: not established (waiting on a vendor to exist)
   they'll sort themselves out at kickoff.
 
 </details>
+

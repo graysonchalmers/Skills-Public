@@ -1,8 +1,11 @@
 # Asset-Type Reactive Schemas
 
 Use the classification from Step 1A to select the relevant schema below.
-Only include fields that are genuinely applicable. Omit rather than pad with
-"N/A" or "TBD."
+Only include fields that are genuinely applicable. Keep relevant missing
+values as Unresolved; omit inapplicable fields. Apply SKILL.md's Confirmed /
+Observed / Proposed / Unresolved labels and sources throughout. All example
+numbers, formats, materials, and techniques below are illustrations, not
+project defaults or approved requirements. A class never changes that rule.
 
 ---
 
@@ -124,9 +127,10 @@ Wear level: [mint / used / ancient / destroyed]
 Iconographic clarity: [does it need to read at small sizes — icon/inventory]
 Iconic silhouette notes: [any shape that MUST be clear]
 
-If grid/pixel-constrained (icon, sprite): canvas grid size and render size
-are one decision, not two — changing either without the other silently
-breaks the silhouette read. State both together, and flag as 🔴 Critical.
+If grid/pixel-constrained (icon, sprite): capture authoring canvas, intended
+display/export size, and any pixel-grid constraint separately, with sources.
+Do not infer the source canvas equals export size. Ask how resizing affects
+readability; label suggested constraints/priorities as Proposed.
 
 If a functional item (weapon, vehicle, interactable):
 - Attachment points: [name them, and the socket naming convention]
