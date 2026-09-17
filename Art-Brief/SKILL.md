@@ -1,6 +1,6 @@
 ---
 name: art-brief
-version: 2.2
+version: 2.3
 visibility: public
 description: >
   Composes vendor-ready art briefs from any inputs: text descriptions, reference
@@ -21,7 +21,7 @@ description: >
   stakeholder feedback, or evolved creative direction.
 ---
 
-# Art Brief Composition Skill v2.2
+# Art Brief Composition Skill v2.3
 
 ![Example output: a real environment brief — palette, priority-weighted requirements, and borrow/avoid references, compressed into a vendor-ready spec](references/example-output.webp)
 
@@ -35,6 +35,15 @@ human (or AI) can reconstruct the vision with minimal drift.
 Every field in this brief exists to reduce ambiguity. If a field doesn't reduce
 ambiguity for THIS specific brief, omit it.
 
+**The single idea the whole skill rests on:** an external artist cannot walk
+over and ask. Every ambiguity in a brief resolves one of two ways — a
+question that costs a round-trip, or a guess that costs a rework cycle. A
+brief is not a description of the asset; it is a pre-payment of every
+question the artist would otherwise have to ask. Judge one by how many
+questions it makes unnecessary, not by how complete it looks. Ambiguity is
+priced as risk by whoever receives the brief — it never comes back cheaper
+for being vague.
+
 ---
 
 ## Modes of Operation
@@ -47,7 +56,7 @@ Flow: Intake → Assumptions → Build → Output
 
 ### Mode B — Brief Iteration
 Update an existing brief based on new information.
-Triggers: "here's my old brief," "the vendor asked...", "stakeholder wants...",
+Triggers: "here's my old brief," "the vendor asked...," "stakeholder wants...,"
 "we changed direction on..."
 
 Flow: Ingest existing brief → Identify deltas → Update → Output revised brief
@@ -130,6 +139,25 @@ The brief's tone adapts to who receives it:
 
 Default to **"New vendor"** tone if unspecified.
 
+### 1E — Style Authority & Process
+
+Two things a brief needs that are easy to leave implicit and expensive to
+leave undefined:
+
+- **Style authority** — one name: whose taste is the final word on whether
+  this reads as correct. Not the same person as the approval owner in Step 3
+  (Process) by default — a brief that quietly conflates "whose taste wins"
+  with "who can say yes" causes more rework than almost anything else on
+  this list, because a technically-approved asset can still be wrong by the
+  one standard that actually mattered.
+- **Process** — who reviews, how fast, through what channel, and what
+  happens if a review stalls. This becomes the Process block in Step 3; ask
+  for it here if it isn't already known.
+
+If either is genuinely undecided, say so in the Assumption Block rather than
+inventing a name — an undefined style authority is a real risk, not a gap to
+paper over.
+
 ---
 
 ## Step 2 — Assumption Block
@@ -142,6 +170,7 @@ Before building the brief, output a short Assumption Block for user review.
 ⚠️ Asset Type: [your classification]
 ⚠️ Project Context: [what you inferred about the project/world]
 ⚠️ Target Audience: [who receives this brief + tone calibration]
+⚠️ Style Authority: [one name — whose taste is the final word]
 ⚠️ Art Style Direction: [your inferred style in 1–2 sentences]
 ⚠️ Delivery Format: [file types, resolution, platform constraints]
 ⚠️ [Any other significant inference]
@@ -190,10 +219,31 @@ Populate these sections for every brief, regardless of asset type.
 - Style guide or bible reference (if exists)
 - LOD requirements (if applicable)
 
+**Every numeric constraint carries its reason.** "Max 15k triangles" gets a
+vendor 15k triangles distributed badly. "Max 15k, because this reads at 8
+metres in motion and the silhouette is the whole read" gets a vendor making
+the same tradeoff the brief-writer would have made, without a round trip.
+This is the single cheapest addition to a technical spec and the one most
+often skipped because the number alone feels sufficient.
+
+**If the asset ships across more than one hardware tier**, the scalability
+rules belong in the brief, not discovered at integration: the LOD chain,
+target counts per tier, texture budgets, and shader complexity ceiling.
+Discovering these at integration means the vendor built the wrong thing
+correctly — and that cost lands on whoever wrote the brief, not the vendor.
+
 ### 🧭 Artistic References
 For each reference, use the extracted IP format from Step 1C.
 Include 3–6 references total — mix of IP, artists, movements, and/or
 real-world objects.
+
+**Negative references — a separate, mandatory sub-block, not just prose.**
+At least 2 actual images (not just described avoids), each captioned with
+the one specific reason it's wrong. "What good is not" is exactly as
+informative as "what good is," and it's the block most likely to be skipped
+because it feels like it should be obvious. It usually isn't — the one
+interpretation that seems too obvious to state out loud is precisely the
+one an outside artist lands on.
 
 ### 🔴🟡🟢 Priority-Weighted Requirements
 
@@ -210,12 +260,50 @@ This system helps vendors triage effort and prevents everything from feeling
 equally urgent.
 
 ### ⛔ Explicit Avoids
-A short list of what NOT to do. This section is mandatory — it is as important
-as what to include.
+A short list of what NOT to do, stylistically. This section is mandatory —
+it is as important as what to include.
 
 Examples: "Do not use photorealistic rendering," "Avoid oversaturated neon
 colors," "No generic fantasy tropes — this world has a specific visual
 identity," "Do not reference [specific IP] — too close to their trademark."
+
+This is a **style** list — what the asset should not look like. It is a
+different thing from Scope Boundaries below, which is about what work is
+and isn't included. Conflating the two is common and leaves scope
+disagreements with no document to resolve them.
+
+### 🚧 Scope Boundaries & Change Policy
+
+The most-skipped block in any brief, and the one that most often decides
+whether a disagreement gets resolved calmly or turns into whoever's more
+willing to damage the relationship. Two things, stated plainly:
+
+- **What is explicitly out of scope.** Named, not implied — "concept
+  exploration ends at the selected direction; further exploration is a
+  change," "texture variants beyond the two specified are a change,"
+  whatever applies to this asset.
+- **What a change costs, in principle, before there is one.** This brief
+  doesn't need to name a dollar figure — that's a rate conversation, not a
+  brief one — but it should say whether a scope change after kickoff is
+  handled as a change order, or is the kind of small thing a good partner
+  is expected to absorb. Leaving this ambiguous means it resolves in favor
+  of whoever is more comfortable with conflict, which is a bad way to
+  decide anything.
+
+Writing this down is not adversarial — it's what lets both sides say yes to
+a change quickly, because they already agree on what a change is.
+
+### 📋 Process
+- **Named reviewer** with actual authority to approve, not just to comment
+  — distinct from the Style Authority named in Step 1E if that's a
+  different person, and noted as such if so.
+- **Stated review turnaround** — a real commitment, not an aspiration.
+- **Feedback channel** — where notes arrive and in what form.
+- **Escalation path** — what happens if a review stalls or two reviewers
+  disagree.
+
+Feedback that arrives after final isn't feedback — it's a change order, and
+this block exists so that never happens by accident.
 
 ### 📅 Delivery & Milestones (if applicable)
 
@@ -264,6 +352,10 @@ Once all sections are populated, assemble the three output blocks.
 user verbosity or formatting preferences.** The resolution of this output IS
 the value — never truncate for brevity.
 
+Every brief header carries a **version number and date**, from v1 — not
+only once it's been iterated on. It's the cheapest line in the document and
+it ends an entire category of "which copy is current" argument later.
+
 ---
 
 ### OUTPUT BLOCK 1 — 📄 Art Direction Document
@@ -272,6 +364,8 @@ Full structured document using all populated sections from Steps 3 and 4.
 Write in clear, confident art direction voice — present tense, active voice.
 This is the document an art director, creative director, or project lead
 would sign off on.
+
+Header always includes: **Version: v[X] — [date]**.
 
 Include the priority weights (🔴🟡🟢) inline with requirements.
 
@@ -283,16 +377,21 @@ A condensed, semi-formal version of the Art Direction Document.
 Tone: calibrated per Step 1D (default: professional, precise, no assumptions).
 
 Structure:
+- Version and date, same as the full document
 - 2–3 sentence project context opener
 - Priority-weighted bullet list of key visual requirements (🔴🟡🟢)
 - IP references with extracted borrow/avoid
-- Explicit avoids
+- Explicit avoids (style) and Scope Boundaries & Change Policy (scope) —
+  kept as two distinct sections, not merged
+- Process: named reviewer, turnaround, feedback channel
 - Deliverable spec (format, resolution, dimensions)
 - Milestone structure (if applicable)
 - "Please reach out if you have questions or need clarification on any point."
 
 Keep it tight — one page if possible. Cut anything that's nice-to-know vs.
-need-to-know. But never cut a 🔴 Critical requirement.
+need-to-know. But never cut a 🔴 Critical requirement, and never cut Scope
+Boundaries — it's short by nature and it's the section most worth keeping
+even under space pressure.
 
 ---
 
@@ -319,6 +418,10 @@ If the target medium is physical (woodworking, fabrication), replace this
 block with a **Materials & Process Note** instead — a short paragraph on
 recommended approach, tools, and sequencing.
 
+Keep this block general-purpose. The brief itself — the document a human
+artist reads — is the higher-leverage output; this block is a convenience,
+not the point of the skill.
+
 ---
 
 ## Step 6 — Brief Iteration (Mode B)
@@ -330,9 +433,19 @@ Parse the existing brief. Identify which sections are affected by the new
 information (vendor questions, feedback, direction change).
 
 ### 6B — Targeted Update
-Only modify affected sections. Preserve everything else verbatim.
+Only modify affected sections. Preserve everything else verbatim. Bump the
+version number on every re-issue, even a small one — a silent update is
+worse than no update, because it destroys trust in the document itself.
 
-### 6C — Change Log
+### 6C — Is This a Change Order?
+
+A brief edit after kickoff is either a **change order** or an explicitly
+named gift the vendor is choosing to absorb — never silent, and never
+ambiguous by default. Before writing the Change Log, decide which this is
+and say so in it. Both are legitimate; leaving it unstated is not, because
+ambiguity resolves in favor of whoever is more comfortable with conflict.
+
+### 6D — Change Log
 Append a Change Log to the updated brief:
 
 ```
@@ -341,10 +454,11 @@ Append a Change Log to the updated brief:
 Section: [which section changed]
 Change: [what changed]
 Reason: [why — vendor question, stakeholder feedback, creative pivot]
+Status: [change order — quoted separately / absorbed as a favor, named as such]
 Impact: [does this change cascade to other sections? If so, flag them]
 ```
 
-### 6D — Re-output
+### 6E — Re-output
 Produce the updated full brief (all three output blocks) with changes
 integrated. The Change Log is appended at the end, not inline.
 
@@ -361,14 +475,22 @@ the updated brief at full fidelity.**
 - **IP extraction depth**: Never just name-drop — always extract borrow/avoid/target
 - **No generic filler**: "Epic fantasy style" is not useful. Be specific about WHAT
   makes it epic and WHICH flavor of fantasy.
-- **Avoid list is mandatory**: Every brief must have explicit avoids
+- **Ambiguity is priced as risk, not discounted** — a brief this skill produces
+  should remove questions, not just describe the asset. That's the standard
+  to write against, not "does this look complete."
+- **Avoid list is mandatory, and Scope Boundaries is a separate mandatory
+  block** — style avoids and scope boundaries answer different questions and
+  must not be merged into one list.
 - **Priority weights are mandatory**: Every requirement gets 🔴🟡🟢 classification
+- **Every numeric technical constraint carries its reason**, not just the number.
+- **Every brief is versioned and dated, from v1** — not only once it's iterated.
 - **Output all 3 blocks**: Art Direction Doc + Vendor Brief + Generation Prompts always
   (or Materials & Process Note for physical assets)
 - **Reactive schema**: Use the correct asset-type schema — don't default to generic
 - **Full fidelity always**: Never truncate output for brevity preferences. The
   resolution of the brief is the product.
-- **Iteration-ready**: The brief structure must support versioning and change tracking
+- **Iteration-ready**: The brief structure must support versioning and change tracking.
+  A post-kickoff edit is a change order or a named absorbed favor — never silent.
 
 ---
 
@@ -390,6 +512,16 @@ Its output maps naturally into this skill as structured input:
 When image-decomp output is provided as input, auto-populate matching fields
 and skip directly to the Assumption Block (Step 2). Do not re-ask for
 information already captured in the decomp.
+
+## Companion Skill: outsource-intake
+
+For scope, phases, sign-off, timeline, and files without full visual
+direction, use **outsource-intake** instead — it's the lighter-weight
+sibling to this skill and the two share vocabulary on purpose (Style
+Authority vs. Approval Owner, Scope Boundaries, cost/timeline process
+checks). outsource-intake can hand off to this skill for complex or
+high-stakes asks; this skill's output can seed an outsource-intake request
+when a full brief already exists and just needs to become a trackable ask.
 
 ---
 

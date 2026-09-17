@@ -34,6 +34,21 @@ Accessories & Props:
 Animation considerations (if rigged):
 - Rig complexity: [hero / NPC / background]
 - Key poses to design toward: [idle, action, hero moment]
+- Pose directive if animations already exist: [exact A-pose or T-pose joint
+  angles — "A-pose" alone is not a spec if the mesh has to match an
+  existing animation set]
+- Topology / deformation-zone rules: [eyes, mouth, shoulders, elbows,
+  knees — name which zones need dedicated edge flow, don't leave it implied]
+
+Technical budget:
+- Material count / draw-call allocation: [e.g., max 2 materials — this is a
+  budget decision, not a style preference, and should be stated as one]
+- Hair, cloth and skin systems: [which shader; cards, cards-plus-strands,
+  or geometry]
+
+Silhouette read distance: [does this need to read at a specific distance or
+  screen size — icon, inventory, gameplay-distance — state it, it changes
+  every decision downstream]
 
 Expression sheet needed: [yes / no]
 Turnaround needed: [yes / no / front+back only]
@@ -71,8 +86,19 @@ Depth layers: [FG / MG / BG treatment]
 Hero props (key set dressing items):
 
 Modular kit needed: [yes / no]
+- If yes — grid alignment: [does this snap to unit metrics, and to which
+  grid — an unstated grid is how modular pieces stop lining up]
+- If yes — pivot points and intersection tolerances for walls, floors, trim:
 Tileable textures needed: [yes / no]
 Skybox / skydome needed: [yes / no]
+
+Technical budget:
+- Texel density target: [e.g., 512 px/metre — without a number, adjacent
+  props at different resolutions will visibly disagree]
+- Tangent space for baking: [name it — MikkTSpace is the Unreal default; a
+  custom space left unstated is how seam artifacts arrive]
+- Reuse: [is this a hero piece seen once, or set dressing seen fifty times —
+  it changes the cost model, not just the polish level]
 ```
 
 ---
@@ -97,6 +123,20 @@ Wear level: [mint / used / ancient / destroyed]
 
 Iconographic clarity: [does it need to read at small sizes — icon/inventory]
 Iconic silhouette notes: [any shape that MUST be clear]
+
+If grid/pixel-constrained (icon, sprite): canvas grid size and render size
+are one decision, not two — changing either without the other silently
+breaks the silhouette read. State both together, and flag as 🔴 Critical.
+
+If a functional item (weapon, vehicle, interactable):
+- Attachment points: [name them, and the socket naming convention]
+- Functional readability: [which parts must read as usable at gameplay
+  distance — a grip, a trigger, a hinge]
+- Animation dependencies: [must this mesh support an existing rig or
+  animation set — treat as a hard constraint, not a note]
+
+Texel density target: [e.g., 512 px/metre, if this sits next to other props
+  that already have one]
 
 In-world lore hook (optional): [one sentence — what makes this object special]
 ```
@@ -123,6 +163,9 @@ Any bioluminescence or emissive elements:
 Silhouette priority: [describe the most readable shape feature]
 Key anatomical details: [horns, tail, claws, wings — what defines this creature]
 Attack tells / visual design hooks: [visual cues that communicate its danger]
+
+Topology / deformation-zone rules (if rigged): [same discipline as
+  Character — name the zones needing dedicated edge flow]
 
 Cultural / mythological inspiration (if any):
 IP reference closest in spirit:
