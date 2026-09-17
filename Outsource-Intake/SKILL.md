@@ -1,5 +1,6 @@
 ---
 name: outsource-intake
+version: 1.0
 visibility: public
 description: >
   Runs a structured intake when someone requests an art/production asset
