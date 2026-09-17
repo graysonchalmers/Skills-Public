@@ -34,6 +34,12 @@ Composes vendor-ready art briefs from any inputs: text descriptions, reference i
 
 Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Analyze, decode, or reverse-engineer any image.
 
+**More examples:**
+
+<img src="Image-Decomp/examples/01-advertising-uncle-sam.webp" width="200" alt="Image-Decomp example 01-advertising-uncle-sam"> <img src="Image-Decomp/examples/02-traditionalart-great-wave.webp" width="200" alt="Image-Decomp example 02-traditionalart-great-wave"> <img src="Image-Decomp/examples/03-filmstill-notld-zombies.webp" width="200" alt="Image-Decomp example 03-filmstill-notld-zombies">
+
+[01-advertising-uncle-sam](Image-Decomp/examples/01-advertising-uncle-sam.md) &middot; [02-traditionalart-great-wave](Image-Decomp/examples/02-traditionalart-great-wave.md) &middot; [03-filmstill-notld-zombies](Image-Decomp/examples/03-filmstill-notld-zombies.md)
+
 ### Outsource-Intake
 
 <img src="Outsource-Intake/references/example-output.webp" width="480" alt="Outsource-Intake example output">
