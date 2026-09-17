@@ -1,6 +1,10 @@
 # Grayson's Public Skills
 
-A curated public subset of my skill library, published from a private source of truth. Do not edit here - this repo is regenerated on each publish.
+Hi, I'm Grayson — 22 years running art outsourcing in games (Blizzard, Epic, Riot), and I build tools for myself and my team along the way. These are a few Claude Code skills from my own library that I found genuinely useful, made public in case they're useful to you too.
+
+[graysonchalmers.com](https://graysonchalmers.com) · [LinkedIn](https://www.linkedin.com/in/graysonchalmers)
+
+This is a curated public subset of a private source of truth — don't edit here, it's regenerated on each publish.
 
 ## Install
 
