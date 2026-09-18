@@ -818,9 +818,9 @@ Relevant missing schema values remain visible. Commercial disposition follows
 the agreed change boundary rather than being invented by the assistant.
 Grounding: GRIP Field Journal, Rates & Tiers (engagement classes), Buyer
 Readiness (explicit decisions), and The Brief (annotated targets). These are
-procedural adaptations, not rate guidance or automatic approval. Existing
-example images predate v2.4; they illustrate layout, not the decision-label
-contract. Living-brief/rejection tracing is deferred.
+procedural adaptations, not rate guidance or automatic approval. Example cards were regenerated against the v2.8 role-boundary layout
+(logistics pointer, no scope/process blocks); they illustrate layout and
+honest labels, not the full v2.7 source-register contract. Living-brief/rejection tracing is deferred.
 
 ## Example Triggers
 

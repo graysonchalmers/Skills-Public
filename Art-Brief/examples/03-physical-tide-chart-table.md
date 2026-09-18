@@ -101,19 +101,14 @@ Environment: indoor, living-room use
 - Do not skip the routing depth map — freehanding contour depth risks a
   structural failure that isn't visible until the table is under load
 
-### 🚧 Scope Boundaries & Change Policy
-- Out of scope in the vendor sense doesn't apply — no partner, no change
-  orders. The real boundary is sequencing: the routing depth map is locked
-  before any cut. Redesigning the contour layout after routing starts
-  isn't a change, it's a redo — see the structural note above.
+### 🚧 Logistics — owned by outsource-intake (v2.8)
 
-### 📋 Process
-- n/a — solo build. Self-review at each stage of the sequence below stands
-  in for a named reviewer and turnaround.
-
-### 📅 Delivery & Milestones
-*(Omitted — personal build, no vendor handoff. Use the Materials & Process
-Note below as the working sequence instead.)*
+Personal build with no partner and no intake packet: no scope/change policy,
+contacts, review process, or milestones to compose. The real boundary is
+sequencing — the routing depth map is locked before any cut — and that lives
+in the Materials & Process Note below, which replaces the Vendor Brief and
+Generation Prompts blocks for physical/fabrication builds per the skill's
+routing rule. `brief_ref: Unresolved — no intake on file.`
 
 ---
 

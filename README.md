@@ -185,34 +185,15 @@ IP: Elden Ring — Golden Order weapons (e.g. Marika's / Radagon's weapons)
   gear/mechanism at the fold point) — ours should look more like a ceremonial
   unfolding, not industrial machinery
 
-### 🚧 Scope Boundaries & Change Policy
-- Out of scope: a third transform state, additional weapon variants, or a
-  companion scabbard/sheath asset — any of these is a change, not an
-  extension of this brief.
-- Change cost: this is a new-vendor paid engagement — any post-kickoff
-  scope change is a change order, quoted separately, not an absorbed
-  favor by default.
+### 🚧 Logistics — owned by outsource-intake (v2.8)
 
-### 📋 Process
-- Named reviewer: Weapons Art Lead (same as Style Authority above), full
-  approval authority.
-- Turnaround: 2 business days, matching the feedback turnaround below.
-- Feedback channel: annotated review doc per milestone.
-- Escalation: a note that survives two rounds unresolved goes to the Art
-  Director.
-
-### 📅 Delivery & Milestones
-```
-MILESTONE STRUCTURE
-───────────────────
-M1 — Concept sketches (2-3 silhouette options, both states): 1 week
-M2 — Refined concept (1 selected direction, both states, colored): 1 week
-M3 — Blockout (game-res mesh, both states, no textures): 1 week
-M4 — Final Asset (textured, both states, LOD0+LOD1): 2 weeks
-
-Revision rounds per milestone: 2
-Feedback turnaround: 2 business days
-```
+Scope/change policy, contact directory, review process, and milestones are
+not composed in the brief. Register the user-supplied facts and pass them
+through: Weapons Art Lead (full approval authority), 2-business-day
+turnaround, annotated review doc per milestone, escalation to the Art
+Director after two unresolved rounds; out of scope — a third transform
+state, extra weapon variants, a companion scabbard, all change-order
+territory. `brief_ref: Unresolved — no intake on file.`
 
 ---
 
@@ -243,16 +224,12 @@ IP: Elden Ring — Golden Order weapons
 **Explicit avoids:** gothic-horror materials, pristine holy gold, glowing
 rune VFX, visible mechanical transform hardware.
 
-**Scope & process:** Out of scope — a third transform state, extra weapon
-variants, a companion scabbard (any of these is a change order, quoted
-separately). Reviewer: Weapons Art Lead, 2-day turnaround, annotated doc
-per milestone.
+**Production terms (v2.8):** not composed in the brief — owned by the
+outsource-intake packet (`brief_ref: Unresolved — no intake on file`).
+Scope/change policy, contacts, review process, and milestones live there.
 
 **Deliverables:** FBX (game-res ≤18K tris + high-poly bake source), 4K
 Substance Painter texture set (Base Color/Normal/ORM), LOD0 + LOD1.
-
-**Milestones:** Concept (1wk) → Refined concept (1wk) → Blockout (1wk) →
-Final (2wk). 2 revision rounds/milestone, 2-day feedback turnaround.
 
 Please reach out if you have questions or need clarification on any point.
 
@@ -416,33 +393,16 @@ IP: Little Nightmares (proportions only, target-quality reference)
 - No combat-damaged costume detailing — her wear comes from decades of
   weather and duty, not battle
 
-### 🚧 Scope Boundaries & Change Policy
-- Out of scope: additional costume variants, a second expression-sheet
-  style, or an alternate "living" (non-ghost) design pass — any of these
-  is a change.
-- Change cost: a small in-flight note (a color nudge, a pose tweak) is the
-  kind of thing a good partner absorbs; anything touching either 🔴
-  Critical requirement above is a change order.
+### 🚧 Logistics — owned by outsource-intake (v2.8)
 
-### 📋 Process
-- Named reviewer: Character Art Director (same as Style Authority above).
-- Turnaround: 2 business days.
-- Feedback channel: annotated review doc, same cadence as milestone
-  deliverables.
-- Escalation: unresolved after 2 rounds goes to the Creative Director.
-
-### 📅 Delivery & Milestones
-```
-MILESTONE STRUCTURE
-───────────────────
-M1 — Sketch/Concept (2-3 options): 1 week
-M2 — Refined Concept (1 selected direction, colored): 1 week
-M3 — Lineart/Turnaround (front/back/3-quarter): 1 week
-M4 — Final Asset (colored, PSD layered) + Expression Sheet: 2 weeks
-
-Revision rounds per milestone: 2
-Feedback turnaround: 2 business days
-```
+Scope/change policy, contact directory, review process, and milestones are
+not composed in the brief. Register the user-supplied facts and pass them
+through: Character Art Director (same person as Style Authority — recorded
+without flagging the name match), 2-business-day turnaround, annotated
+review doc, escalation to the Creative Director after two unresolved
+rounds; out of scope — extra costume variants, a second expression-sheet
+style, a non-ghost design pass (change-order territory).
+`brief_ref: Unresolved — no intake on file.`
 
 ---
 
@@ -475,16 +435,12 @@ IP: Little Nightmares (mood-only reference)
 **Explicit avoids:** horror-ghost visual grammar, doll-like proportions,
 oversaturated magic-glow bloom, combat-damaged costuming.
 
-**Scope & process:** Out of scope — extra costume variants, a second
-expression-sheet style, a non-ghost design pass (change order). Reviewer:
-Character Art Director, 2-day turnaround, annotated doc.
+**Production terms (v2.8):** not composed in the brief — owned by the
+outsource-intake packet (`brief_ref: Unresolved — no intake on file`).
+Scope/change policy, contacts, review process, and milestones live there.
 
 **Deliverables:** PSD (layered) + PNG, front/back/3-quarter turnaround,
 full expression sheet (warmth, quiet sorrow, gentle warning, resolve).
-
-**Milestones:** Concept (1wk) → Refined concept (1wk) → Turnaround (1wk) →
-Final + expression sheet (2wk). 2 revision rounds/milestone, 2-day
-feedback turnaround.
 
 Please reach out if you have questions or need clarification on any point.
 
@@ -624,19 +580,14 @@ Environment: indoor, living-room use
 - Do not skip the routing depth map — freehanding contour depth risks a
   structural failure that isn't visible until the table is under load
 
-### 🚧 Scope Boundaries & Change Policy
-- Out of scope in the vendor sense doesn't apply — no partner, no change
-  orders. The real boundary is sequencing: the routing depth map is locked
-  before any cut. Redesigning the contour layout after routing starts
-  isn't a change, it's a redo — see the structural note above.
+### 🚧 Logistics — owned by outsource-intake (v2.8)
 
-### 📋 Process
-- n/a — solo build. Self-review at each stage of the sequence below stands
-  in for a named reviewer and turnaround.
-
-### 📅 Delivery & Milestones
-*(Omitted — personal build, no vendor handoff. Use the Materials & Process
-Note below as the working sequence instead.)*
+Personal build with no partner and no intake packet: no scope/change policy,
+contacts, review process, or milestones to compose. The real boundary is
+sequencing — the routing depth map is locked before any cut — and that lives
+in the Materials & Process Note below, which replaces the Vendor Brief and
+Generation Prompts blocks for physical/fabrication builds per the skill's
+routing rule. `brief_ref: Unresolved — no intake on file.`
 
 ---
 

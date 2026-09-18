@@ -124,33 +124,16 @@ IP: Little Nightmares (proportions only, target-quality reference)
 - No combat-damaged costume detailing — her wear comes from decades of
   weather and duty, not battle
 
-### 🚧 Scope Boundaries & Change Policy
-- Out of scope: additional costume variants, a second expression-sheet
-  style, or an alternate "living" (non-ghost) design pass — any of these
-  is a change.
-- Change cost: a small in-flight note (a color nudge, a pose tweak) is the
-  kind of thing a good partner absorbs; anything touching either 🔴
-  Critical requirement above is a change order.
+### 🚧 Logistics — owned by outsource-intake (v2.8)
 
-### 📋 Process
-- Named reviewer: Character Art Director (same as Style Authority above).
-- Turnaround: 2 business days.
-- Feedback channel: annotated review doc, same cadence as milestone
-  deliverables.
-- Escalation: unresolved after 2 rounds goes to the Creative Director.
-
-### 📅 Delivery & Milestones
-```
-MILESTONE STRUCTURE
-───────────────────
-M1 — Sketch/Concept (2-3 options): 1 week
-M2 — Refined Concept (1 selected direction, colored): 1 week
-M3 — Lineart/Turnaround (front/back/3-quarter): 1 week
-M4 — Final Asset (colored, PSD layered) + Expression Sheet: 2 weeks
-
-Revision rounds per milestone: 2
-Feedback turnaround: 2 business days
-```
+Scope/change policy, contact directory, review process, and milestones are
+not composed in the brief. Register the user-supplied facts and pass them
+through: Character Art Director (same person as Style Authority — recorded
+without flagging the name match), 2-business-day turnaround, annotated
+review doc, escalation to the Creative Director after two unresolved
+rounds; out of scope — extra costume variants, a second expression-sheet
+style, a non-ghost design pass (change-order territory).
+`brief_ref: Unresolved — no intake on file.`
 
 ---
 
@@ -183,16 +166,12 @@ IP: Little Nightmares (mood-only reference)
 **Explicit avoids:** horror-ghost visual grammar, doll-like proportions,
 oversaturated magic-glow bloom, combat-damaged costuming.
 
-**Scope & process:** Out of scope — extra costume variants, a second
-expression-sheet style, a non-ghost design pass (change order). Reviewer:
-Character Art Director, 2-day turnaround, annotated doc.
+**Production terms (v2.8):** not composed in the brief — owned by the
+outsource-intake packet (`brief_ref: Unresolved — no intake on file`).
+Scope/change policy, contacts, review process, and milestones live there.
 
 **Deliverables:** PSD (layered) + PNG, front/back/3-quarter turnaround,
 full expression sheet (warmth, quiet sorrow, gentle warning, resolve).
-
-**Milestones:** Concept (1wk) → Refined concept (1wk) → Turnaround (1wk) →
-Final + expression sheet (2wk). 2 revision rounds/milestone, 2-day
-feedback turnaround.
 
 Please reach out if you have questions or need clarification on any point.
 
