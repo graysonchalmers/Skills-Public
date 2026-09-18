@@ -20,7 +20,11 @@ claude plugin install art-brief@skills-public
 
 ## Skills at a Glance
 
-<a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="140" alt="Art-Brief"></a> <a href="#build-custom-instructions"><img src="build-custom-instructions/references/example-output.webp" height="140" alt="build-custom-instructions"></a> <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="140" alt="Image-Decomp"></a> <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="140" alt="Outsource-Intake"></a>
+| Skill | Preview | Mission |
+|---|---|---|
+| **[Art-Brief](#art-brief)** | <a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="120" alt="Art-Brief preview"></a> | Composes vendor-ready art briefs from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches. |
+| **[Image-Decomp](#image-decomp)** | <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="120" alt="Image-Decomp preview"></a> | Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). |
+| **[Outsource-Intake](#outsource-intake)** | <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="120" alt="Outsource-Intake preview"></a> | Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" lo... |
 
 ## Skills
 
@@ -662,19 +666,6 @@ graduated epoxy tints, random-orbit sander through progressive grits,
 digital scale for resin mixing ratios.
 
 </details>
-
-### build-custom-instructions
-
-<img src="build-custom-instructions/references/example-output.webp" height="360" alt="build-custom-instructions example output">
-
-Interviews a person about how they want an AI assistant to communicate with them — tone and directness, technical/jargon level, output format, learning style, collaboration rules — and drafts a personal custom-instructions document (CLAUDE.md / AGENTS.md / system-prompt style) from their answers, plus an optional layer of hard-enforced rules via hooks for anything that needs to be guaranteed rather than just requested. Use this whenever someone wants to write, improve, or start from scratch on their custom instructions, system prompt, CLAUDE.md, AGENTS.md, or "how should the AI talk to me" preferences — even if they don't know the term for it and just say things like "I want Claude to stop explaining stuff I already know," "can I make it match how I actually talk," or "I want a doc like the pros have for tuning their assistant." Also trigger when someone wants to onboard a new teammate, client, or themselves onto a fresh Claude Code / agent setup and needs a communication-preferences doc to start from.
-
-**Examples:**
-
-<img src="build-custom-instructions/examples/01-sample-interview-and-draft.webp" height="160" alt="build-custom-instructions example 01-sample-interview-and-draft">
-
-<details>
-<summary>Read the full write-up — 01-sample-interview-and-draft</summary>
 
 # Example 1 — sample interview → drafted custom-instructions doc
 

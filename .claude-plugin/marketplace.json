@@ -12,11 +12,6 @@
       "description": "Composes vendor-ready art briefs from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches."
     },
     {
-      "name": "build-custom-instructions",
-      "source": "./build-custom-instructions",
-      "description": "Interviews a person about how they want an AI assistant to communicate with them \u2014 tone and directness, technical/jargon level, output format, learning style, collaboration rules \u2014 and drafts a perso..."
-    },
-    {
       "name": "image-decomp",
       "source": "./Image-Decomp",
       "description": "Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap)."
