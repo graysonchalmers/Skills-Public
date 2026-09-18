@@ -126,6 +126,7 @@ Commercial terms: unknown — likely standard SOW, not confirmed
 **Requested by:** AI Team  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): Creature (boss enemy)
 - Quantity, and what counts as one: 1 — a fully textured, rigged,
   animation-tested boss creature

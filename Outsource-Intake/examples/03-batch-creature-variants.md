@@ -91,6 +91,7 @@ Commercial terms: not established (waiting on a vendor to exist)
 **Requested by:** [demo requester]  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): Creature
 - Quantity, and what counts as one: 3 — Basic, Elite, Alpha, each a
   complete sculpted+textured creature variant

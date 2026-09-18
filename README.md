@@ -1383,6 +1383,7 @@ Commercial terms: covered by existing vendor relationship, not re-litigated
 **Requested by:** Sarah  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): UI / Icon
 - Quantity, and what counts as one: 12 individual icons
 - Batch (shared style) or distinct assets: Batch — shared style with
@@ -1570,6 +1571,7 @@ Commercial terms: unknown — likely standard SOW, not confirmed
 **Requested by:** AI Team  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): Creature (boss enemy)
 - Quantity, and what counts as one: 1 — a fully textured, rigged,
   animation-tested boss creature
@@ -1739,6 +1741,7 @@ Commercial terms: not established (waiting on a vendor to exist)
 **Requested by:** [demo requester]  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): Creature
 - Quantity, and what counts as one: 3 — Basic, Elite, Alpha, each a
   complete sculpted+textured creature variant

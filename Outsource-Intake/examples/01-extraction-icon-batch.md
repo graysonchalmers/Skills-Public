@@ -75,6 +75,7 @@ Commercial terms: covered by existing vendor relationship, not re-litigated
 **Requested by:** Sarah  |  **Date:** [demo date]  |  **Status:** Draft
 
 ## Scope
+- Art brief of record: **Unresolved — no brief on file** [not supplied]; full art-direction treatment available via the art-brief handoff, offered not invoked.
 - Asset type(s): UI / Icon
 - Quantity, and what counts as one: 12 individual icons
 - Batch (shared style) or distinct assets: Batch — shared style with
