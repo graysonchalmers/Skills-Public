@@ -87,6 +87,31 @@ render every condensed claim from its atoms with IDs, labels and a source key.
 Reuse one register appendix across the three blocks, not three repeated ledgers.
 This is a writing contract, not a software/runtime dependency.
 
+## Adaptive frontier interview contract
+
+Read `references/frontier-interview.md` before a normal-mode intake or iteration; it defines the round trace and frontier fields used below.
+
+Normal mode is an adaptive, multi-turn interview rather than a fixed questionnaire.
+Register supplied facts and their exact source spans first; then compute the current
+decision frontier: only decisions whose prerequisites are settled. Ask **2–4
+consequential questions** from that frontier, with a recommendation where useful,
+and never ask a captured fact or a downstream question whose prerequisite is still
+open. After each answer, update the visible register (preserving IDs, status,
+hedges, scope and source), record the answer-to-atom change in the interview trace,
+and recompute the frontier. Stay quiet when the remaining gaps are non-blocking;
+stop at the checkpoint/assemble step once remaining gaps do not change the requested
+artifact, or when the user explicitly asks for a draft with gaps. Normal mode may
+produce a draft with visible Unresolved items; it must not promote proposals.
+
+This contract is request-scoped. Explicit debug mode remains immediate: ask no
+questions, do not wait for confirmation, and label the result **DEBUG
+PREVIEW—NOT FOR SENDING** as required by `references/debug-and-contacts.md`.
+For normal multi-turn work, retain a source-linked interview trace with each round's
+frontier, numbered questions, answer source, and register evolution; the final
+artifact must be renderable from the latest register and cite the shared appendix.
+Keep the complete three output blocks in every assembled Art-Brief (Art Direction,
+Vendor Brief, and Generation Prompts/Materials & Process Note), even when gaps remain.
+
 ## Step 1 — Intake & Classification
 
 ### 1A — Classify the Asset Type

@@ -60,6 +60,30 @@ recipient reply**. Build a visible compact source/decision register first. Rende
 condensed claims from those atoms with IDs, labels and a source key; one shared
 appendix serves recap, sheet and replies in a package. No runtime dependency.
 
+## Adaptive frontier interview contract
+
+Read `references/frontier-interview.md` before a normal-mode intake; it defines the round trace and frontier fields used below.
+
+Normal mode is an adaptive, multi-turn interview. Register supplied facts and exact
+source spans first; compute the current decision frontier, meaning only decisions
+whose prerequisites are settled. Ask **2–4 consequential questions** from that
+frontier, with recommendations where useful. Never re-ask captured facts or ask a
+downstream question before its prerequisite is settled. After every answer, update
+the visible source-linked register without silently recycling IDs, append the answer
+and atom change to the interview trace, and recompute the frontier. Be quiet when
+remaining gaps are non-blocking; stop at the recap/assemble step when the remaining
+gaps do not change the requested sheet, or when the user explicitly requests a
+draft with gaps. Gaps remain visible and proposals remain Proposed.
+
+This is request-scoped. Explicit debug mode is immediate and asks no questions,
+does not wait at confirmation gates, and uses **DEBUG PREVIEW—NOT FOR SENDING**
+per `references/debug-and-contacts.md`. Normal multi-turn runs retain the frontier,
+question, answer-source, and register-evolution trace, and the final sheet renders
+from the latest register plus one shared source key/register appendix. The mini
+route remains a separate route: its core is **at most 250 words** and the entire
+intake asks **at most five total questions**, including recap/reply questions; do
+not hide operational prose or extra questions in appendices.
+
 ## Input Modes — detect automatically, don't ask which mode to use
 
 **Extraction mode**: the user pastes a forwarded message, email, or a request
