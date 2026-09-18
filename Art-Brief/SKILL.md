@@ -1,14 +1,17 @@
 ---
 name: art-brief
-version: 2.7
+version: 2.8
 visibility: public
 description: >
-  Composes vendor-ready art briefs from any inputs: text descriptions, reference
-  images, project context, IP references, asset lists, or rough sketches. Use
-  whenever a user wants to create, write, or generate an art brief, style guide,
-  asset spec, outsource brief, or art direction document for any creative asset
-  — game art, film, industrial design, illustration, concept art, props,
-  characters, environments, creatures, marketing assets, or physical fabrication.
+  Composes the art bible for a creative asset — project context, visual
+  language, technical spec, artistic references, priority-weighted
+  requirements, and explicit avoids — from any inputs: text descriptions,
+  reference images, project context, IP references, asset lists, or rough
+  sketches. Use whenever a user wants to create, write, or generate an art
+  brief, style guide, asset spec, or art direction document for any creative
+  asset — game art, film, industrial design, illustration, concept art,
+  props, characters, environments, creatures, marketing assets, or physical
+  fabrication.
 
   Triggers on: "write me a brief for...", "I need to brief a vendor on...",
   "help me spec out this asset", "how do I describe this art style to an
@@ -16,12 +19,18 @@ description: >
   concept into something I can send to a studio."
 
   Core purpose: compress a creator's mental vision into the highest-fidelity
-  written specification possible, minimizing lossy transfer between minds. Also
-  handles brief iteration — updating an existing brief based on vendor questions,
-  stakeholder feedback, or evolved creative direction.
+  written specification possible, minimizing lossy transfer between minds.
+  Also handles brief iteration — updating an existing brief based on vendor
+  questions, stakeholder feedback, or evolved creative direction.
+
+  Scope boundary: this is the style-authority record. Production logistics —
+  scope/change policy, contacts, review process, payment, milestones — are
+  the delivery-authority record owned by **outsource-intake**, which consumes
+  this brief by reference (`brief_ref`). This skill interviews only for
+  creative alignment; outsource-intake interviews only for logistics.
 ---
 
-# Art Brief Composition Skill v2.7
+# Art Brief Composition Skill v2.8
 
 ![Example output: a real environment brief — palette, priority-weighted requirements, and borrow/avoid references, compressed into a vendor-ready spec](references/example-output.webp)
 
@@ -106,11 +115,43 @@ produce a draft with visible Unresolved items; it must not promote proposals.
 This contract is request-scoped. Explicit debug mode remains immediate: ask no
 questions, do not wait for confirmation, and label the result **DEBUG
 PREVIEW—NOT FOR SENDING** as required by `references/debug-and-contacts.md`.
-For normal multi-turn work, retain a source-linked interview trace with each round's
-frontier, numbered questions, answer source, and register evolution; the final
+For normal multi-turn work, retain a source-linked interview trace with each
+round's frontier, numbered questions, answer source, and register evolution —
+**and include the trace block itself (rounds with `frontier_before` /
+`frontier_after`, per `references/frontier-interview.md`) in the assembled
+artifact**, not only in harness evidence; the final
 artifact must be renderable from the latest register and cite the shared appendix.
 Keep the complete three output blocks in every assembled Art-Brief (Art Direction,
 Vendor Brief, and Generation Prompts/Materials & Process Note), even when gaps remain.
+
+## Role boundary — the two records (v2.8)
+
+This skill produces the **style-authority record**: what the asset should look
+like, feel like, and must avoid. **Outsource-intake** produces the
+**delivery-authority record**: scope/change policy, contact directory, review
+process, commercial terms, and milestones. The only coupling point is a
+`brief_ref` field: an intake packet that consumes a brief cites it and never
+re-derives art decisions; a brief that will drive a vendor engagement names
+the intake packet (or leaves it visibly Unresolved — no intake on file).
+
+Consequences, enforced everywhere below:
+
+- **Creative-only interview.** This skill's adaptive questions resolve
+  creative ambiguity (reference conflicts, stylization floors, mood,
+  interpretation latitude). It never interviews for reviewer names, review
+  channels, turnaround, contacts, delivery dates, payment, or change-order
+  terms. If the user volunteers them, record them with provenance and pass
+  them through to the intake packet; do not build interview rounds on them.
+- **Logistics blocks are not composed here.** Scope Boundaries & Change
+  Policy, Contact Directory, Process, and Delivery & Milestones belong to
+  outsource-intake. Where a brief would previously have carried them, carry
+  an open pointer instead: `Logistics: owned by outsource-intake
+  (brief_ref: [ID] / Unresolved — no intake on file)`. Never invent these to
+  make the brief look complete.
+- **A brief can be complete without logistics.** Completeness of the art
+  bible is judged on creative coverage and decision provenance, not on
+  whether commercial terms are settled. Do not hold the brief hostage to
+  intake gaps, and do not fill intake gaps to ship the brief.
 
 ## Step 1 — Intake & Classification
 
@@ -207,24 +248,27 @@ The brief's tone adapts to who receives it:
 
 Default to **"New vendor"** tone if unspecified.
 
-### 1E — Style Authority & Process
+### 1E — Style Authority
 
-Two things a brief needs that are easy to leave implicit and expensive to
+One thing a brief needs that is easy to leave implicit and expensive to
 leave undefined:
 
 - **Style authority** — whose taste is the final word, for which dimensions
-  and scope. Record separately from the procedural approval owner; neither
-  role implies the other. Preserve explicitly joint authority rather than
-  inventing a single decision-maker.
-- **Process** — who reviews, how fast, through what channel, and what
-  happens if a review stalls. This becomes the Process block in Step 3; ask
-  for it here if it isn't already known.
+  and scope. Record separately from the procedural approval owner (an
+  outsource-intake concern); neither role implies the other. Preserve
+  explicitly joint authority rather than inventing a single decision-maker.
 
-If either is genuinely undecided, say so in the Assumption Block rather than
+If it is genuinely undecided, say so in the Assumption Block rather than
 inventing a name — an undefined style authority is a real risk, not a gap to
-paper over. One person may legitimately hold both roles; record this without
-flagging a risk merely because the names match. A conflict exists only when
-authority or the decision itself is unclear, not because roles are combined.
+paper over. One person may legitimately hold both style authority and the
+procedural approval role; record this without flagging a risk merely because
+the names match. A conflict exists only when authority or the decision itself
+is unclear, not because roles are combined.
+
+Who reviews, how fast, through what channel, and what happens if a review
+stalls — the Process block — is a delivery-authority record owned by
+outsource-intake. Do not compose it here; if the user supplies review facts,
+register them and route them to the intake packet.
 
 An authority ruling resolves the contested dimension only — the decision
 actually in dispute (proportion language, a palette, an avoid). Extending it
@@ -287,9 +331,10 @@ BRIEF CHECKPOINT — confirm/correct decisions, or authorize a draft with gaps:
 Asset / intent / project: [value + label/source]
 Interpretation class: [class + label/source, split by workstream if needed]
 Delegated decisions / fixed constraints: [value + label/source]
-Audience / style authority / approval owner: [value + label/source]
+Audience / style authority: [value + label/source]
 Visual direction / reference roles: [value + label/source]
-Technical requirements / delivery / process: [value + label/source]
+Technical requirements: [value + label/source]
+Logistics pointer: [brief_ref ID / Unresolved — no intake on file]
 Proposals to accept: [named items, or none]
 Open decisions: [impact, owner, date; unknown where not supplied]
 Priorities: [sourced or Proposed weight + separate decision ID; otherwise Unresolved]
@@ -404,72 +449,31 @@ colors," "No generic fantasy tropes — this world has a specific visual
 identity," "Do not reference [specific IP] — too close to their trademark."
 
 This is a **style** list — what the asset should not look like. It is a
-different thing from Scope Boundaries below, which is about what work is
-and isn't included. Conflating the two is common and leaves scope
-disagreements with no document to resolve them.
+different thing from scope boundaries, which are about what work is and
+isn't included and live in outsource-intake (see the block below). Conflating
+the two is common and leaves scope disagreements with no document to resolve
+them; keep this list purely stylistic and route work-scope rulings to intake.
 
-### 🚧 Scope Boundaries & Change Policy
+### 🚧 Scope Boundaries & Change Policy — owned by outsource-intake
 
-The most-skipped block in any brief, and the one that most often decides
-whether a disagreement gets resolved calmly or turns into whoever's more
-willing to damage the relationship. Two things, stated plainly:
+This block is **not composed in the brief**. What is explicitly out of scope
+and what a change costs are delivery-authority decisions, owned by
+outsource-intake's Stage C and rendered in its Asset Request Sheet. If a
+legacy brief carries a scope block, treat it as prior intake output: preserve
+it during Mode B iteration with its provenance, route changes to intake, and
+do not draft new exclusions or change terms here. Style avoids (⛔ above) and
+scope boundaries answer different questions — never merge them; and never
+quietly move a scope ruling into the avoids list or vice versa.
 
-- **What is explicitly out of scope.** Named, not implied — but named by a
-  source: the requester, the prior brief, or an accepted proposal. Every
-  exclusion carries its provenance. Boundaries you draft to make the brief
-  look complete are invented scope — label them `Proposed — confirm` or cut
-  them. "Characters/NPCs out of scope" written as agreed fact is a made-up
-  agreement; the same line labeled Proposed is honest.
-- **What a change costs, in principle, before there is one.** This brief
-  doesn't need to name a dollar figure — that's a rate conversation, not a
-  brief one — but it should say whether a scope change after kickoff is
-  handled under an existing allowance, quoted as a change order, or explicitly
-  accepted by the partner as a favor. Never invent that agreement. Leaving this ambiguous means it resolves in favor
-  of whoever is more comfortable with conflict, which is a bad way to
-  decide anything.
+### 📋 Process / 📅 Delivery & Milestones — owned by outsource-intake
 
-Writing this down is not adversarial — it's what lets both sides say yes to
-a change quickly, because they already agree on what a change is.
-
-### 📇 Contact Directory
-Read `references/debug-and-contacts.md` and include its six-role directory for
-client/internal and partner contacts: producer, outsource manager, art lead on
-each side; name, email, Slack/Teams, phone, timezone, purpose, and status/source.
-Use placeholders without blocking the draft; internal-only partner rows are N/A.
-Keep the directory separate from task assignment and sign-off authority. Vendor
-lookup/recommendation is opt-in only; do not interrupt briefing to procure a vendor.
-
-### 📋 Process
-- **Reviewer(s)** — who comments, with the scope actually supplied.
-- **Approval owner(s)** — separately evidenced procedural sign-off authority;
-  a named reviewer is not enough. Unknown authority stays Unresolved.
-- **Review turnaround** — retain stated commitments, targets or tentative
-  availability with their original status/hedge; do not upgrade an aspiration.
-- **Feedback channel / notes format** — sourced values, not inferred from a
-  file-delivery destination.
-- **Escalation path** — the agreed path if supplied; otherwise Unresolved,
-  or a Proposed option when useful. Neither conflict nor a single reviewer
-  establishes a policy, new gate, or requirement for a fresh authority ruling.
-
-Late direction can create new scope. Classify it against the agreed boundary
-between a clarification, fixing a miss, an included revision, and a scope
-change; do not invent billing consequences from its arrival time alone.
-
-### 📅 Delivery & Milestones (if applicable)
-
-Include when the brief is going to an external vendor or fabricator.
-Omit for internal brainstorming or AI generation.
-
-Record the supplied milestones and dates. If planning would help, offer a
-small Proposed sequence adapted to the medium; there is no default number of
-stages, options, revision rounds, or review gates.
-
-| Milestone / deliverable | Date or timeframe + state | Revision allowance | Decision IDs |
-|---|---|---|---|
-| [sourced value or Proposed option] | [requested / agreed / tentative / Unresolved] | [sourced / Proposed / Unresolved] | [IDs] |
-
-An empty plan is Unresolved, not a requirement to invent M1–M4. A Proposed gate
-remains Proposed in the vendor brief, prompt notes and production preconditions.
+Reviewer(s), approval owner, turnaround, feedback channel, escalation, and
+milestone tables are delivery-authority records composed by outsource-intake
+(Stage B, phase plan). The brief carries only the logistics pointer from the
+Assumption Block. Supplied process or milestone facts are registered and
+passed through, never promoted or extended. Late direction and change-order
+classification are handled per Step 6C, which defers commercial disposition
+to the intake packet.
 
 ---
 
@@ -531,10 +535,11 @@ Include sourced or Proposed priority weights inline; unknown weights stay unknow
 
 ### OUTPUT BLOCK 2 — 📬 Vendor Brief
 
-A condensed, semi-formal version of the Art Direction Document. It is a
-recipient-facing draft, not a sent message; do not invent a recipient or claim
-it has been delivered. Proposed values and unknowns remain visibly provisional.
-Tone: calibrated per Step 1D (default: professional, precise, no assumptions).
+A condensed, semi-formal version of the Art Direction Document — the
+visual-direction half of what a vendor receives. It is a recipient-facing
+draft, not a sent message; do not invent a recipient or claim it has been
+delivered. Proposed values and unknowns remain visibly provisional. Tone:
+calibrated per Step 1D (default: professional, precise, no assumptions).
 
 Structure:
 - Version, date, class, scope, status, and remaining open decisions, matching
@@ -544,18 +549,18 @@ Structure:
   sourced/Proposed priority weights only. Split a sourced goal from a Proposed
   method (e.g. night readability versus a lantern-light solution).
 - IP references with extracted borrow/avoid
-- Explicit avoids (style) and Scope Boundaries & Change Policy (scope) —
-  kept as two distinct sections, not merged
-- Process: reviewer and separately evidenced approver, turnaround, feedback channel
-- Contact Directory appendix (six roles; attach the shared directory for this package)
+- Explicit avoids (style) — sourced stylistic negatives only
 - Deliverable spec (format, resolution, dimensions)
-- Milestone structure (if applicable)
+- Logistics line: `Production terms (scope/change policy, contacts, review
+  process, milestones): per the outsource-intake packet — brief_ref [ID] /
+  Unresolved — no intake on file.` Do not invent or inline these terms.
 - "Please reach out if you have questions or need clarification on any point."
 
 Keep it tight — one page if possible. Cut anything that's nice-to-know vs.
-need-to-know. But never cut a 🔴 Critical requirement, and never cut Scope
-Boundaries — it's short by nature and it's the section most worth keeping
-even under space pressure.
+need-to-know. But never cut a 🔴 Critical requirement. Scope boundaries,
+process, contacts, and milestones live in the intake packet; a vendor brief
+without them is complete for its purpose, not deficient — but say so with the
+logistics line rather than silently omitting.
 
 **Sendable-message contract** (any recipient-ready email, DM, or reply —
 vendor answers, Mode B responses, status updates): state settled facts only when
@@ -647,17 +652,16 @@ evidenced action or stated commitment. Do not convert absence into "not included
 in the fee"; commercial disposition needs the relevant parties' actual agreement
 and otherwise stays Unresolved.
 
-### 6C — Is This a Change Order?
+### 6C — Is This a Change Order? (defer to intake)
 
 Classify the edit against the actual agreement: clarification, correction
-of a miss, included revision, or new scope. Inclusion in the revised document
-is not itself an agreed change order. New scope may use an existing allowance,
-an agreed change order, or an explicitly accepted favor; record only evidenced
-terms, not an automatic billable classification. If terms or consent are unknown,
-mark the commercial disposition Unresolved with routing needed to the relevant
-approval owner (unknown if not supplied);
-do not choose on behalf of either party. Preserve decision labels and sources
-on changed fields. This is the same boundary used by outsource-intake.
+of a miss, included revision, or new scope. Record that classification with
+its source in the Change Log. **The commercial disposition — allowance,
+change order, favor, fee treatment — is a delivery-authority decision owned
+by outsource-intake (Stage C change-order rule).** Do not choose it here:
+mark it `Commercial treatment: routed to outsource-intake — Unresolved
+without intake evidence`, citing the intake packet's brief_ref when one
+exists. Preserve decision labels and sources on changed fields.
 
 ### 6D — Change Log
 Append a Change Log to the updated brief:
@@ -697,9 +701,9 @@ the updated brief at full fidelity.**
 - **Ambiguity is priced as risk, not discounted** — a brief this skill produces
   should remove questions, not just describe the asset. That's the standard
   to write against, not "does this look complete."
-- **Avoid list is mandatory, and Scope Boundaries is a separate mandatory
-  block** — style avoids and scope boundaries answer different questions and
-  must not be merged into one list.
+- **Avoid list is mandatory; scope boundaries are intake's block** — style
+  avoids live here; scope exclusions and change policy live in
+  outsource-intake. Never merge the two, and never draft exclusions here.
 - **Priorities are decisions too**: use sourced or Proposed weights; no forced
   🔴🟡🟢 assignment. Gate suggestions likewise never become mandatory by repetition.
 - **Numeric reasons require sources**; unstated rationales stay Unresolved.
@@ -738,17 +742,24 @@ re-asking for facts already captured.
 
 ## Companion Skill: outsource-intake
 
-For scope, phases, sign-off, timeline, and files without full visual
-direction, use **outsource-intake** instead — it's the lighter-weight
-sibling to this skill and the two share vocabulary on purpose (Style
-Authority vs. Approval Owner, Scope Boundaries, cost/timeline process
-checks). outsource-intake can hand off to this skill for complex or
-high-stakes asks; this skill's output can seed an outsource-intake request
-when a full brief already exists and just needs to become a trackable ask.
-Pass interpretation class, phase scope, decision labels/sources, approved
-reference identifiers, roles, and open decisions with it. Reuse those fields
-on return; do not promote a proposal or copy a stale readiness judgment after
-the scope changes. Each skill remains usable without the other installed.
+**outsource-intake is the delivery-authority record**: scope/change policy,
+six-role contact directory, review process, commercial terms, phases, and
+milestones. This skill is the style-authority record. The two share
+vocabulary on purpose (Style Authority vs. Approval Owner, decision labels,
+the clarification/miss/revision/new-scope boundary).
+
+Handoff contract (`brief_ref`):
+- When an outsource-intake packet consumes this brief, it cites `brief_ref`
+  and reuses the brief's decisions without re-deriving or re-interviewing
+  them. This skill, in turn, never composes intake's blocks.
+- When this brief will drive a vendor engagement and no intake packet
+  exists, carry the open pointer (`Unresolved — no intake on file`), and
+  offer the handoff: the brief's registered facts, class, labels/sources,
+  approved reference IDs, and open decisions pass to intake unchanged.
+- On a return handoff, reuse those fields; do not promote a proposal or
+  copy a stale readiness judgment after the scope changes.
+Each skill remains usable without the other installed: without intake,
+logistics stay visibly Unresolved, never invented.
 
 ---
 
@@ -758,8 +769,10 @@ Before delivery, check every technical number, date, role, reference, and
 commercial disposition against its source. Confirm no Observed or Proposed
 value became Confirmed through condensation, prompt generation, or handoff.
 Check the class is evidenced, open decisions survive, and an exemplar has not
-been mistaken for completion of new work. Exercise the debug/contact/action cases
-in `references/debug-and-contacts.md`, plus comp-versus-inspected-reference labels
+been mistaken for completion of new work. Exercise the debug/action cases
+in `references/debug-and-contacts.md` (the contact-directory cases are
+outsource-intake's; the brief carries only the logistics pointer), plus
+comp-versus-inspected-reference labels
 from `references/curated-comparisons.md`; retain outputs for independent review.
 
 For regression testing, run sparse, exploratory, and production-batch requests
@@ -767,10 +780,20 @@ through both skills; retain actual outputs and check labels at the checkpoint
 and final output. Also test partial confirmation, inaccessible references,
 and mixed-class handoffs. Structural checks alone do not prove model behavior.
 Condensation-specific regressions to check: Proposed requirements appearing
-unlabeled in Output Block 2; assistant-authored exclusions stated as agreed
-in Scope Boundaries; vendor replies answering undecided scope questions;
+unlabeled in Output Block 2; any Scope Boundaries / Contact Directory /
+Process / Milestones content composed into a brief (these belong to intake —
+only the logistics pointer may appear); vendor replies answering undecided
+scope questions;
 authority rulings expanded into new bans. Found via headless multi-case runs
 (scratch/headless-rig/ in the skills repo).
+
+**v2.8** — role-boundary split: this skill is the style-authority record (the
+art bible); outsource-intake is the delivery-authority record. Scope
+Boundaries & Change Policy, Contact Directory, Process, and Delivery &
+Milestones moved out of brief composition (owned by intake; open pointer +
+`brief_ref` contract instead). Interview frontier scoped to creative
+decisions only; Process half of Step 1E removed; Mode B change-order
+classification retained with commercial disposition deferred to intake.
 
 **v2.7** — source-linked atoms before checkpoint and assembly; shared compact
 source register; semantic source-to-clause comparison; reviewer/approver split;

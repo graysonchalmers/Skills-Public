@@ -4,6 +4,17 @@ This reference defines the normal multi-turn interview contract for Art-Brief.
 It adapts the decision-tree frontier pattern without importing relentless tone or
 unlimited questioning.
 
+## Frontier domain — creative decisions only (v2.8)
+
+Art-Brief's frontier contains **creative decisions**: interpretation class,
+asset intent, visual language, reference roles and conflicts, stylization
+floors, mood, technical-art spec, and creative priority weights. It never
+contains delivery-authority decisions — reviewer/approver names, review
+channels or turnaround, contacts, milestones, payment, scope/change policy.
+Those belong to outsource-intake (`brief_ref` contract in SKILL.md). If the
+user volunteers such facts, register them with provenance and pass them
+through; do not spend frontier questions on them.
+
 ## Round contract
 
 1. **Register first.** Extract every supplied fact, exact qualifier, source span,

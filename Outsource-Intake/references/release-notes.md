@@ -1,8 +1,12 @@
-# Release notes — Outsource-Intake v1.5
+# Release notes — Outsource-Intake v1.6
 
 ## What changed
 
-**Source-linked rendering contract.** The intake now loads a compact source/decision register before the first extraction summary, recap, or sheet assembly. Every condensed claim renders from a register atom with an inline ID and source key. This prevents the provenance drift, reviewer-to-approver inference, and missing-to-nonexistent upgrades that the v1.4 run4 sweep found.
+**Role-boundary split: art bible vs. production.** Outsource-Intake is the delivery-authority record — scope/change policy, contacts, review process, commercial terms, milestones. Art-Brief is the style-authority record (the art bible). The only coupling point is `brief_ref`: when an art-brief document exists for the ask, intake cites it, reuses its decisions with provenance, and never re-derives, re-interviews, or silently overrides them. "No brief on file" is a visible gap with a handoff offer, not an invitation to improvise art direction.
+
+**Brief of record in the sheet.** The recap and full Asset Request Sheet gain an "Art brief of record" line (`brief_ref` + version/date, or Unresolved). Conflicts against the brief route back to its register instead of resolving in the sheet.
+
+**Source-linked rendering contract.** The intake loads a compact source/decision register before the first extraction summary, recap, or sheet assembly. Every condensed claim renders from a register atom with an inline ID and source key.
 
 **Separate reviewer and approver.** A named reviewer does not establish procedural approval authority. Style authority is recorded separately from the approval owner, even when the same person holds both. File drop destination is not a feedback channel.
 

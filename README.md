@@ -22,7 +22,7 @@ claude plugin install art-brief@skills-public
 
 | Skill | Preview | Mission |
 |---|---|---|
-| **[Art-Brief](#art-brief)** | <a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="120" alt="Art-Brief preview"></a> | Composes vendor-ready art briefs from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches. |
+| **[Art-Brief](#art-brief)** | <a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="120" alt="Art-Brief preview"></a> | Composes the art bible for a creative asset — project context, visual language, technical spec, artistic references, priority-weighted requirements, and explicit avoids — from any... |
 | **[Image-Decomp](#image-decomp)** | <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="120" alt="Image-Decomp preview"></a> | Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). |
 | **[Outsource-Intake](#outsource-intake)** | <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="120" alt="Outsource-Intake preview"></a> | Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" lo... |
 
@@ -32,13 +32,23 @@ claude plugin install art-brief@skills-public
 
 <img src="Art-Brief/references/example-output.webp" height="360" alt="Art-Brief example output">
 
-Composes vendor-ready art briefs from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches. Use whenever a user wants to create, write, or generate an art brief, style guide, asset spec, outsource brief, or art direction document for any creative asset — game art, film, industrial design, illustration, concept art, props, characters, environments, creatures, marketing assets, or physical fabrication. Triggers on: "write me a brief for...", "I need to brief a vendor on...", "help me spec out this asset", "how do I describe this art style to an artist", "I have this idea and need to get it on paper", or "turn this concept into something I can send to a studio." Core purpose: compress a creator's mental vision into the highest-fidelity written specification possible, minimizing lossy transfer between minds. Also handles brief iteration — updating an existing brief based on vendor questions, stakeholder feedback, or evolved creative direction.
+Composes the art bible for a creative asset — project context, visual language, technical spec, artistic references, priority-weighted requirements, and explicit avoids — from any inputs: text descriptions, reference images, project context, IP references, asset lists, or rough sketches. Use whenever a user wants to create, write, or generate an art brief, style guide, asset spec, or art direction document for any creative asset — game art, film, industrial design, illustration, concept art, props, characters, environments, creatures, marketing assets, or physical fabrication. Triggers on: "write me a brief for...", "I need to brief a vendor on...", "help me spec out this asset", "how do I describe this art style to an artist", "I have this idea and need to get it on paper", or "turn this concept into something I can send to a studio." Core purpose: compress a creator's mental vision into the highest-fidelity written specification possible, minimizing lossy transfer between minds. Also handles brief iteration — updating an existing brief based on vendor questions, stakeholder feedback, or evolved creative direction. Scope boundary: this is the style-authority record. Production logistics — scope/change policy, contacts, review process, payment, milestones — are the delivery-authority record owned by **outsource-intake**, which consumes this brief by reference (`brief_ref`). This skill interviews only for creative alignment; outsource-intake interviews only for logistics.
 
-#### Release notes — Art-Brief v2.7 / Outsource-Intake v1.5
+#### Release notes — Art-Brief v2.8 / Outsource-Intake v1.6
 
 ##### What changed
 
-**Source-linked rendering contract.** Both skills now load a compact source/decision register before any checkpoint, recap, or assembly. Every condensed claim renders from a register atom with an inline ID and source key — not from a freehand summary of another output block. This prevents the provenance drift, authority overreach, and invented promises that the v2.6/v1.4 run4 sweep found.
+**Role-boundary split: art bible vs. production.** Art-Brief is now the style-authority record — the art bible. Outsource-Intake is the delivery-authority record — scope/change policy, contacts, review process, commercial terms, milestones. The only coupling point is `brief_ref`: an intake packet consumes a brief by reference and never re-derives its art decisions; a brief that will drive a vendor engagement carries an open pointer (`brief_ref [ID] / Unresolved — no intake on file`) instead of logistics blocks.
+
+**Logistics blocks left the brief.** Scope Boundaries & Change Policy, Contact Directory, Process, and Delivery & Milestones are no longer composed in an Art-Brief output. The Vendor Brief now carries a one-line logistics pointer; style avoids stay strictly stylistic, with work-scope rulings routed to intake.
+
+**Creative-only interview.** Art-Brief's adaptive frontier questions resolve creative ambiguity only — reference conflicts, stylization floors, mood, interpretation latitude. It never interviews for reviewer names, channels, dates, payment, or change-order terms; volunteered facts are registered and passed through to intake.
+
+**Change-order disposition deferred.** Art-Brief Mode B still classifies an edit (clarification / correction / included revision / new scope) but routes the commercial disposition to the intake packet's change-order rule instead of deciding it.
+
+**Consuming a brief by reference (Outsource-Intake v1.6).** When an art-brief document exists, intake cites it as `brief_ref`, copies its decisions with provenance, never re-interviews them, flags "no brief on file" as a visible gap with a handoff offer, and routes conflicts against the brief back to its register instead of resolving them in the sheet.
+
+**Source-linked rendering contract.** Both skills load a compact source/decision register before any checkpoint, recap, or assembly. Every condensed claim renders from a register atom with an inline ID and source key — not from a freehand summary of another output block.
 
 **Separate reviewer and approver roles.** A named reviewer no longer populates procedural approval ownership. Style authority is scoped to the dimensions it actually rules; a proportions ruling does not ban rendering styles or require new sign-off gates.
 
@@ -60,7 +70,7 @@ Composes vendor-ready art briefs from any inputs: text descriptions, reference i
 
 **Examples:**
 
-<img src="Art-Brief/examples/01-prop-duskfall-greatsword.webp" height="160" alt="Art-Brief example 01-prop-duskfall-greatsword"> <img src="Art-Brief/examples/02-character-lantern-warden.webp" height="160" alt="Art-Brief example 02-character-lantern-warden"> <img src="Art-Brief/examples/03-physical-tide-chart-table.webp" height="160" alt="Art-Brief example 03-physical-tide-chart-table">
+<img src="Art-Brief/examples/01-prop-duskfall-greatsword.webp" height="160" alt="Art-Brief example 01-prop-duskfall-greatsword"> <img src="Art-Brief/examples/02-character-lantern-warden.webp" height="160" alt="Art-Brief example 02-character-lantern-warden"> <img src="Art-Brief/examples/03-physical-tide-chart-table.webp" height="160" alt="Art-Brief example 03-physical-tide-chart-table"> <img src="Art-Brief/examples/04-frontier-interview-lantern.webp" height="160" alt="Art-Brief example 04-frontier-interview-lantern">
 
 <details>
 <summary>Read the full write-up — 01-prop-duskfall-greatsword</summary>
@@ -667,6 +677,102 @@ digital scale for resin mixing ratios.
 
 </details>
 
+<details>
+<summary>Read the full write-up — 04-frontier-interview-lantern</summary>
+
+# Example 4 — FRONTIER INTERVIEW (multi-turn Q&A → brief), hero prop
+
+**Synthetic user input (turn 1):**
+
+> Write an art brief for an Example Lantern character prop for Example
+> Game. It is a warm, stylized lantern; nothing else is decided.
+
+---
+
+## Round 1 — registered, then 4 frontier questions
+
+**Register:** `D1` Example Lantern, warm/stylized — **Confirmed** · `D2`
+"nothing else is decided" is itself a captured fact — **Confirmed** · `D3`
+PROP vs figurine — **Proposed** · everything else **Unresolved**.
+
+**Q1. What is the asset, physically/functionally?** Carried in-game prop, or
+physical figurine? *(Recommendation: in-game carried prop — changes the
+schema and every downstream question.)*
+**Q2. How much interpretation should the partner carry?** Self-governing,
+Brief-driven, or Volume-with-QA? *(Recommendation: Brief-driven — with only
+"warm, stylized" decided, a fixed-target brief is the safest default.)*
+**Q3. What does "stylized" anchor to here?** Chunky rounded vs. hand-painted
+flat vs. clean geometric — and is "warm" palette, lighting read, or both?
+*(Highest-leverage ambiguity: sets silhouette, shading, and palette at once.)*
+**Q4. Any references in mind?** *(If none: 2–3 Proposed comparisons at the
+checkpoint.)*
+
+> **A1 (user):** It is a hero prop for a new external vendor; the vendor
+> should carry some interpretation within the stated warm stylized direction.
+
+## Round 2 — frontier recomputed
+
+**Q5. Style authority vs. approval owner, and deliverables?**
+*(Register roles separately; never infer a technical budget from the
+deliverable list.)*
+
+> **A2 (user):** Example Art Lead is the style authority and Example
+> Producer is the procedural approval owner. Deliver PNG concept sheets and
+> a source PSD; no technical budget is decided.
+
+## Round 3 — gaps are non-blocking
+
+> **A3 (user):** Please draft with the remaining technical and schedule
+> gaps visible; do not invent them.
+
+---
+
+## OUTPUT BLOCK 1 — 📄 Art Direction Document (excerpt)
+
+### 🎯 Project Context
+- **Project:** Example Game — carried hero prop (settled in round 2)
+- **Confirmed bar:** warm, stylized lantern — nothing beyond it is promoted
+- **Class:** Brief-driven with bounded latitude *(Proposed mapping)*
+
+### 🔴🟡🟢 Priority-Weighted Requirements
+- 🔴 **Critical** — The lantern must read as a carried, functional light
+  source at gameplay distance; silhouette and glow readable in one look.
+- 🟡 **Important** — Warm, stylized stays the confirmed bar; everything
+  past it is Proposed until the style authority accepts it.
+- 🟢 **Nice-to-have** — A distinctive silhouette feature worth naming in
+  vendor conversations.
+
+### ⛔ Explicit Avoids
+- No sourced stylistic avoids supplied — none invented; the avoids block
+  stays Unresolved/Proposed.
+
+### Open Decisions (visible, not filled)
+Stylization anchor, genre/setting/mood beyond "warm stylized," technical
+budget, schedule/milestones — all **Unresolved**, owners unknown where not
+supplied.
+
+### 🚧 Logistics pointer
+`Logistics: owned by outsource-intake (brief_ref: Unresolved — no intake on
+file).` Scope/change policy, contacts, review process, and milestones are
+composed in the intake packet, not in the brief.
+
+---
+
+## What this example demonstrates
+
+- **Adaptive multi-turn interview:** questions come from the current
+  decision frontier only — 4 in round 1 (sparse input), fewer thereafter,
+  stop when gaps are non-blocking or draft permission is explicit.
+- **Creative-only frontier:** no reviewer/channel/date/payment questions —
+  roles volunteered by the user are registered and passed through to
+  outsource-intake.
+- **Role-boundary split (v2.8):** the brief is the style-authority record;
+  logistics blocks render as an open pointer, never as invented terms.
+- **Nothing promoted:** a general "draft it" authorizes drafting, not
+  blanket promotion of every assumption.
+
+</details>
+
 ### Image-Decomp
 
 <img src="Image-Decomp/references/example-output.webp" height="360" alt="Image-Decomp example output">
@@ -1212,13 +1318,17 @@ not disguised as anything else.
 
 <img src="Outsource-Intake/references/example-output.webp" height="360" alt="Outsource-Intake example output">
 
-Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" looks like per phase, reviewers, deadlines, and file paths. Produces an Asset Request Sheet ready to hand to a vendor, preventing rework from vague scope or an undefined quality bar. Use whenever someone brings the user an asset ask that needs to become a trackable request. Triggers on: "someone just asked me for an asset," "help me scope this ask," "walk me through this asset request," or a pasted Slack/email message asking for art, 3D, animation, VFX, UI, or fabrication work. Not for pure visual/style direction alone — use art-brief for that. This covers scope, phases, sign-off, timeline, and files, with lightweight style capture built in and an optional handoff to art-brief for full visual direction.
+Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" looks like per phase, reviewers, deadlines, and file paths. Produces an Asset Request Sheet ready to hand to a vendor, preventing rework from vague scope or an undefined quality bar. This is the delivery-authority record; it consumes an art-brief document by reference (`brief_ref`) rather than re-deriving art decisions. Use whenever someone brings the user an asset ask that needs to become a trackable request. Triggers on: "someone just asked me for an asset," "help me scope this ask," "walk me through this asset request," or a pasted Slack/email message asking for art, 3D, animation, VFX, UI, or fabrication work. Not for pure visual/style direction alone — use art-brief for that. This covers scope, phases, sign-off, timeline, and files, with lightweight style capture built in and an optional handoff to art-brief for full visual direction.
 
-#### Release notes — Outsource-Intake v1.5
+#### Release notes — Outsource-Intake v1.6
 
 ##### What changed
 
-**Source-linked rendering contract.** The intake now loads a compact source/decision register before the first extraction summary, recap, or sheet assembly. Every condensed claim renders from a register atom with an inline ID and source key. This prevents the provenance drift, reviewer-to-approver inference, and missing-to-nonexistent upgrades that the v1.4 run4 sweep found.
+**Role-boundary split: art bible vs. production.** Outsource-Intake is the delivery-authority record — scope/change policy, contacts, review process, commercial terms, milestones. Art-Brief is the style-authority record (the art bible). The only coupling point is `brief_ref`: when an art-brief document exists for the ask, intake cites it, reuses its decisions with provenance, and never re-derives, re-interviews, or silently overrides them. "No brief on file" is a visible gap with a handoff offer, not an invitation to improvise art direction.
+
+**Brief of record in the sheet.** The recap and full Asset Request Sheet gain an "Art brief of record" line (`brief_ref` + version/date, or Unresolved). Conflicts against the brief route back to its register instead of resolving in the sheet.
+
+**Source-linked rendering contract.** The intake loads a compact source/decision register before the first extraction summary, recap, or sheet assembly. Every condensed claim renders from a register atom with an inline ID and source key.
 
 **Separate reviewer and approver.** A named reviewer does not establish procedural approval authority. Style authority is recorded separately from the approval owner, even when the same person holds both. File drop destination is not a feedback channel.
 

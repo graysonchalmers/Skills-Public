@@ -44,9 +44,13 @@ to send/track it need a separate normal-mode request and normal approval checks,
 replacement of synthetic fields, and fresh readiness assessment. Debug is not
 sticky: do not carry its gate override or synthetic values into the next request.
 
-## Contact directory — normal and debug outputs
+## Contact directory — owned by outsource-intake (v2.8)
 
-Read this section when building any brief/request sheet. Capture both sides:
+The six-role contact directory is a delivery-authority record composed in the
+**outsource-intake Asset Request Sheet**, not in an Art-Brief brief. Keep this
+schema only for passing a user-supplied directory through to the intake
+packet, or for debug previews when explicitly requested — never compose it
+into a brief. Capture both sides:
 **client/internal** and **partner**, with three roles on each side: **producer**,
 **outsource manager**, and **art lead**. Reuse provided data; do not stop intake for
 vendor names or missing contacts. Unknowns get tokens with Unresolved status and

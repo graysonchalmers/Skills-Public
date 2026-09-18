@@ -1,6 +1,6 @@
 ---
 name: outsource-intake
-version: 1.5
+version: 1.6
 visibility: public
 description: >
   Runs a structured intake when someone requests an art/production asset
@@ -8,7 +8,8 @@ description: >
   materials, delivery phases, what "good" looks like per phase, reviewers,
   deadlines, and file paths. Produces an Asset Request Sheet ready to hand
   to a vendor, preventing rework from vague scope or an undefined quality
-  bar.
+  bar. This is the delivery-authority record; it consumes an art-brief
+  document by reference (`brief_ref`) rather than re-deriving art decisions.
 
   Use whenever someone brings the user an asset ask that needs to become a
   trackable request. Triggers on: "someone just asked me for an asset,"
@@ -22,7 +23,7 @@ description: >
   visual direction.
 ---
 
-# Outsource / Asset Request Intake v1.5
+# Outsource / Asset Request Intake v1.6
 
 ![Example output: a vague "12 props" ask turned into a vendor-ready Asset Request Sheet with phased delivery gates, per-phase acceptance, and flagged risks](references/example-output.webp)
 
@@ -78,11 +79,52 @@ draft with gaps. Gaps remain visible and proposals remain Proposed.
 This is request-scoped. Explicit debug mode is immediate and asks no questions,
 does not wait at confirmation gates, and uses **DEBUG PREVIEW—NOT FOR SENDING**
 per `references/debug-and-contacts.md`. Normal multi-turn runs retain the frontier,
-question, answer-source, and register-evolution trace, and the final sheet renders
+question, answer-source, and register-evolution trace — **and include the trace
+block itself (rounds with `frontier_before` / `frontier_after`, per
+`references/frontier-interview.md`) in the assembled sheet**, not only in harness
+evidence; the final sheet renders
 from the latest register plus one shared source key/register appendix. The mini
 route remains a separate route: its core is **at most 250 words** and the entire
 intake asks **at most five total questions**, including recap/reply questions; do
 not hide operational prose or extra questions in appendices.
+
+## Role boundary — the two records (v1.6)
+
+This skill produces the **delivery-authority record**: scope/change policy,
+contact directory, review process, commercial terms, phases, and milestones.
+**Art-brief** produces the **style-authority record** (the art bible): visual
+language, references, priority-weighted requirements, explicit avoids. The
+only coupling point is `brief_ref`.
+
+### Consuming an art brief (`brief_ref`)
+
+When an art-brief document exists for the ask (supplied directly, or named by
+the requester), register it as the **brief of record** and cite it in the
+sheet's `brief_ref` field:
+
+- **Reuse, don't re-derive.** The brief's priority-weighted requirements,
+  borrow/avoid decisions, style authority, interpretation class, and
+  reference IDs are captured decisions with provenance — copy them into the
+  sheet by reference (cite the brief's version/date and register appendix),
+  never re-interview or re-interpret them here. This skill's lightweight
+  Style Capture covers only asks with *no* brief of record.
+- **The brief's open decisions stay the brief's.** A Proposed palette or an
+  Unresolved visual decision in the brief does not become Confirmed by
+  appearing in the sheet; cite it with its label and route resolutions back
+  through the brief (or the handoff below), not through intake questions.
+- **No brief on file is a visible gap, not a blocker.** When the ask needs
+  full visual direction and none exists, record `brief_ref: Unresolved — no
+  brief on file`, keep the quality bar flagged, and offer the handoff to
+  art-brief (Step 3) rather than improvising art decisions here.
+- **Conflicts route, never resolve here.** If a supplied intake fact
+  contradicts the brief (e.g. a milestone the brief's avoids conflict with,
+  or a spec the brief leaves Unresolved), flag the conflict against the
+  brief's register IDs and mark it Unresolved with next action + owner.
+  Do not silently override the style record from the delivery record.
+
+This skill never composes the brief's blocks (visual language, avoids,
+generation prompts), and art-brief never composes this sheet's blocks
+(scope/change policy, contacts, process, commercial terms, milestones).
 
 ## Input Modes — detect automatically, don't ask which mode to use
 
@@ -420,6 +462,7 @@ it as a full Stage recap or wait solely to issue the same mini-sheet again.
 📋 QUICK RECAP — confirm before I assemble the full draft:
 
 Scope: [type, count, unit, workstream/current phase]
+Art brief of record: [brief_ref + version/date, or Unresolved — no brief on file]
 Criticality / Partner context: [level / supplied partner or unknown; relevant flags]
 Engagement class: [exact class per workstream — provenance + source]
 A — Quote: [quality artifact + starting approval, technical spec, style authority]
@@ -499,6 +542,8 @@ Do not declare Ready from a likely budget, available artist or fixture approval.
 **Assessment scope:** [workstream + current phase/batch boundaries]
 
 ## Scope & Engagement
+- Art brief of record: [brief_ref: document + version/date, or "Unresolved —
+  no brief on file"; conflicts against it flagged, not resolved here]
 - Asset type(s), quantity, what counts as one, inclusions/exclusions:
 - Shared-style batch or distinct assets:
 - Criticality: [hero/critical-path / standard / background]
@@ -620,6 +665,14 @@ somewhere is a follow-up action, not an assumption.
 
 ## Version Notes & Verification
 
+**v1.6** — role-boundary split: this skill is the delivery-authority record;
+art-brief is the style-authority record. New `brief_ref` consumption: an
+existing art brief is cited and reused by reference (never re-derived,
+re-interviewed, or silently overridden); "no brief on file" is a visible gap
+with a handoff offer, and conflicts against the brief route to its register
+instead of resolving here. Recap and full sheet gain an "Art brief of record"
+line.
+
 **v1.5** — source-linked register before recap and assembly; semantic clause
 comparison; missing evidence no longer rendered as nonexistence; distinct
 reviewer/approver roles; optional evidenced gates; separate 250-word mini route
@@ -681,10 +734,13 @@ suggestion-only.
 
 ## Companion Skills
 
-- **art-brief** — full vendor-brief-grade visual direction document (IP
-  extraction, priority-weighted requirements, scope boundaries, generation
-  prompts). Offer as a handoff for complex or high-stakes asks; don't
-  invoke by default.
+- **art-brief** — the style-authority record (the art bible: visual language,
+  IP extraction, priority-weighted requirements, explicit avoids, generation
+  prompts). This skill is the delivery-authority record; when an art-brief
+  document exists for the ask, cite it as `brief_ref` and reuse its decisions
+  by reference (see "Role boundary" above) — never re-derive or re-interview
+  them. Offer the handoff for complex or high-stakes asks with no brief on
+  file; don't invoke by default.
 - **image-decomp** — if reference images need deeper structured analysis
   than the lightweight Style Capture in Step 3 provides, this can feed richer
   input into that step.
