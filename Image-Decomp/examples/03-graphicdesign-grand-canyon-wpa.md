@@ -37,6 +37,24 @@ to depict a specific real moment)
 > seal brand it unmistakably as New Deal public messaging rather than fine
 > art.
 
+## 🏷️ Parts & Vocabulary
+
+**Parts map** *(Observed)*
+- **Canyon mass** — the stepped rock walls filling the middle of the frame `[0.5, 0.55]`
+  - **Strata bands** — horizontal layers, each one flat spot color
+  - **Buttes / terraces** — the stepped, faceted rock towers
+- **Sky field** — flat graded-looking sky built from a few hard color bands
+- **Masthead** — the large place-name display type; the hook
+- **Kicker** — the smaller "A FREE GOVERNMENT SERVICE" line that frames the message
+- **Seal** — the agency bison emblem; the brand mark
+- **Border** — the plain frame around the image that holds the type panel
+
+**Vocabulary candidates** *(Proposed)*
+- **spot color** — means: a few separate flat inks, one per layer / not this: full-color photo printing
+- **color separation** — means: hard edges where one ink stops and the next starts / not this: blended or airbrushed edges
+- **geometric stepped** — means: rock reduced to clean angular terraces (Art Deco feel) / not this: realistic eroded rock texture
+- **didactic branding** — means: the type and seal say "public service" outright / not this: a pure art print with no message
+
 ## Technical Summary
 
 A silkscreen poster built from a narrow palette of dusty pink, mauve,

@@ -1,6 +1,20 @@
-# Release notes — Art-Brief v2.8 / Outsource-Intake v1.6
+# Release notes — Art-Brief v2.9
 
-## What changed
+## v2.9 — style save sidecar and Terms glossary
+
+**Style save sidecar.** Art-Brief can now emit `<subject>.style.json` next to its three output blocks: when the brief is written to disk, when asked, or when a save was supplied (then it updates it). One register, rendered twice: `decisions[]` mirror the visible D-atoms with the same IDs, `sources[]` the S-key, `lexicon[]` the glossary's L-ids. Contract: vendored `style-save.md` + `style-save.schema.json`; mapping: new `style-save-mapping.md`.
+
+**Terms we use.** The Art Direction Document carries a glossary of the project's vocabulary (term — what it means here — not this — status), rendered from L-id atoms, plus parts nomenclature when the asset has named parts.
+
+**Vocabulary forks in the frontier.** A loaded style word ("premium", "gritty") is a candidate consequential question when its readings change the output: asked as a did-you-mean fork with 2–3 named readings, inside the existing 2–4-per-round limit. The pick comes only from the user's quoted reply and is recorded as a lexicon atom.
+
+**Mode B ingests a save first.** Keeps its IDs and statuses, doesn't re-ask what it records, bumps `meta.revision`, appends `art-brief@2.9` to `producedBy`, sets `briefRef`.
+
+**image-decomp v3.2 mapping.** Companion table adds `pitchLines` (thesis/pitch), `parts` + `lexicon` (glossary, Observed/Proposed until confirmed), `elementUtility` + `compositionGeometry` (composition/focal), `intent` (descriptive viewer effect, not a requirement unless confirmed).
+
+**Verification covers the sidecar.** No Observed/Proposed value becomes Confirmed in the save through condensation, handoff, or copying; fork picks quote the user's own reply. Companions (Vector-Translator, ref-validator/ref-synthesizer, constraint-shaper) may fill save sections if installed; none is required. Example renders are unchanged from v2.8.
+
+## v2.8 (with Outsource-Intake v1.6) — what changed
 
 **Role-boundary split: art bible vs. production.** Art-Brief is now the style-authority record — the art bible. Outsource-Intake is the delivery-authority record — scope/change policy, contacts, review process, commercial terms, milestones. The only coupling point is `brief_ref`: an intake packet consumes a brief by reference and never re-derives its art decisions; a brief that will drive a vendor engagement carries an open pointer (`brief_ref [ID] / Unresolved — no intake on file`) instead of logistics blocks.
 
@@ -31,3 +45,50 @@
 ## Behavioral evidence
 
 11/11 synthetic cases passed independent review against the specific failures from the prior run. See `scratch/art-intake-release/run5-REVIEW.md` for the per-case evidence table. This is one synthetic run per case, not a measured reliability rate.
+
+## Earlier versions
+
+**v2.7** — source-linked atoms before checkpoint and assembly; shared compact
+source register; semantic source-to-clause comparison; reviewer/approver split;
+optional evidenced priorities/gates; missing evidence distinguished from absence;
+creative proposals and annotated prompts retained without approval promotion.
+
+**v2.6** — explicit request-scoped debug artifacts with placeholders; six-role
+contact appendix; evidence-backed curated comparisons and optional pitches;
+action-state/hedge preservation; sourced numeric reasons; recipient proposals
+without promises; inclusion and commercial disposition kept separate.
+
+**v2.5** — condensation-layer fixes from headless-rig findings: per-bullet
+provenance in Output Block 2; scope exclusions require a source (no invented
+boundaries); authority rulings bounded to the contested dimension; labels
+survive section moves (no laundering); sendable-message contract for
+recipient-ready replies; Mode B: absent from the prior brief is Unresolved,
+never out of scope.
+
+**v2.4** — adds interpretation classes, four decision labels, class-aware
+questioning/reference coverage, and provenance-preserving outputs/handoffs.
+Relevant missing schema values remain visible. Commercial disposition follows
+the agreed change boundary rather than being invented by the assistant.
+Grounding: GRIP Field Journal, Rates & Tiers (engagement classes), Buyer
+Readiness (explicit decisions), and The Brief (annotated targets). These are
+procedural adaptations, not rate guidance or automatic approval. Example cards were regenerated against the v2.8 role-boundary layout
+(logistics pointer, no scope/process blocks); they illustrate layout and
+honest labels, not the full v2.7 source-register contract. Living-brief/rejection tracing is deferred.
+
+## Maintainer regression checks
+
+Exercise the debug/action cases in `references/debug-and-contacts.md` (the
+contact-directory cases are outsource-intake's; the brief carries only the
+logistics pointer), plus comp-versus-inspected-reference labels from
+`references/curated-comparisons.md`; retain outputs for independent review.
+
+For regression testing, run sparse, exploratory, and production-batch requests
+through both skills; retain actual outputs and check labels at the checkpoint
+and final output. Also test partial confirmation, inaccessible references,
+and mixed-class handoffs. Structural checks alone do not prove model behavior.
+Condensation-specific regressions to check: Proposed requirements appearing
+unlabeled in Output Block 2; any Scope Boundaries / Contact Directory /
+Process / Milestones content composed into a brief (these belong to intake —
+only the logistics pointer may appear); vendor replies answering undecided
+scope questions; authority rulings expanded into new bans. Found via headless
+multi-case runs (scratch/headless-rig/ in the skills repo).

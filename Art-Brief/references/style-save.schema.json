@@ -1,0 +1,663 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "style-save/1.0",
+  "title": "Style Save",
+  "description": "Machine-readable sidecar for an art-direction alignment: shared vocabulary, part names, directional axes, refs, constraints, decisions, and the fork-and-pick history. Twin of the human brief/report; same S/D IDs as its visible register. Source of truth: Skills-Private shared/style-save/ (vendored into each member skill's references/).",
+  "type": "object",
+  "required": [
+    "schema",
+    "meta"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "style-save/1.0"
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "subject",
+        "updated",
+        "producedBy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "What this save describes: an asset, a style, a brand mark."
+        },
+        "project": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Bumped on every write. The human doc's own version goes in briefRef."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date"
+        },
+        "producedBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "skill@version entries that wrote to this file, in order; not repeated when the same skill@version writes again consecutively."
+        },
+        "humanDoc": {
+          "type": "string",
+          "description": "Path/name of the human-readable twin (brief or report)."
+        },
+        "briefRef": {
+          "type": "string",
+          "description": "Art-Brief version/date this save mirrors, when one exists."
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "ref"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^S[0-9]+$"
+          },
+          "kind": {
+            "enum": [
+              "image",
+              "render",
+              "code",
+              "text",
+              "brief",
+              "decomp",
+              "conversation",
+              "other"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "description": "File path (with :line for code/docs), URL, message pointer, or brief version. For a render: what was captured (route, breakpoint, state) and where it was saved."
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "lexicon": {
+      "type": "array",
+      "description": "The shared vocabulary (ubiquitous language). Each term defined once; parts/axes/forks point here by id.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "term",
+          "kind",
+          "means",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^L[0-9]+$"
+          },
+          "term": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "part",
+              "style",
+              "quality",
+              "motif",
+              "technique"
+            ],
+            "description": "part = a named component (laurels, pauldron); style/quality = how something looks or feels (chunky, premium); motif = recurring shape/symbol; technique = how it is made."
+          },
+          "means": {
+            "type": "string",
+            "description": "What the term means HERE, in this project's usage, in observable terms."
+          },
+          "gloss": {
+            "type": "string",
+            "description": "Plain-language explanation for someone who didn't know the word."
+          },
+          "synonyms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notThis": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Nearby readings this term excludes. Required for every kind except part; it is the half that disambiguates."
+          },
+          "anchors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/anchor"
+            }
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "sourceSpan": {
+            "type": "string",
+            "description": "Sn + exact quote, located image observation, or 'assistant proposal; based on ...'."
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "style",
+                    "quality",
+                    "motif",
+                    "technique"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "notThis"
+              ],
+              "properties": {
+                "notThis": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "parts": {
+      "type": "array",
+      "description": "Nomenclature map of the subject: its named components, as a tree.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^P[0-9]+$"
+          },
+          "name": {
+            "type": "string",
+            "description": "Domain term for the part (laurels, cartouche, rim light)."
+          },
+          "lexiconId": {
+            "type": "string",
+            "pattern": "^L[0-9]+$"
+          },
+          "parent": {
+            "type": "string",
+            "pattern": "^P[0-9]+$"
+          },
+          "role": {
+            "enum": [
+              "PROTAGONIST",
+              "SUPPORTING",
+              "PROP_FUNCTIONAL",
+              "STATUS_MARKER",
+              "ATMOSPHERE",
+              "STYLE_MARKER",
+              "TRUST_CUE"
+            ],
+            "description": "Image-Decomp element-utility role, when known."
+          },
+          "anchor": {
+            "$ref": "#/$defs/anchor"
+          },
+          "note": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          }
+        }
+      }
+    },
+    "axes": {
+      "type": "array",
+      "description": "Named directions in style space. Positions are 0..1 from low pole to high pole.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "low",
+          "high",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^A[0-9]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "low": {
+            "type": "string",
+            "description": "What the 0 pole looks like, observably."
+          },
+          "high": {
+            "type": "string",
+            "description": "What the 1 pole looks like, observably."
+          },
+          "current": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "target": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "tolerance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Acceptable distance from target; the future QA rubric reads this."
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "description": "Key colors and their jobs.",
+      "items": {
+        "type": "object",
+        "required": [
+          "hex",
+          "role",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "hex": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "role": {
+            "type": "string",
+            "description": "key light, shadow, accent, brand, skin..."
+          },
+          "lexiconId": {
+            "type": "string",
+            "pattern": "^L[0-9]+$"
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^S[0-9]+$",
+            "description": "Where the hex came from (pixel-sampled image/render vs. a code token)."
+          }
+        }
+      }
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source",
+          "use",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R[0-9]+$"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^S[0-9]+$"
+          },
+          "use": {
+            "enum": [
+              "borrow",
+              "avoid",
+              "target"
+            ]
+          },
+          "dimension": {
+            "type": "string",
+            "description": "What exactly is borrowed or avoided (palette, silhouette, camera)."
+          },
+          "why": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "ref-validator fit score, when scored."
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "value",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^C[0-9]+$"
+          },
+          "kind": {
+            "enum": [
+              "budget",
+              "timeline",
+              "engine",
+              "team",
+              "fidelity",
+              "technical",
+              "brand",
+              "other"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string",
+            "description": "What this forces or rules out in the direction."
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "description": "Mirror of the human doc's visible register (Art-Brief D-atoms). Same IDs, never renumbered.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^D[0-9]+$"
+          },
+          "value": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/$defs/status"
+          },
+          "sourceSpan": {
+            "type": "string"
+          },
+          "hedge": {
+            "type": "string",
+            "description": "Only qualifiers the source stated (probably, roughly, target). Assistant interpretation is a separate Proposed decision."
+          },
+          "scope": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "blocker",
+              "major",
+              "minor",
+              "gated"
+            ],
+            "description": "For review findings. gated = only matters when a named event happens (e.g. promotion resumes)."
+          }
+        }
+      }
+    },
+    "forks": {
+      "type": "array",
+      "description": "Did-you-mean history: a vague ask split into named readings, and what the user picked.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "ask",
+          "options"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F[0-9]+$"
+          },
+          "ask": {
+            "type": "string",
+            "description": "The user's words, verbatim."
+          },
+          "askSource": {
+            "type": "string",
+            "pattern": "^S[0-9]+$"
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "key",
+                "reading",
+                "change"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "reading": {
+                  "type": "string",
+                  "description": "Named interpretation of the ask."
+                },
+                "change": {
+                  "type": "string",
+                  "description": "The visible change this reading makes."
+                },
+                "axisDeltas": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "axis",
+                      "delta"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "axis": {
+                        "type": "string",
+                        "pattern": "^A[0-9]+$"
+                      },
+                      "delta": {
+                        "type": "number",
+                        "minimum": -1,
+                        "maximum": 1
+                      }
+                    }
+                  }
+                },
+                "prompt": {
+                  "type": "string"
+                },
+                "render": {
+                  "type": "string",
+                  "description": "Path to a rendered option image, if one was generated."
+                }
+              }
+            }
+          },
+          "picked": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Option key. Null until the user chooses; set only from the user's own reply."
+          },
+          "pickSpan": {
+            "type": "string",
+            "description": "Exact user reply that made the pick. Required when picked is set."
+          },
+          "lexiconAdded": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^L[0-9]+$"
+            }
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "originDecision": {
+            "type": "string",
+            "pattern": "^D[0-9]+$",
+            "description": "When the fork answers a review finding rather than a user ask: the finding's D-id. `ask` is then the finding's one-line problem and askSource may be omitted."
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "picked": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "picked"
+              ]
+            },
+            "then": {
+              "required": [
+                "pickSpan"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^G[0-9]+$"
+          },
+          "target": {
+            "type": "string",
+            "description": "midjourney, sdxl, flux, generic, ..."
+          },
+          "text": {
+            "type": "string"
+          },
+          "negative": {
+            "type": "string"
+          },
+          "derivedFrom": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "Confirmed",
+        "Observed",
+        "Proposed",
+        "Unresolved"
+      ],
+      "description": "Confirmed = the user said it, or a document the user authored records it (sourceSpan quotes it with file:line). Observed = seen in an inspected image/render, or read from a file or code. Proposed = assistant option. Unresolved = open. Image analysis never yields Confirmed; never promote a status by copying it."
+    },
+    "anchor": {
+      "type": "object",
+      "required": [
+        "source"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "pattern": "^S[0-9]+$"
+        },
+        "xy": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Normalized, visually estimated."
+        },
+        "region": {
+          "type": "string",
+          "description": "Words for where, when xy is too precise a claim."
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ contour lines filled with tinted resin to read as depth bands, walnut as
 the "land"
 ⚠️ **Delivery Format:** n/a (this is a personal build spec, not a vendor
 deliverable) — brief instead functions as the maker's own build reference
-⚠️ **Style Authority:** Grayson (self) — solo personal build, no second
+⚠️ **Style Authority:** The maker (self) — solo personal build, no second
 opinion in the loop
 
 🔴 **Priority Flags:** Structural load-bearing integrity is non-negotiable
