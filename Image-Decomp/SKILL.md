@@ -1,7 +1,7 @@
 ---
 name: image-decomp
 visibility: public
-description: "Analyze visual craft and art direction, including rendered-output and before/after reviews across projects. Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Analyze, decode, or reverse-engineer any image."
+description: "Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Also reviews rendered output and before/after comparisons. Analyze, decode, or reverse-engineer any image."
 metadata:
   version: "3.3"
 ---

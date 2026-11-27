@@ -27,7 +27,7 @@ claude plugin install art-brief@skills-public
 | Skill | Preview | Mission |
 |---|---|---|
 | **[Art-Brief](#art-brief)** | <a href="#art-brief"><img src="Art-Brief/references/example-output.webp" height="120" alt="Art-Brief preview"></a> | Composes the art bible for a creative asset — project context, visual language, technical spec, artistic references, priority-weighted requirements, and explicit avoids — from any... |
-| **[Image-Decomp](#image-decomp)** | <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="120" alt="Image-Decomp preview"></a> | Analyze visual craft and art direction, including rendered-output and before/after reviews across projects. |
+| **[Image-Decomp](#image-decomp)** | <a href="#image-decomp"><img src="Image-Decomp/references/example-output.webp" height="120" alt="Image-Decomp preview"></a> | Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). |
 | **[Outsource-Intake](#outsource-intake)** | <a href="#outsource-intake"><img src="Outsource-Intake/references/example-output.webp" height="120" alt="Outsource-Intake preview"></a> | Runs a structured intake when someone requests an art/production asset (or batch) from outsourcing or an internal team — scope, starting materials, delivery phases, what "good" lo... |
 
 ## Skills
@@ -793,7 +793,7 @@ composed in the intake packet, not in the brief.
 
 <img src="Image-Decomp/references/example-output.webp" height="360" alt="Image-Decomp example output">
 
-Analyze visual craft and art direction, including rendered-output and before/after reviews across projects. Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Analyze, decode, or reverse-engineer any image.
+Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Also reviews rendered output and before/after comparisons. Analyze, decode, or reverse-engineer any image.
 
 **Examples:**
 
