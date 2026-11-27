@@ -14,7 +14,7 @@
     {
       "name": "image-decomp",
       "source": "./Image-Decomp",
-      "description": "Analyze visual craft and art direction, including rendered-output and before/after reviews across projects."
+      "description": "Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap)."
     },
     {
       "name": "outsource-intake",
