@@ -1,6 +1,6 @@
 ---
 name: art-brief
-version: 2.8
+version: 2.9
 visibility: public
 description: >
   Composes the art bible for a creative asset — project context, visual
@@ -13,10 +13,9 @@ description: >
   props, characters, environments, creatures, marketing assets, or physical
   fabrication.
 
-  Triggers on: "write me a brief for...", "I need to brief a vendor on...",
-  "help me spec out this asset", "how do I describe this art style to an
-  artist", "I have this idea and need to get it on paper", or "turn this
-  concept into something I can send to a studio."
+  Also use when the user wants to put a visual idea into words for someone
+  else to build or generate — a vendor, studio, fabricator, internal artist,
+  or image model.
 
   Core purpose: compress a creator's mental vision into the highest-fidelity
   written specification possible, minimizing lossy transfer between minds.
@@ -30,7 +29,7 @@ description: >
   creative alignment; outsource-intake interviews only for logistics.
 ---
 
-# Art Brief Composition Skill v2.8
+# Art Brief Composition Skill v2.9
 
 ![Example output: a real environment brief — palette, priority-weighted requirements, and borrow/avoid references, compressed into a vendor-ready spec](references/example-output.webp)
 
@@ -112,6 +111,13 @@ stop at the checkpoint/assemble step once remaining gaps do not change the reque
 artifact, or when the user explicitly asks for a draft with gaps. Normal mode may
 produce a draft with visible Unresolved items; it must not promote proposals.
 
+**Vocabulary is a frontier item.** A vague or loaded style word in the input
+("premium", "gritty", "clean") is a candidate consequential question when its
+readings would change the output. Ask what it means *here* as a did-you-mean
+fork: 2–3 named readings, each with its visible change. It counts toward the
+same 2–4 per round; no separate questionnaire. Record the answer as a lexicon
+atom (L-id) with `notThis`; the pick comes only from the user's quoted reply.
+
 This contract is request-scoped. Explicit debug mode remains immediate: ask no
 questions, do not wait for confirmation, and label the result **DEBUG
 PREVIEW—NOT FOR SENDING** as required by `references/debug-and-contacts.md`.
@@ -144,7 +150,7 @@ Consequences, enforced everywhere below:
   them through to the intake packet; do not build interview rounds on them.
 - **Logistics blocks are not composed here.** Scope Boundaries & Change
   Policy, Contact Directory, Process, and Delivery & Milestones belong to
-  outsource-intake. Where a brief would previously have carried them, carry
+  outsource-intake. Where a vendor would expect them, carry
   an open pointer instead: `Logistics: owned by outsource-intake
   (brief_ref: [ID] / Unresolved — no intake on file)`. Never invent these to
   make the brief look complete.
@@ -152,6 +158,30 @@ Consequences, enforced everywhere below:
   bible is judged on creative coverage and decision provenance, not on
   whether commercial terms are settled. Do not hold the brief hostage to
   intake gaps, and do not fill intake gaps to ship the brief.
+
+## Style save sidecar — one register, rendered twice (v2.9)
+
+The brief has a machine-readable twin: `<subject>.style.json`, a **style save**
+(spec `references/style-save.md`, schema `references/style-save.schema.json`).
+It carries the lexicon, parts, axes, palette, refs, constraints, decisions and
+did-you-mean fork history so alignment survives across sessions and tools.
+
+- **When:** emit it alongside the three output blocks when the brief is written
+  to disk, when the user asks, or when a save was supplied (then update it).
+- **Same IDs:** `decisions[]` mirror the visible register's D-atoms, `sources[]`
+  its S-key, `lexicon[]` the Terms glossary's L-ids. Never renumber one side only.
+- **Supplied save = ingest first** (Mode A or B): reuse its terms, don't re-ask
+  what it records, keep its IDs and statuses, bump `meta.revision`, append
+  `art-brief@2.9` to `meta.producedBy`, set `meta.briefRef` to this brief's
+  version/date.
+- **Nothing promoted by copying:** Observed/Proposed stay so in the save; a
+  fork's `picked` is set only from the user's quoted reply (`pickSpan`).
+
+Section-by-section mapping, ingest steps and validation:
+`references/style-save-mapping.md`. The save is optional output, not a
+dependency: the brief is complete without one. If installed, Vector-Translator
+(axes/forks), ref-validator / ref-synthesizer (refs) and constraint-shaper
+(constraints) can fill their sections; Art-Brief never requires them.
 
 ## Step 1 — Intake & Classification
 
@@ -531,6 +561,19 @@ decisions block. A finished document is not authorization to start production.
 
 Include sourced or Proposed priority weights inline; unknown weights stay unknown.
 
+**📖 Terms we use** — the project's glossary, rendered from lexicon atoms
+(L-ids, reused from a supplied save), one row per term:
+
+```
+[L-id] term (kind) — what it means here — not this: [nearby readings] — [status + source]
+```
+
+Include the parts nomenclature (named components, with parent) when the asset
+has named parts. Style/quality terms carry at least one `not this`; unknown
+exclusions stay Unresolved rather than invented. A glossary term Observed in a
+reference or Proposed by the assistant stays so until the user adopts it. Use
+the glossary's terms verbatim in Blocks 2–3 so the recipient reads one language.
+
 ---
 
 ### OUTPUT BLOCK 2 — 📬 Vendor Brief
@@ -632,8 +675,9 @@ not the point of the skill.
 When updating an existing brief, follow this flow:
 
 ### 6A — Ingest & Diff
-Parse the existing brief. Identify which sections are affected by the new
-information (vendor questions, feedback, direction change).
+Parse the existing brief, and its style save first when one exists (per
+`references/style-save-mapping.md`). Identify which sections are affected by
+the new information (vendor questions, feedback, direction change).
 
 ### 6B — Targeted Update
 Update affected atoms and their rendered occurrences; preserve unaffected
@@ -698,6 +742,8 @@ the updated brief at full fidelity.**
 - **IP extraction depth**: Never just name-drop — always extract borrow/avoid/target
 - **No generic filler**: "Epic fantasy style" is not useful. Be specific about WHAT
   makes it epic and WHICH flavor of fantasy.
+- **Vocabulary before taste**: a loaded style word gets a meaning-here and a
+  not-this in the Terms glossary, or stays visibly Unresolved.
 - **Ambiguity is priced as risk, not discounted** — a brief this skill produces
   should remove questions, not just describe the asset. That's the standard
   to write against, not "does this look complete."
@@ -722,13 +768,17 @@ the updated brief at full fidelity.**
 
 ## Companion Skill: image-decomp
 
-The image-decomp skill (v2) analyzes existing images into structured reports.
+The image-decomp skill (v3.2) analyzes existing images into structured reports.
 Its output maps naturally into this skill as structured input:
 
 | image-decomp output | art-brief input |
 |---|---|
 | `artisticReferences` | Step 1C IP references |
-| `colors` | Visual Language — color palette |
+| `colors` [{hex, role}] | Visual Language — color palette (Observed) |
+| `pitchLines` [{line, tier, evidence}] | Art Direction Doc one-line thesis / pitch (Proposed) |
+| `parts`, `lexicon` | 📖 Terms we use — keep L/P IDs; Observed/Proposed until the user confirms |
+| `elementUtility`, `compositionGeometry` | Composition / focal requirements (Observed, not yet musts) |
+| `intent` | Intended viewer effect — descriptive, not a requirement unless confirmed |
 | `customFields` | Asset-type schema fields |
 | `technicalSummary` | Art Direction Doc opener |
 | `generatedPrompt` | Seed for Generation Prompt block |
@@ -738,7 +788,8 @@ Its output maps naturally into this skill as structured input:
 When image-decomp output is provided, map relevant analysis with its source
 and uncertainty intact. It is not approved direction or proof of technical
 budgets. Resolve consequential gaps before the Step 2 checkpoint without
-re-asking for facts already captured.
+re-asking for facts already captured. If it emitted a `*.style.json`, ingest
+that save first (see the Style save sidecar section).
 
 ## Companion Skill: outsource-intake
 
@@ -763,64 +814,16 @@ logistics stay visibly Unresolved, never invented.
 
 ---
 
-## Verification & Version Notes
+## Verification
 
 Before delivery, check every technical number, date, role, reference, and
 commercial disposition against its source. Confirm no Observed or Proposed
 value became Confirmed through condensation, prompt generation, or handoff.
+The same holds for the style save: no Observed/Proposed value becomes Confirmed
+there through condensation, handoff, or copying; its D/S/L IDs match the visible
+register and glossary; and every fork `picked` quotes the user's own reply.
 Check the class is evidenced, open decisions survive, and an exemplar has not
-been mistaken for completion of new work. Exercise the debug/action cases
-in `references/debug-and-contacts.md` (the contact-directory cases are
-outsource-intake's; the brief carries only the logistics pointer), plus
-comp-versus-inspected-reference labels
-from `references/curated-comparisons.md`; retain outputs for independent review.
-
-For regression testing, run sparse, exploratory, and production-batch requests
-through both skills; retain actual outputs and check labels at the checkpoint
-and final output. Also test partial confirmation, inaccessible references,
-and mixed-class handoffs. Structural checks alone do not prove model behavior.
-Condensation-specific regressions to check: Proposed requirements appearing
-unlabeled in Output Block 2; any Scope Boundaries / Contact Directory /
-Process / Milestones content composed into a brief (these belong to intake —
-only the logistics pointer may appear); vendor replies answering undecided
-scope questions;
-authority rulings expanded into new bans. Found via headless multi-case runs
-(scratch/headless-rig/ in the skills repo).
-
-**v2.8** — role-boundary split: this skill is the style-authority record (the
-art bible); outsource-intake is the delivery-authority record. Scope
-Boundaries & Change Policy, Contact Directory, Process, and Delivery &
-Milestones moved out of brief composition (owned by intake; open pointer +
-`brief_ref` contract instead). Interview frontier scoped to creative
-decisions only; Process half of Step 1E removed; Mode B change-order
-classification retained with commercial disposition deferred to intake.
-
-**v2.7** — source-linked atoms before checkpoint and assembly; shared compact
-source register; semantic source-to-clause comparison; reviewer/approver split;
-optional evidenced priorities/gates; missing evidence distinguished from absence;
-creative proposals and annotated prompts retained without approval promotion.
-
-**v2.6** — explicit request-scoped debug artifacts with placeholders; six-role
-contact appendix; evidence-backed curated comparisons and optional pitches;
-action-state/hedge preservation; sourced numeric reasons; recipient proposals
-without promises; inclusion and commercial disposition kept separate.
-
-**v2.5** — condensation-layer fixes from headless-rig findings: per-bullet
-provenance in Output Block 2; scope exclusions require a source (no invented
-boundaries); authority rulings bounded to the contested dimension; labels
-survive section moves (no laundering); sendable-message contract for
-recipient-ready replies; Mode B: absent from the prior brief is Unresolved,
-never out of scope.
-
-**v2.4** — adds interpretation classes, four decision labels, class-aware
-questioning/reference coverage, and provenance-preserving outputs/handoffs.
-Relevant missing schema values remain visible. Commercial disposition follows
-the agreed change boundary rather than being invented by the assistant.
-Grounding: GRIP Field Journal, Rates & Tiers (engagement classes), Buyer
-Readiness (explicit decisions), and The Brief (annotated targets). These are
-procedural adaptations, not rate guidance or automatic approval. Example cards were regenerated against the v2.8 role-boundary layout
-(logistics pointer, no scope/process blocks); they illustrate layout and
-honest labels, not the full v2.7 source-register contract. Living-brief/rejection tracing is deferred.
+been mistaken for completion of new work.
 
 ## Example Triggers
 

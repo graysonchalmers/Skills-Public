@@ -34,6 +34,25 @@ through; do not spend frontier questions on them.
    a draft with gaps. If no consequential question remains, be quiet and assemble
    when the route permits. Keep all remaining gaps visible.
 
+## Vocabulary forks (v2.9)
+
+Alignment starts with vocabulary. A vague or loaded style word in the user's
+input ("premium", "gritty", "cozy", "clean") is a frontier candidate when its
+plausible readings would produce visibly different output. It is not a separate
+questionnaire: it competes for the same 2–4 slots, and only when consequential.
+
+- Ask it as a did-you-mean fork: "When you say *premium*, do you mean (a)
+  restraint — fewer, finer strokes, one metallic accent; (b) richness — engraved
+  bevels, gradient gold; or something else?" Name 2–3 readings, each with its
+  visible change; recommend one when useful.
+- Register the fork (F-id) and the word as a lexicon atom (L-id) with status
+  Unresolved or Proposed. Only the user's own reply sets the pick; quote it.
+  The resulting term records `means` (what it means here) and `notThis` (the
+  readings not picked, or others the user excluded).
+- A word already defined in a supplied style save, or one whose readings would
+  not change the artifact, is not asked. An unanswered fork stays open and
+  visible in the Terms glossary.
+
 ## Modes and output
 
 - Normal mode is multi-turn and may pause at the checkpoint. A draft with gaps is
@@ -52,7 +71,7 @@ Retain a compact trace alongside the artifact or in the harness evidence:
 ```text
 round: integer
 frontier_before: [decision IDs/titles]
-questions: [{number, decision, prerequisite, recommendation}]
+questions: [{number, decision, prerequisite, recommendation, fork?}]  # fork = F-id for a vocabulary question
 answer_source: source key/span or "none"
 answer_effects: [new/updated decision IDs and status changes]
 register_snapshot: visible IDs/statuses after the round

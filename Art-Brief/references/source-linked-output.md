@@ -24,6 +24,10 @@ there is no textual quote to fabricate. Uninspected images cannot be Observed.
 |---|---|---|---|---|
 | Dn | [value; Confirmed / Observed / Proposed / Unresolved] | [Sn + exact quote, or located image observation] | [literal hedge; needed / planned / underway / done / not stated / N/A] | [dimension, phase, role, agreement or evidence limit] |
 
+Glossary terms (v2.9) are atoms too, with **L-ids** in the same table; the Terms
+glossary renders from them. When a style save exists, its S/D/L/P IDs are the
+register's IDs (`style-save-mapping.md`); never renumber one side only.
+
 For **Unresolved**, use `not supplied in S1–S3` (the inputs actually reviewed),
 or quote the explicit undecided/conflicting statement. That marker proves only
 an information gap; it does not prove absence. For assistant-authored **Proposed**

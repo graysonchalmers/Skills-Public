@@ -37,6 +37,26 @@ composed scene, not reportage)
 > suspended, about-to-break instant — the same frozen-tension quality a
 > Noh performer holds in a climactic pose.
 
+## 🏷️ Parts & Vocabulary
+
+**Parts map** *(Observed)*
+- **Great wave** — the towering left-side breaker; the focal mass `[0.3, 0.35]`
+  - **Crest claws** — the fingered foam tips curling over the boats; the signature shape
+  - **Foam spray** — the dotted white flecks falling from the crest
+  - **Trough** — the deep blue hollow under the crest that pulls the eye down
+- **Secondary wave** — the smaller foreground swell that echoes Fuji's shape `[0.6, 0.75]`
+- **Oshiokuri boats** — three long boats with crouched rowers; the human scale cue
+- **Mount Fuji** — tiny snow-capped peak framed inside the trough `[0.65, 0.65]`
+- **Sky field** — flat pale-to-grey sky band with a few printed clouds
+- **Cartouche + signature** — the title box (top left) and the artist's signature block
+
+**Vocabulary candidates** *(Proposed)*
+- **flat color-block** — means: each area is one printed ink with a hard edge / not this: gradients or painted blending
+- **clawed linework** — means: hooked, branching outline at the foam tips / not this: soft or loose spray
+- **scale contrast** — means: huge near wave vs tiny far mountain to fake depth / not this: everything drawn at a believable size
+- **held instant** — means: the wave frozen just before it breaks / not this: motion blur or action streaks
+- **Prussian blue** — means: the deep imported synthetic blue that dominates the water / not this: any generic dark blue
+
 ## Technical Summary
 
 A multi-block woodcut print built almost entirely from *bero-ai* — a

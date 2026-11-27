@@ -40,6 +40,25 @@ claim to depict a real moment)
 > showman's dress, not military uniform, which is part of why the figure
 > reads as a personification rather than a soldier.
 
+## 🏷️ Parts & Vocabulary
+
+**Parts map** *(Observed)*
+- **Figure** — the single frontal subject; the whole poster's focal anchor `[0.5, 0.45]`
+  - **Top hat with star band** — tall hat; the white-starred blue band carries the flag motif
+  - **Brow + gaze** — furrowed brow and eyes locked on the viewer; the "address" device
+  - **Foreshortened pointing hand** — index finger thrust toward the lens `[0.5, 0.55]`; the call to action
+  - **Tailcoat + bow tie** — showman's costume rendered in flag red/white/blue
+- **Ground** — flat warm-cream field; no setting, nothing competes with the figure
+- **Headline panel** — the large display type below the figure; delivers the command
+  - **Kicker / secondary line** — the smaller supporting line under the headline
+- **Credit line** — artist/printer text at the bottom edge
+
+**Vocabulary candidates** *(Proposed)*
+- **direct address** — means: the subject looks and points straight at the viewer / not this: a figure simply facing forward with a neutral look
+- **foreshortened** — means: the arm shrinks in depth so the hand pops toward you / not this: an arm drawn large
+- **illustrative polish** — means: soft, warm, magazine-style brushwork / not this: photoreal rendering or stark graphic flats
+- **flag-color grammar** — means: the palette is limited to the flag's red/white/blue, used on purpose / not this: patriotic subject matter in any colors
+
 ## Technical Summary
 
 A lithographic illustration built on a deliberately narrow, high-contrast

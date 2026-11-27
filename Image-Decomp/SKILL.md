@@ -1,12 +1,19 @@
 ---
 name: image-decomp
 visibility: public
-description: "Decompose and decode any image: craft (palette, style, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Analyze, decode, or reverse-engineer any image."
+description: "Analyze visual craft and art direction, including rendered-output and before/after reviews across projects. Decompose and decode any image: craft (palette, style, parts naming, refs, X-meets-Y pitch lines, regen prompt) + intent (engagement archetypes, Dopamine-Hook + Authenticity-Gap). Analyze, decode, or reverse-engineer any image."
 metadata:
-  version: "3.1"
+  version: "3.3"
 ---
 
-# Image Decomposition + Intent Engine (VDE) — v3
+# Image Decomposition + Intent Engine (VDE)
+
+## Visual output and change-review mode
+
+For visual creation/refinement QA, art-direction critique or before/after comparison, read `references/observed-comparisons.md` first. This is the observation-first standard across projects: inspect actual output; identify image-supported differences; annotate Before, keep After clean; separate observation, art judgment and tested behavior.
+
+Use the relevant craft lens from this skill (composition, value, palette, silhouette, material, spacing, vocabulary) at the task's scale. In this targeted mode, the compact comparison/review output in that reference replaces the full decomposition sequence and its mandatory JSON/visual-report bundle. Do not add persuasion scores, regeneration prompts, style saves or baseline packages unless the task calls for them. New work has no invented Before. Full image-decomposition requests retain the existing workflow below.
+
 
 ![Example output: a source image decoded into Craft tags, artistic context, and a reverse-engineered regen prompt](references/example-output.webp)
 
@@ -18,10 +25,16 @@ Every image is engineered to do something to whoever looks at it — even a
 
 - **CRAFT axis** — *how was this made?* Palette, style lineage, medium,
   technique, references, X-meets-Y pitch lines, and a prompt that could
-  regenerate it. (This was v2; pitch lines arrived in v3.1.)
+  regenerate it.
 - **INTENT axis (the VDE engine)** — *what is this trying to do to a viewer,
   and how honest is it about that?* Gaze engineering, element roles, engagement
   archetypes, and two scores: **Dopamine Hook** and **Authenticity Gap**.
+
+Alongside both, it **hands the user the words**: the domain names of the
+image's parts and candidate style words with what each does and doesn't mean
+(Step 4b). Design talk fails on vocabulary before taste; someone who can only
+say "the little leafy branches" can't ask for a change until someone says
+*laurels*.
 
 The craft axis serves art direction, prompt engineering, and vendor briefs.
 The intent axis serves media literacy, content strategy, marketing analysis,
@@ -134,6 +147,37 @@ three entries; a busy ad may have ten.
 
 ---
 
+## Step 4b — Parts Map + Vocabulary (hand the user the words)
+
+Step 4 says what each element *does*; this step says what each part is
+*called*, so the user can ask for a change by name.
+
+**Parts Map (nomenclature).** Name the subject's meaningful components with the
+correct domain term for *this* medium: heraldry/logo (laurels, roundel,
+cartouche, wordmark, lockup), character (silhouette break, pauldron, gorget),
+UI (hero, nav rail, card, chip), poster (masthead, kicker, border, credit
+line). Cheat sheet per image type: `references/nomenclature.md`.
+
+- Build it as a tree: part → sub-part (shield → laurels; type panel → headline).
+- Each part: **term**, a one-line **plain gloss** for a non-specialist, rough
+  **location** (normalized `[x, y]` as in Step 2, or words when that's too
+  precise a claim), and its Step-4 **role** where one applies.
+- Only parts that carry weight, typically 5–15. The test: would a user need
+  this word to ask for a change?
+
+**Vocabulary candidates.** 3–8 style/quality/technique words that describe
+the image ("chunky", "art-deco geometric", "engraved", "flat spot color"), each
+with:
+
+- **means** — what it points at here, in observable terms
+- **not this** — the nearby readings it excludes (the half that disambiguates;
+  "premium" as *restraint* is not "premium" as *more gold*)
+
+These are offers, not verdicts: status **Proposed** until the user adopts one.
+Parts you can see are **Observed**. Image analysis never yields **Confirmed**.
+
+---
+
 ## Step 5 — Visual Tags
 
 8–15 descriptive tags across: medium/technique (`Cel-Shaded`, `Photorealistic`),
@@ -221,7 +265,7 @@ FILM_STILL, 3D_RENDER, TRADITIONAL_ART, UI_UX, SOCIAL_POST, ADVERTISING) live in
 
 ## Step 9 — Intent & Engagement Decode (VDE Layer 3: the engine)
 
-This is the heart of v3. Answer: **what is this image trying to do to the
+This is the heart of the skill. Answer: **what is this image trying to do to the
 viewer, by what mechanism, and how honest is it about it?**
 
 ### 9a. Archetype identification
@@ -293,7 +337,8 @@ Infer an evocative (not literal) title a thoughtful art director would assign;
 
 ## Output Format
 
-Always produce TWO outputs.
+Always produce TWO outputs (JSON report + visual report). A third, the
+**style save** sidecar, is conditional (see 3 below).
 
 ### 1. JSON Report
 
@@ -313,6 +358,21 @@ Always produce TWO outputs.
   "colors": [{ "hex": "#XXXXXX", "role": "label" }],
   "elementUtility": [
     { "element": "...", "role": "PROTAGONIST", "persuadesToward": "..." }
+  ],
+  "parts": [
+    { "id": "P1", "name": "shield", "status": "Observed", "role": "PROTAGONIST",
+      "note": "plain gloss for a non-specialist",
+      "anchor": { "source": "S1", "xy": [0.5, 0.5] } },
+    { "id": "P2", "name": "laurels", "parent": "P1", "status": "Observed",
+      "note": "paired leafy branches curving up either side, like a medal wreath",
+      "anchor": { "source": "S1", "region": "left and right of shield" } }
+  ],
+  "lexicon": [
+    { "id": "L1", "term": "engraved", "kind": "style | quality | technique | motif | part",
+      "means": "fine parallel hatch lines carry the shading",
+      "gloss": "looks cut into metal, like a banknote",
+      "notThis": ["embossed / raised", "sketchy pencil hatching"],
+      "status": "Proposed", "sourceSpan": "assistant proposal; based on hatching in the shield" }
   ],
   "tags": ["..."],
   "artisticReferences": ["Name — why"],
@@ -341,6 +401,13 @@ Always produce TWO outputs.
 Include `authenticityGap` **or** `constructionTransparency`, not both — whichever
 the Truth-Claim Flag selected.
 
+`parts` and `lexicon` use the style-save item shapes (`references/style-save.schema.json`),
+so they drop straight into a sidecar: `S1` is the analyzed image, the part's
+plain gloss goes in `note`, and statuses are `Observed` or `Proposed` only,
+never `Confirmed`. A part term the user most needs to learn may also get a
+`kind: "part"` lexicon entry, linked from the part by `lexiconId`.
+`style`/`quality` terms must carry at least one `notThis`.
+
 ### 2. Visual Report (markdown)
 
 1. **Title** as H1
@@ -348,16 +415,54 @@ the Truth-Claim Flag selected.
 3. **⚡ Pitch Lines** — the 2–4 one-liners as blockquotes with tier labels.
    Deliberately placed *before* the detail: a reader should get *what it is*
    before *how it's built* — this is the elevator moment.
-4. **Technical Summary** — paragraph
-5. **Composition & Gaze** — structure, focal anchor, gaze path, depth (anchors as a small list)
-6. **Artistic References** — comma-separated, each with a WHY
-7. **Generated Prompt** — blockquote
-8. **Tags** — inline badges
-9. **Color Palette** — inline hex codes with role labels
-10. **Element-Utility Map** — clean table (element / role / persuades toward)
-11. **Custom Fields** — table
-12. **Metadata** — two-column table, only populated fields
-13. **🎯 Intent Decode** — archetypes (with confidence), Dopamine Hook Score (number + band + drivers), Authenticity Gap *or* Construction Transparency, and the viewer-effect summary. Put this section last and make it the strongest — it's what v3 adds.
+4. **🏷️ Parts & Vocabulary** — words before detail. Parts as an indented
+   list, `term — gloss` (sub-parts nested under their parent). Vocabulary as
+   `term — means / not this`, marked as proposed.
+5. **Technical Summary** — paragraph
+6. **Composition & Gaze** — structure, focal anchor, gaze path, depth (anchors as a small list)
+7. **Artistic References** — comma-separated, each with a WHY
+8. **Generated Prompt** — blockquote
+9. **Tags** — inline badges
+10. **Color Palette** — inline hex codes with role labels
+11. **Element-Utility Map** — clean table (element / role / persuades toward)
+12. **Custom Fields** — table
+13. **Metadata** — two-column table, only populated fields
+14. **🎯 Intent Decode** — archetypes (with confidence), Dopamine Hook Score (number + band + drivers), Authenticity Gap *or* Construction Transparency, and the viewer-effect summary. Put this section last and make it the strongest.
+
+### 3. Style Save sidecar (conditional)
+
+A machine-readable twin of the report, `<subject-slug>.style.json`, for
+resuming, diffing, and handing to the next tool. Rules and file conventions:
+`references/style-save.md`; schema: `references/style-save.schema.json`.
+
+**Write it when:** the user asks for it, the report is being written to disk
+(save it next to the report), or an existing `*.style.json` for the subject is
+supplied. In plain chat use without those triggers, just offer it in one line.
+
+**Updating a supplied save:** load it first and reuse its terms; keep every
+existing ID (never renumber or recycle), add new items with the next free ID,
+bump `meta.revision`, append `image-decomp@3.2` to `meta.producedBy` (unless already last), and keep
+existing statuses as they are (a `Confirmed` term stays `Confirmed`).
+
+**Mapping:**
+
+| Report field | Save section |
+|---|---|
+| the analyzed image | `sources` S1, `kind: "image"` |
+| `parts` | `parts` |
+| `lexicon` | `lexicon` |
+| `colors` | `palette` (status `Observed`) |
+| `artisticReferences` worth borrowing | `refs`, `use: "borrow"`, status `Proposed`; each reference gets its own source (`kind: "other"`, `ref` = the name) |
+| `generatedPrompt` | `prompts` G1, `derivedFrom` its source IDs |
+
+**Status rule:** image analysis yields `Observed` (visible) or `Proposed`
+(offered). Never `Confirmed`; only the user's own words confirm. Only include
+sections you filled. Validate against the schema when a JSON-schema validator
+is available; otherwise check required fields by eye.
+
+**Companions (optional, if installed):** `vector-translator` can fork a vague
+ask ("more premium") into named readings along axes using the save, and
+`art-brief` ingests it; this skill works fully alone without either.
 
 ---
 
@@ -373,6 +478,10 @@ the Truth-Claim Flag selected.
   saturation spike drive the hook" beats "engaging."
 - **Confidence, honestly.** Mark inferences ("likely Clip Studio brushwork";
   "~0.6 confidence on the Thirst archetype"). Never invent unseen detail.
+- **Terms point at pixels.** Every part name and vocabulary word must point at
+  something visible in the image. If you're unsure of the domain term, say so
+  ("likely called a *cartouche*; check with a heraldry source") rather than
+  inventing a confident-sounding one.
 - **Intent read is descriptive, not moralizing.** Decode the mechanism plainly.
   Persuasion isn't automatically sinister — a game key-art SHOULD sell a power
   fantasy. Name the technique; let the reader judge.
