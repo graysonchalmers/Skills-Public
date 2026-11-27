@@ -6,6 +6,10 @@ Hi, I'm Grayson — 22 years running art outsourcing in games (Blizzard, Epic, R
 
 This is a curated public subset of a private source of truth — don't edit here, it's regenerated on each publish.
 
+## How they fit together
+
+These skills are one workflow: **Image-Decomp** breaks a reference into named parts and words, **Art-Brief** turns the agreed direction into an art bible, and **Outsource-Intake** wraps that brief in the production logistics a vendor needs. In my own setup they run inside a private art-direction plugin that adds an align-and-review loop on top.
+
 ## Install
 
 ```bash
